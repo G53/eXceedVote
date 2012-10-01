@@ -1,5 +1,5 @@
 /**
- * The Project is     
+ * A class which separates each project has to be voted.     
  * 
  * @author Kamolporn Sanamlao 
  * @version 2012.10.01
@@ -12,7 +12,7 @@ public class Project {
 	
 	/**
 	 * Initialize a new Project
-	 * @param projectDescription
+	 * @param projectDescription - information for each project
 	 */
 	public Project(ProjectDescription projectDescription){
 		this.projectDescription = projectDescription;
