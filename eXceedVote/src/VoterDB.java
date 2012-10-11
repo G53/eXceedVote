@@ -178,7 +178,7 @@ public class VoterDB extends RecordLog {
 	public Voter getVoter() {
 		return voter;
 	}
-
+	/**return Log message for show to user */
 	public String getMessage() {
 		return messageLog;
 	}
