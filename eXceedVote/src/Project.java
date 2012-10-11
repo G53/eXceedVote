@@ -28,7 +28,8 @@ public class Project {
 	}
 	
 	/**
-	 * Display the string to shoe the description of project
+	 * Display the string to show the description of project
+	 *@return String of description
 	 */
 	public String toString(){
 		return "Name: " + projectName + "Team name: " + teamName +	"Project ID: " + projectID;
