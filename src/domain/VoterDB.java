@@ -206,7 +206,7 @@ public class VoterDB extends RecordLog {
 	}
 
 	
-	DefaultTableModel voteResult(DefaultTableModel model)
+	public DefaultTableModel voteResult(DefaultTableModel model)
 			throws SQLException {
 		ResultSet row = stmt
 				.executeQuery("SELECT project.teamname,sum(vote.score) as total_vote_score, question.questions FROM vote,voter,question,project WHERE voter.ID = vote.user_id and project.ID = vote.project_id and question.ID = vote.question_id group by question.questions");
