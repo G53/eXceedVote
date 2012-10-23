@@ -51,7 +51,7 @@ public class VoterDB extends RecordLog {
 
 		try {
 			con = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/exceed_vote", "root", "Peepo");
+					"jdbc:mysql://192.168.1.5:3306/exceed_vote", "root", "Peepo");
 			stmt = con.createStatement();
 			// turn on autocommit
 			con.setAutoCommit(true);
