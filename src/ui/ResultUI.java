@@ -11,7 +11,6 @@ import javax.swing.table.DefaultTableModel;
 
 import domain.VoterDB;
 
-
 public class ResultUI {
 	private JFrame frame;
 	private VoterDB voterDB;
