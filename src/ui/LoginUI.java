@@ -30,10 +30,6 @@ import domain.VoterDB;
  */
 public class LoginUI extends RecordLog {
 
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
     private JFrame frame;
     private JTextField inputField1;
     private JPasswordField inputField2;
