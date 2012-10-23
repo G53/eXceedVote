@@ -21,6 +21,11 @@ import java.util.ArrayList;
 
 import javax.swing.table.DefaultTableModel;
 
+/**
+ * VoterDB actually likes controller of a System by controlling between UI and Database.
+ * @author Wasupol Tungsakultong
+ * @version 1.0
+ */
 public class VoterDB extends RecordLog {
 
 	private static Connection con;
@@ -204,8 +209,14 @@ public class VoterDB extends RecordLog {
 		return unique;
 
 	}
-
 	
+	
+	/**
+	 * create a table model of database to show as a result to user in form of JTable.
+	 * @param model - TableModel object which create from instance of database of voting system.
+	 * @return model of containing data of which project have been voted.
+	 * @throws SQLException
+	 */
 	public DefaultTableModel voteResult(DefaultTableModel model)
 			throws SQLException {
 		ResultSet row = stmt
