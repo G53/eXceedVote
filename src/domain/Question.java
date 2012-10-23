@@ -9,15 +9,9 @@ package domain;
  */
 public class Question {
 
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return question;
-	}
-
 	/** The criteria to vote the project */
 	private String question;
-	
+	/** The id of question */
 	private long questionID;
 	/**
 	 * Initialize a new Question   
@@ -30,12 +24,15 @@ public class Question {
 	
 	/**
 	 * To setting the question to vote for project 
-	 * @param question - criteria to vote the project 
+	 * @param question is criteria to vote the project 
 	 */
 	public void setQuestion(String question){
 		this.question = question;
 	}
 	
+	/** To get the id of each question */
+	 *  return if of question
+	 */
 	public long getQuestionID(){
 		return questionID;
 	}
@@ -45,6 +42,15 @@ public class Question {
 	 * @return question of voting project  
 	 */
 	public String getQuestion(){
+		return question;
+	}
+
+	/**
+	 * Display the question
+	 */
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
 		return question;
 	}
 	
