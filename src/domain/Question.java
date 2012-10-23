@@ -1,5 +1,4 @@
 package domain;
-
 /**
  * Question is criteria to vote which project should deserve score form voter
  * 
@@ -8,7 +7,6 @@ package domain;
  *
  */
 public class Question {
-
 	/** The criteria to vote the project */
 	private String question;
 	/** The id of question */
@@ -30,7 +28,7 @@ public class Question {
 		this.question = question;
 	}
 	
-	/** To get the id of each question */
+	/** To get the id of each question
 	 *  return if of question
 	 */
 	public long getQuestionID(){
@@ -53,6 +51,4 @@ public class Question {
 		// TODO Auto-generated method stub
 		return question;
 	}
-	
-	
 }
