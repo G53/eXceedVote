@@ -1,6 +1,13 @@
 package domain;
 import org.apache.log4j.Logger;
 
+/**
+ * RecordLog is abstract class for every class that need to use record message to log file 
+ * 
+ * @author Metas Pongmetha
+ * @version 2012.10.23
+ *
+ */
 public abstract class RecordLog{
 	
 	protected final Logger logger = Logger.getLogger(this.getClass());
@@ -35,7 +42,8 @@ public abstract class RecordLog{
 
 	
 	/**
-	 * @param args
+	 * record message to log file
+	 * @param message - message for record to log file
 	 */
 	public void record(String message){
 		logger.info(message);
