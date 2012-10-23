@@ -70,3 +70,40 @@
 03:21:44 - IDNo: 4| Username:admin - Login success!
 03:21:52 - Question : Which project's design is the best?| Vote - project : Beauty
 03:21:52 - Vote have been added to database
+03:24:55 - Connected to database
+03:24:55 - Access Project Database
+03:24:55 - Access Question Database
+03:25:01 - IDNo: 1| Username:Oor - Login success!
+03:25:22 - Question : Which project do you like most?| Vote - project : Beauty
+03:25:22 - Vote have been added to database
+03:44:55 - Connected to database
+03:44:55 - Access Project Database
+03:44:55 - Access Question Database
+04:07:08 - Can not connect to database!
+04:13:03 - Can not connect to database!
+04:13:03 - Can't access Project Database
+04:13:03 - Can't Access Question Database
+04:13:40 - Connected to database
+04:13:40 - Disconnected from database
+04:13:40 - Can't access Project Database
+04:13:40 - Can't Access Question Database
+04:13:43 - Connected to database
+04:13:43 - Disconnected from database
+04:13:44 - Can't access Project Database
+04:13:44 - Can't Access Question Database
+04:13:45 - Connected to database
+04:13:45 - Disconnected from database
+04:13:46 - Can't access Project Database
+04:13:46 - Can't Access Question Database
+04:14:21 - Connected to database
+04:14:21 - Disconnected from database
+04:14:22 - Can't access Project Database
+04:14:22 - Can't Access Question Database
+04:14:33 - Connected to database
+04:14:33 - Access Project Database
+04:14:33 - Access Question Database
+04:14:47 - User: Hello- Login fail
+04:15:32 - Connected to database
+04:15:32 - Access Project Database
+04:15:32 - Access Question Database
+04:16:40 - IDNo: 4| Username:admin - Login success!

@@ -40,7 +40,7 @@ public class VoterDB extends RecordLog {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			record("Can't Find Database Driver");
 		}
 	}
 
@@ -60,7 +60,7 @@ public class VoterDB extends RecordLog {
 //			record(messageLog = "Disconnected from database"); 
 		} catch (SQLException e) {
 			record(messageLog = "Can not connect to database!");
-			e.printStackTrace();
+			
 		}
 
 	}
@@ -84,7 +84,7 @@ public class VoterDB extends RecordLog {
 			return arrQuestion;
 			// Loop through the rows retrieved from the query
 		} catch (Exception e) {
-			e.printStackTrace();
+			record("Can't Access Question Database");
 		}
 		return null;
 	}
@@ -108,7 +108,7 @@ public class VoterDB extends RecordLog {
 			return arrProject;
 			// Loop through the rows retrieved from the query
 		} catch (Exception e) {
-			e.printStackTrace();
+			record("Can't access Project Database");
 		}
 		return null;
 	}
@@ -134,7 +134,7 @@ public class VoterDB extends RecordLog {
 			}
 			// Loop through the rows retrieved from the query
 		} catch (Exception e) {
-			e.printStackTrace();
+			record("Can't get Voter from Database");
 		}
 		record("User: " + user + "- Login fail");
 		return null;
@@ -179,18 +179,18 @@ public class VoterDB extends RecordLog {
 			pstmt.setTimestamp(5, voteTime);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
-			e.printStackTrace();
+			record("Can't insert vote record");
 		}
 	}
 
 	/**
- 	 * check that voter had voted the same thing(same prject and question) before or not
+ 	 * check that voter had voted the same thing(same project and question) before or not
  	 * @param user_id - user Id of voter
  	 * @param project_id - project Id that user vote
  	 * @param question_id - question Id that user select
  	 * @param score - number of score that voter vote
  	 * @param voteTime - time that submit to server
- 	 * @return false - if voter had voted this thing(same prject and question) before
+ 	 * @return false - if voter had voted this thing(same project and question) before
  	 * true - otherwise
  	 */
 	public boolean canInsert(int user_id, int project_id, int question_id,
@@ -207,7 +207,7 @@ public class VoterDB extends RecordLog {
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			record("Having duplicated record in Database");
 		}
 		return unique;
 
