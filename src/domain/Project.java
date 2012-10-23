@@ -18,9 +18,9 @@ public class Project {
 	
 	/**
 	 * Initialize a new ProjectDescription
-	 * @param name - name of project
-	 * @param teamName - name of team who develops the project 
-	 * @param projectID - id of project
+	 * @param name is name of project
+	 * @param teamName is name of team who develops the project 
+	 * @param projectID is id of project
 	 */
 	public Project(long projectID, String name, String teamName ){
 		this.projectName = name;
