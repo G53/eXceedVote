@@ -32,10 +32,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 
-import domain.Project;
-import domain.Question;
-import domain.RecordLog;
-import domain.VoterDB;
+import domain.*;
 
 /**
  * 
@@ -67,8 +64,8 @@ public class VoteUI extends RecordLog {
 	private String temp;
 
 	public VoteUI(VoterDB voterDB) {
-		frame = new JFrame();
 		this.voterDB = voterDB;
+		frame = new JFrame();
 		arrProject = voterDB.getProject();
 		listQues = voterDB.getQuestion();
 		pl = new JPanel(new GridLayout(10, 1));

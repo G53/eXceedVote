@@ -56,8 +56,11 @@ public class VoterDB extends RecordLog {
 			// turn on autocommit
 			con.setAutoCommit(true);
 			record(messageLog = "Connected to database");
+//			con.close();
+//			record(messageLog = "Disconnected from database"); 
 		} catch (SQLException e) {
 			record(messageLog = "Can not connect to database!");
+			e.printStackTrace();
 		}
 
 	}
