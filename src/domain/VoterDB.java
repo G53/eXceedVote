@@ -11,6 +11,14 @@ import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
+/**
+ * VoterDB 
+ * 
+ * @author 
+ * @version 2012.10.23
+ *
+ */
+
 import javax.swing.table.DefaultTableModel;
 
 public class VoterDB extends RecordLog {
@@ -31,6 +39,9 @@ public class VoterDB extends RecordLog {
 		}
 	}
 
+	/**
+ 	 * connect to database server
+ 	 */
 	public void connect() {
 
 		try {
@@ -46,6 +57,10 @@ public class VoterDB extends RecordLog {
 
 	}
 
+	/**
+ 	 * access and get question from database server 
+ 	 * @return arraylist of question
+ 	 */
 	public ArrayList<Question> getQuestion() {
 		String query; // SQL select string
 		ResultSet rs; // SQL query results
@@ -66,6 +81,10 @@ public class VoterDB extends RecordLog {
 		return null;
 	}
 
+	/**
+ 	 * access and get project from database server 
+ 	 * @return arraylist of project
+ 	 */
 	public ArrayList<Project> getProject() {
 		String query; // SQL select string
 		ResultSet rs; // SQL query results
@@ -86,6 +105,13 @@ public class VoterDB extends RecordLog {
 		return null;
 	}
 
+	/**
+ 	 * check username and password of voter from database server that exist in database or not
+ 	 * @param user - username of voter
+ 	 * @param pass - password of voter 
+ 	 * @return Voter object of voter that contain all information of voter from database
+ 	 * Voter object = null - if username and password not exist in database
+ 	 */
 	public Voter getVoter(String user, String pass) {
 		String query; // SQL select string
 		ResultSet rs; // SQL query results
@@ -106,6 +132,12 @@ public class VoterDB extends RecordLog {
 		return null;
 	}
 
+	/**
+ 	 * check login with Voter object that login success or fail
+ 	 * @param voter - Voter object
+ 	 * @return false - if Voter object = null
+ 	 * true - otherwise 
+ 	 */
 	public boolean logIn(Voter voter) {
 		if (voter == null) {
 			messageLog = "Invalid Username or Password";
@@ -119,8 +151,16 @@ public class VoterDB extends RecordLog {
 		}
 	}
 
+	/**
+ 	 * submit result that voter select (username , project Id, question Id ,nuymber of score , time of vote)
+ 	 * @param user_id - user Id of voter
+ 	 * @param project_id - project Id that user vote
+ 	 * @param question_id - question Id that user select
+ 	 * @param score - number of score that voter vote
+ 	 * @param voteTime - time that submit to server
+ 	 */
 	public void insertVoteDB(int user_id, int project_id, int question_id,
-			int score, Timestamp votetime) {
+			int score, Timestamp voteTime) {
 		try {
 			String queryin = "INSERT INTO Vote (user_id, project_id, question_id, score, datetime) VALUES (?,?,?,?,?)";
 			pstmt = con.prepareStatement(queryin);
@@ -128,13 +168,23 @@ public class VoterDB extends RecordLog {
 			pstmt.setInt(2, project_id);
 			pstmt.setInt(3, question_id);
 			pstmt.setInt(4, score);
-			pstmt.setTimestamp(5, votetime);
+			pstmt.setTimestamp(5, voteTime);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
+	/**
+ 	 * check that voter had voted the same thing(same prject and question) before or not
+ 	 * @param user_id - user Id of voter
+ 	 * @param project_id - project Id that user vote
+ 	 * @param question_id - question Id that user select
+ 	 * @param score - number of score that voter vote
+ 	 * @param voteTime - time that submit to server
+ 	 * @return false - if voter had voted this thing(same prject and question) before
+ 	 * true - otherwise
+ 	 */
 	public boolean canInsert(int user_id, int project_id, int question_id,
 			int score, Timestamp votetime) {
 		boolean unique = true;
@@ -155,6 +205,7 @@ public class VoterDB extends RecordLog {
 
 	}
 
+	
 	DefaultTableModel voteResult(DefaultTableModel model)
 			throws SQLException {
 		ResultSet row = stmt
@@ -177,14 +228,25 @@ public class VoterDB extends RecordLog {
 		return model;
 	}
 
+	/**
+ 	 * return Voter object (voter that current login)
+ 	 * @return voter - Voter object
+ 	 */
 	public Voter getVoter() {
 		return voter;
 	}
 
+	/**
+ 	 * return message log for display in UI
+ 	 * @return messageLog
+ 	 */
 	public String getMessage() {
 		return messageLog;
 	}
 
+	/**
+ 	 * disconnect from database sever
+ 	 */
 	public void close() throws SQLException {
 		if (stmt != null) {
 			stmt.close();
