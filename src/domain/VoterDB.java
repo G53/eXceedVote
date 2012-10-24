@@ -1,7 +1,6 @@
 package domain;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -51,7 +50,7 @@ public class VoterDB extends RecordLog {
 
 		try {
 			con = DriverManager.getConnection(
-					"jdbc:mysql://192.168.1.5:3306/exceed_vote", "root", "Peepo");
+					"jdbc:mysql://localhost:3306/exceed_vote", "root", "Peepo");
 			stmt = con.createStatement();
 			// turn on autocommit
 			con.setAutoCommit(true);
