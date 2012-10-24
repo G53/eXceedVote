@@ -31,7 +31,7 @@ public class TestQuestion extends TestCase {
 		Question tempqq = q;
 		tempqq.setQuestion(newQuestion);
 		assertFalse(q.getQuestion() != tempqq.getQuestion());
-		assertEquals("What is your name ?", tempqq.getQuestion());
+		assertEquals("What is your name?", tempqq.getQuestion());
 	}
 
 	/**
