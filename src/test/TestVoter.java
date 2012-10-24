@@ -1,5 +1,6 @@
 package test;
 
+import domain.Voter;
 import junit.framework.TestCase;
 
 /**
@@ -27,21 +28,21 @@ public class TestVoter extends TestCase {
 	 *  Test getName method of Voter Object.
 	 */
 	public void testGetName() {
-		assertEquals("user1234", v.getName();
+		assertEquals("user1234", v.getName());
 	}
 
 	/**
 	 *  Test getID method of Voter Object.
 	 */
 	public void testGetId() {
-		assertEquals(1, v.getID());
+		assertEquals(1, v.getId());
 	}
 
 	/**
 	 *  Test getPassword method of Voter Object.
 	 */
 	public void testGetPassword() {
-		assertEquals("1234", v.getPassword();
+		assertEquals("1234", v.getPassword());
 	}
 
 	/**
@@ -49,8 +50,10 @@ public class TestVoter extends TestCase {
 	 */
 	public void testSetPassword() {
 		Voter tempvv = v;
-		tempvv.setQuestion(newPassword);
-		assertFalse(v.getPassword(), tempvv.getPassword());
+		tempvv.setPassword(newPassword);
+		assertFalse(v.getPassword() != tempvv.getPassword());
+		tempvv.setPassword("1234");
+		assertTrue(v.getPassword() == tempvv.getPassword());
 		assertEquals("23456", tempvv.getPassword());
 	}
 
