@@ -30,7 +30,7 @@ public class TestQuestion extends TestCase {
 	public void testSetQuestion() {
 		Question tempqq = q;
 		tempqq.setQuestion(newQuestion);
-		assertFalse(q.getQuestion(), tempqq.getQuestion());
+		assertFalse(q.getQuestion() != tempqq.getQuestion());
 		assertEquals("What is your name ?", tempqq.getQuestion());
 	}
 
@@ -52,7 +52,7 @@ public class TestQuestion extends TestCase {
 	 *  Test toString method of Question Object.
 	 */
 	public void testToString() {
-		assertEquals(q.getQuestion());
+		assertEquals("What your Name?",q.toString());
 	}
 
 }
