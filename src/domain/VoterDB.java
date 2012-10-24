@@ -9,15 +9,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-
-/**
- * VoterDB 
- * 
- * @author 
- * @version 2012.10.23
- *
- */
-
 import javax.swing.table.DefaultTableModel;
 
 /**
