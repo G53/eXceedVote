@@ -12,4 +12,5 @@ Developed by : G53 team
       /test
                 :contains all JUnit test class
 /lib 
+	:contain all library files that program need 
 /bin
