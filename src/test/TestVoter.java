@@ -2,26 +2,56 @@ package test;
 
 import junit.framework.TestCase;
 
+/**
+ * This class is about testing a Voter Object
+ * @author Metas Pongmetha
+ * @version 2012/10/24
+ */
 public class TestVoter extends TestCase {
+	// relate attribute	to test
+	private Voter v  = new Voter(1,"user1234","1234");
+	private String newPassword = "23456";
 
+	/**
+	 *  Test object have to be created
+	 */
 	public void testVoter() {
-		fail("Not yet implemented");
+		Voter tempv = v;
+		assertSame(tempv, v);
+		Voter temp = null;
+		assertNotSame(v, temp);
+		assertNotNull(v);
 	}
 
+	/**
+	 *  Test getName method of Voter Object.
+	 */
 	public void testGetName() {
-		fail("Not yet implemented");
+		assertEquals("user1234", v.getName();
 	}
 
+	/**
+	 *  Test getID method of Voter Object.
+	 */
 	public void testGetId() {
-		fail("Not yet implemented");
+		assertEquals(1, v.getID());
 	}
 
+	/**
+	 *  Test getPassword method of Voter Object.
+	 */
 	public void testGetPassword() {
-		fail("Not yet implemented");
+		assertEquals("1234", v.getPassword();
 	}
 
+	/**
+	 *  Test setPassword method of Voter Object.
+	 */
 	public void testSetPassword() {
-		fail("Not yet implemented");
+		Voter tempvv = v;
+		tempvv.setQuestion(newPassword);
+		assertFalse(v.getPassword(), tempvv.getPassword());
+		assertEquals("23456", tempvv.getPassword());
 	}
 
 }
