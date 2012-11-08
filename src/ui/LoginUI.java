@@ -6,6 +6,7 @@ package ui;
  * and open the template in the editor.
  */
 
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -21,8 +22,10 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import persistence.VoterDaoJdbc;
+import persistence.VoterDao;
+
 import domain.RecordLog;
+
 
 /**
  *
@@ -41,9 +44,9 @@ public class LoginUI extends RecordLog {
     private Font font2 = new Font("Tahoma", Font.PLAIN, 14);
     private String userName;
 	private Boolean isLogin = false;
-	private VoterDaoJdbc vote;
+	private VoterDao vote;
 
-    public LoginUI(VoterDaoJdbc vote) {
+    public LoginUI(VoterDao vote) {
     	frame = new JFrame();
     	this.vote = vote;
     	frame.setTitle("Login");

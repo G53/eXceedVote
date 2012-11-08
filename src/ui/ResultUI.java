@@ -1,5 +1,6 @@
 package ui;
 
+
 import java.awt.HeadlessException;
 import java.sql.SQLException;
 
@@ -7,12 +8,14 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import persistence.VoterDaoJdbc;
+
+import persistence.VoterDao;
+
 
 public class ResultUI {
 	private JFrame frame;
-	private VoterDaoJdbc voterDB;
-	public ResultUI(VoterDaoJdbc voterDB) {
+	private VoterDao voterDB;
+	public ResultUI(VoterDao voterDB) {
 		frame = new JFrame("Vote Result");
 		this.voterDB = voterDB;
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

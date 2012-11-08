@@ -1,7 +1,7 @@
 package test;
 
-import junit.framework.TestCase;
 import domain.Project;
+import junit.framework.TestCase;
 
 /**
  * This class is about testing a Project Object

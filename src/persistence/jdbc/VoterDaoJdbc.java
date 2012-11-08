@@ -1,4 +1,5 @@
-package persistence;
+package persistence.jdbc;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,17 +12,21 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
+import persistence.VoterDao;
+
 import domain.Project;
 import domain.Question;
 import domain.RecordLog;
 import domain.Voter;
+
+
 
 /**
  * VoterDB actually likes controller of a System by controlling between UI and Database.
  * @author Wasupol Tungsakultong
  * @version 1.0
  */
-public class VoterDaoJdbc extends RecordLog {
+public class VoterDaoJdbc extends RecordLog implements VoterDao {
 
 	private static Connection con;
 	private PreparedStatement pstmt;
@@ -29,6 +34,10 @@ public class VoterDaoJdbc extends RecordLog {
 	private String messageLog;
 	private Voter voter;
 
+	/* (non-Javadoc)
+	 * @see persistence.VoterDao#LoadDriver()
+	 */
+	@Override
 	public void LoadDriver() {
 
 		// Load the JDBC-ODBC bridge driver
@@ -39,9 +48,10 @@ public class VoterDaoJdbc extends RecordLog {
 		}
 	}
 
-	/**
- 	 * connect to database server
- 	 */
+	/* (non-Javadoc)
+	 * @see persistence.VoterDao#connect()
+	 */
+	@Override
 	public void connect() {
 
 		try {
@@ -60,10 +70,10 @@ public class VoterDaoJdbc extends RecordLog {
 
 	}
 
-	/**
- 	 * access and get question from database server 
- 	 * @return arraylist of question
- 	 */
+	/* (non-Javadoc)
+	 * @see persistence.VoterDao#getQuestion()
+	 */
+	@Override
 	public ArrayList<Question> getQuestion() {
 		String query; // SQL select string
 		ResultSet rs; // SQL query results
@@ -84,10 +94,10 @@ public class VoterDaoJdbc extends RecordLog {
 		return null;
 	}
 
-	/**
- 	 * access and get project from database server 
- 	 * @return arraylist of project
- 	 */
+	/* (non-Javadoc)
+	 * @see persistence.VoterDao#getProject()
+	 */
+	@Override
 	public ArrayList<Project> getProject() {
 		String query; // SQL select string
 		ResultSet rs; // SQL query results
@@ -108,13 +118,10 @@ public class VoterDaoJdbc extends RecordLog {
 		return null;
 	}
 
-	/**
- 	 * check username and password of voter from database server that exist in database or not
- 	 * @param user - username of voter
- 	 * @param pass - password of voter 
- 	 * @return Voter object of voter that contain all information of voter from database
- 	 * Voter object = null - if username and password not exist in database
- 	 */
+	/* (non-Javadoc)
+	 * @see persistence.VoterDao#getVoter(java.lang.String, java.lang.String)
+	 */
+	@Override
 	public Voter getVoter(String user, String pass) {
 		String query; // SQL select string
 		ResultSet rs; // SQL query results
@@ -135,12 +142,10 @@ public class VoterDaoJdbc extends RecordLog {
 		return null;
 	}
 
-	/**
- 	 * check login with Voter object that login success or fail
- 	 * @param voter - Voter object
- 	 * @return false - if Voter object = null
- 	 * true - otherwise 
- 	 */
+	/* (non-Javadoc)
+	 * @see persistence.VoterDao#logIn(domain.Voter)
+	 */
+	@Override
 	public boolean logIn(Voter voter) {
 		if (voter == null) {
 			messageLog = "Invalid Username or Password";
@@ -154,14 +159,10 @@ public class VoterDaoJdbc extends RecordLog {
 		}
 	}
 
-	/**
- 	 * submit result that voter select (username , project Id, question Id ,nuymber of score , time of vote)
- 	 * @param user_id - user Id of voter
- 	 * @param project_id - project Id that user vote
- 	 * @param question_id - question Id that user select
- 	 * @param score - number of score that voter vote
- 	 * @param voteTime - time that submit to server
- 	 */
+	/* (non-Javadoc)
+	 * @see persistence.VoterDao#insertVoteDB(int, int, int, int, java.sql.Timestamp)
+	 */
+	@Override
 	public void insertVoteDB(int user_id, int project_id, int question_id,
 			int score, Timestamp voteTime) {
 		try {
@@ -178,16 +179,10 @@ public class VoterDaoJdbc extends RecordLog {
 		}
 	}
 
-	/**
- 	 * check that voter had voted the same thing(same project and question) before or not
- 	 * @param user_id - user Id of voter
- 	 * @param project_id - project Id that user vote
- 	 * @param question_id - question Id that user select
- 	 * @param score - number of score that voter vote
- 	 * @param voteTime - time that submit to server
- 	 * @return false - if voter had voted this thing(same project and question) before
- 	 * true - otherwise
- 	 */
+	/* (non-Javadoc)
+	 * @see persistence.VoterDao#canInsert(int, int, int, int, java.sql.Timestamp)
+	 */
+	@Override
 	public boolean canInsert(int user_id, int project_id, int question_id,
 			int score, Timestamp votetime) {
 		boolean unique = true;
@@ -209,12 +204,10 @@ public class VoterDaoJdbc extends RecordLog {
 	}
 	
 	
-	/**
-	 * create a table model of database to show as a result to user in form of JTable.
-	 * @param model - TableModel object which create from instance of database of voting system.
-	 * @return model of containing data of which project have been voted.
-	 * @throws SQLException
+	/* (non-Javadoc)
+	 * @see persistence.VoterDao#voteResult(javax.swing.table.DefaultTableModel)
 	 */
+	@Override
 	public DefaultTableModel voteResult(DefaultTableModel model)
 			throws SQLException {
 		ResultSet row = stmt
@@ -237,25 +230,26 @@ public class VoterDaoJdbc extends RecordLog {
 		return model;
 	}
 
-	/**
- 	 * return Voter object (voter that current login)
- 	 * @return voter - Voter object
- 	 */
+	/* (non-Javadoc)
+	 * @see persistence.VoterDao#getVoter()
+	 */
+	@Override
 	public Voter getVoter() {
 		return voter;
 	}
 
-	/**
- 	 * return message log for display in UI
- 	 * @return messageLog
- 	 */
+	/* (non-Javadoc)
+	 * @see persistence.VoterDao#getMessage()
+	 */
+	@Override
 	public String getMessage() {
 		return messageLog;
 	}
 
-	/**
- 	 * disconnect from database sever
- 	 */
+	/* (non-Javadoc)
+	 * @see persistence.VoterDao#close()
+	 */
+	@Override
 	public void close() throws SQLException {
 		if (stmt != null) {
 			stmt.close();

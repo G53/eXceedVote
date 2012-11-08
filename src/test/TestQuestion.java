@@ -1,7 +1,7 @@
 package test;
 
-import junit.framework.TestCase;
 import domain.Question;
+import junit.framework.TestCase;
 
 /**
  * This class is about testing a Question Object

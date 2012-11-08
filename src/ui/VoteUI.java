@@ -5,6 +5,7 @@ package ui;
  */
 
 
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -32,8 +33,10 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 
+import persistence.VoterDao;
+
 import domain.*;
-import persistence.VoterDaoJdbc;
+
 
 /**
  * UI for voter
@@ -53,7 +56,7 @@ public class VoteUI extends RecordLog {
 	private JComboBox<Question> patternList;
 	private Font font = new Font("Tahoma", Font.BOLD, 16);
 	private Font font2 = new Font("Tahoma", Font.PLAIN, 14);
-	public VoterDaoJdbc voterDB;
+	public VoterDao voterDB;
 	private ArrayList<Project> arrProject;
 	private JRadioButton[] projectTeam;
 	private ButtonGroup btg = new ButtonGroup();
@@ -65,7 +68,7 @@ public class VoteUI extends RecordLog {
 	private TextArea tx = new TextArea();
 	private String temp;
 
-	public VoteUI(VoterDaoJdbc voterDB) {
+	public VoteUI(VoterDao voterDB) {
 		this.voterDB = voterDB;
 		frame = new JFrame();
 		arrProject = voterDB.getProject();
