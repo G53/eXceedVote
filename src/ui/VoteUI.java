@@ -35,7 +35,7 @@ import javax.swing.JScrollPane;
 import domain.*;
 
 /**
- * 
+ * @version 8.11.2012
  * @author Guy2jz
  */
 public class VoteUI extends RecordLog {
