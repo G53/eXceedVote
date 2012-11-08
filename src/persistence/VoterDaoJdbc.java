@@ -1,4 +1,4 @@
-package domain;
+package persistence;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,12 +11,17 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
+import domain.Project;
+import domain.Question;
+import domain.RecordLog;
+import domain.Voter;
+
 /**
  * VoterDB actually likes controller of a System by controlling between UI and Database.
  * @author Wasupol Tungsakultong
  * @version 1.0
  */
-public class VoterDB extends RecordLog {
+public class VoterDaoJdbc extends RecordLog {
 
 	private static Connection con;
 	private PreparedStatement pstmt;
