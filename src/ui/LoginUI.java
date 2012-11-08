@@ -21,8 +21,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import persistence.VoterDaoJdbc;
 import domain.RecordLog;
-import domain.VoterDB;
 
 /**
  *
@@ -41,9 +41,9 @@ public class LoginUI extends RecordLog {
     private Font font2 = new Font("Tahoma", Font.PLAIN, 14);
     private String userName;
 	private Boolean isLogin = false;
-	private VoterDB vote;
+	private VoterDaoJdbc vote;
 
-    public LoginUI(VoterDB vote) {
+    public LoginUI(VoterDaoJdbc vote) {
     	frame = new JFrame();
     	this.vote = vote;
     	frame.setTitle("Login");

@@ -7,12 +7,12 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import domain.VoterDB;
+import persistence.VoterDaoJdbc;
 
 public class ResultUI {
 	private JFrame frame;
-	private VoterDB voterDB;
-	public ResultUI(VoterDB voterDB) {
+	private VoterDaoJdbc voterDB;
+	public ResultUI(VoterDaoJdbc voterDB) {
 		frame = new JFrame("Vote Result");
 		this.voterDB = voterDB;
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

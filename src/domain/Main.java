@@ -1,6 +1,8 @@
 package domain;
 import java.sql.SQLException;
 
+import persistence.VoterDaoJdbc;
+
 
 import ui.LoginUI;
 import ui.VoteUI;
@@ -22,7 +24,7 @@ public class Main{
 	 */
 	public static void main(String[] args) throws InterruptedException,
 			SQLException {
-		VoterDB voterDB = new VoterDB();
+		VoterDaoJdbc voterDB = new VoterDaoJdbc();
 		voterDB.LoadDriver();
 		voterDB.connect();
 		LoginUI loginUI = new LoginUI(voterDB);
