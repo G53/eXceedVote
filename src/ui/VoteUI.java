@@ -35,6 +35,7 @@ import javax.swing.JScrollPane;
 import domain.*;
 
 /**
+ * UI for voter
  * @version 8.11.2012
  * @author Guy2jz
  */
