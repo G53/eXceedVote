@@ -1,4 +1,4 @@
-package domain;
+package g53.exceedvote.domain;
 /**
  * Question is criteria to vote which project should deserve score form voter
  * 

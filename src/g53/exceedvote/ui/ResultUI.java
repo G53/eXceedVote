@@ -1,4 +1,4 @@
-package ui;
+package g53.exceedvote.ui;
 
 
 import java.awt.HeadlessException;
@@ -9,7 +9,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-import persistence.VoterDao;
+import g53.exceedvote.persistence.VoterDao;
+
 
 
 public class ResultUI {

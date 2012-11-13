@@ -1,4 +1,4 @@
-package ui;
+package g53.exceedvote.ui;
 
 
 /*
@@ -22,9 +22,9 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import persistence.VoterDao;
 
-import domain.RecordLog;
+import g53.exceedvote.domain.RecordLog;
+import g53.exceedvote.persistence.VoterDao;
 
 
 /**

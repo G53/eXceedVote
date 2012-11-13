@@ -1,4 +1,4 @@
-package domain;
+package g53.exceedvote.domain;
 
 /**
  * Voter contains the information of voter, voter ID, username, password

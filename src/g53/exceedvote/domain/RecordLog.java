@@ -1,4 +1,4 @@
-package domain;
+package g53.exceedvote.domain;
 import org.apache.log4j.Logger;
 
 /**

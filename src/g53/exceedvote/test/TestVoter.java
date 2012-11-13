@@ -1,6 +1,6 @@
-package test;
+package g53.exceedvote.test;
 
-import domain.Voter;
+import g53.exceedvote.domain.Voter;
 import junit.framework.TestCase;
 
 /**
@@ -9,7 +9,7 @@ import junit.framework.TestCase;
  * @version 2012/10/24
  */
 public class TestVoter extends TestCase {
-	// relate attribute	to test
+	// relate attribute	to g53.exceedvote.test
 	private Voter v  = new Voter(1,"user1234","1234");
 	private String newPassword = "23456";
 

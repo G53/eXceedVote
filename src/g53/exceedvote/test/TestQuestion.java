@@ -1,6 +1,6 @@
-package test;
+package g53.exceedvote.test;
 
-import domain.Question;
+import g53.exceedvote.domain.Question;
 import junit.framework.TestCase;
 
 /**
@@ -9,7 +9,7 @@ import junit.framework.TestCase;
  * @version 2012/10/24
  */
 public class TestQuestion extends TestCase {
-	// relate attribute	to test
+	// relate attribute	to g53.exceedvote.test
 	private Question q  = new Question(1,"What your Name?");
 	private String newQuestion = "What is your name?";
 

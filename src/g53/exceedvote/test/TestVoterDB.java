@@ -1,4 +1,4 @@
-package test;
+package g53.exceedvote.test;
 
 import junit.framework.TestCase;
 

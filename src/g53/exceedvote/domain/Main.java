@@ -1,14 +1,15 @@
-package domain;
+package g53.exceedvote.domain;
 
 import java.sql.SQLException;
 
-import persistence.VoterDao;
-import persistence.jdbc.VoterDaoJdbc;
+import g53.exceedvote.persistence.VoterDao;
+import g53.exceedvote.persistence.jdbc.VoterDaoJdbc;
+import g53.exceedvote.ui.LoginUI;
+import g53.exceedvote.ui.VoteUI;
 
 
 
-import ui.LoginUI;
-import ui.VoteUI;
+
 
 /**
  * 

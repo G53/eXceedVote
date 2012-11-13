@@ -1,4 +1,4 @@
-package persistence.jdbc;
+package g53.exceedvote.persistence.jdbc;
 
 
 import java.sql.Connection;
@@ -12,12 +12,12 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
-import persistence.VoterDao;
 
-import domain.Project;
-import domain.Question;
-import domain.RecordLog;
-import domain.Voter;
+import g53.exceedvote.domain.Project;
+import g53.exceedvote.domain.Question;
+import g53.exceedvote.domain.RecordLog;
+import g53.exceedvote.domain.Voter;
+import g53.exceedvote.persistence.VoterDao;
 
 
 
@@ -35,7 +35,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 	private Voter voter;
 
 	/* (non-Javadoc)
-	 * @see persistence.VoterDao#LoadDriver()
+	 * @see g53.exceedvote.persistence.VoterDao#LoadDriver()
 	 */
 	@Override
 	public void LoadDriver() {
@@ -49,7 +49,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 	}
 
 	/* (non-Javadoc)
-	 * @see persistence.VoterDao#connect()
+	 * @see g53.exceedvote.persistence.VoterDao#connect()
 	 */
 	@Override
 	public void connect() {
@@ -71,7 +71,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 	}
 
 	/* (non-Javadoc)
-	 * @see persistence.VoterDao#getQuestion()
+	 * @see g53.exceedvote.persistence.VoterDao#getQuestion()
 	 */
 	@Override
 	public ArrayList<Question> getQuestion() {
@@ -95,7 +95,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 	}
 
 	/* (non-Javadoc)
-	 * @see persistence.VoterDao#getProject()
+	 * @see g53.exceedvote.persistence.VoterDao#getProject()
 	 */
 	@Override
 	public ArrayList<Project> getProject() {
@@ -119,7 +119,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 	}
 
 	/* (non-Javadoc)
-	 * @see persistence.VoterDao#getVoter(java.lang.String, java.lang.String)
+	 * @see g53.exceedvote.persistence.VoterDao#getVoter(java.lang.String, java.lang.String)
 	 */
 	@Override
 	public Voter getVoter(String user, String pass) {
@@ -143,7 +143,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 	}
 
 	/* (non-Javadoc)
-	 * @see persistence.VoterDao#logIn(domain.Voter)
+	 * @see g53.exceedvote.persistence.VoterDao#logIn(g53.exceedvote.domain.Voter)
 	 */
 	@Override
 	public boolean logIn(Voter voter) {
@@ -160,7 +160,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 	}
 
 	/* (non-Javadoc)
-	 * @see persistence.VoterDao#insertVoteDB(int, int, int, int, java.sql.Timestamp)
+	 * @see g53.exceedvote.persistence.VoterDao#insertVoteDB(int, int, int, int, java.sql.Timestamp)
 	 */
 	@Override
 	public void insertVoteDB(int user_id, int project_id, int question_id,
@@ -180,7 +180,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 	}
 
 	/* (non-Javadoc)
-	 * @see persistence.VoterDao#canInsert(int, int, int, int, java.sql.Timestamp)
+	 * @see g53.exceedvote.persistence.VoterDao#canInsert(int, int, int, int, java.sql.Timestamp)
 	 */
 	@Override
 	public boolean canInsert(int user_id, int project_id, int question_id,
@@ -205,7 +205,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 	
 	
 	/* (non-Javadoc)
-	 * @see persistence.VoterDao#voteResult(javax.swing.table.DefaultTableModel)
+	 * @see g53.exceedvote.persistence.VoterDao#voteResult(javax.swing.table.DefaultTableModel)
 	 */
 	@Override
 	public DefaultTableModel voteResult(DefaultTableModel model)
@@ -231,7 +231,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 	}
 
 	/* (non-Javadoc)
-	 * @see persistence.VoterDao#getVoter()
+	 * @see g53.exceedvote.persistence.VoterDao#getVoter()
 	 */
 	@Override
 	public Voter getVoter() {
@@ -239,7 +239,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 	}
 
 	/* (non-Javadoc)
-	 * @see persistence.VoterDao#getMessage()
+	 * @see g53.exceedvote.persistence.VoterDao#getMessage()
 	 */
 	@Override
 	public String getMessage() {
@@ -247,7 +247,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 	}
 
 	/* (non-Javadoc)
-	 * @see persistence.VoterDao#close()
+	 * @see g53.exceedvote.persistence.VoterDao#close()
 	 */
 	@Override
 	public void close() throws SQLException {

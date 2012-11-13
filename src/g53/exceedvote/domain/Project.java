@@ -1,4 +1,4 @@
-package domain;
+package g53.exceedvote.domain;
 /**
  * Project contains the information and vote score for each project
  * 

@@ -1,4 +1,4 @@
-package persistence;
+package g53.exceedvote.persistence;
 
 
 import java.sql.SQLException;
@@ -7,9 +7,9 @@ import java.util.ArrayList;
 
 import javax.swing.table.DefaultTableModel;
 
-import domain.Project;
-import domain.Question;
-import domain.Voter;
+import g53.exceedvote.domain.Project;
+import g53.exceedvote.domain.Question;
+import g53.exceedvote.domain.Voter;
 
 
 public interface VoterDao {

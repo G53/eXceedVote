@@ -1,6 +1,6 @@
-package test;
+package g53.exceedvote.test;
 
-import domain.Project;
+import g53.exceedvote.domain.Project;
 import junit.framework.TestCase;
 
 /**
@@ -9,7 +9,7 @@ import junit.framework.TestCase;
  * @version 1.0
  */
 public class TestProject extends TestCase {
-	// relate attribute	to test
+	// relate attribute	to g53.exceedvote.test
 	private Project p  = new Project(1, "Something", "Someone");
 	/**
 	 *  Test object have to be created
