@@ -7,10 +7,6 @@ import g53.exceedvote.persistence.jdbc.VoterDaoJdbc;
 import g53.exceedvote.ui.LoginUI;
 import g53.exceedvote.ui.VoteUI;
 
-
-
-
-
 /**
  * 
  */
@@ -19,7 +15,7 @@ import g53.exceedvote.ui.VoteUI;
  * @author Metas
  * 
  */
-public class Main{
+public class Main {
 
 	/**
 	 * @param args
@@ -28,11 +24,9 @@ public class Main{
 	 */
 	public static void main(String[] args) throws InterruptedException,
 			SQLException {
-		VoterDao voterDB = new VoterDaoJdbc();
-		voterDB.LoadDriver();
-		voterDB.connect();
-		LoginUI loginUI = new LoginUI(voterDB);
-		VoteUI voteUI = new VoteUI(voterDB);
+		
+		LoginUI loginUI = new LoginUI();
+		VoteUI voteUI = new VoteUI();
 		loginUI.run();
 		while (!loginUI.getSatus()) {
 			Thread.sleep(500);
@@ -40,6 +34,5 @@ public class Main{
 		voteUI.run();
 
 	}
-	
 
 }

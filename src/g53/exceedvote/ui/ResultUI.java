@@ -9,16 +9,18 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import g53.exceedvote.persistence.DaoFactory;
 import g53.exceedvote.persistence.VoterDao;
 
 
 
 public class ResultUI {
 	private JFrame frame;
-	private VoterDao voterDB;
-	public ResultUI(VoterDao voterDB) {
+	private VoterDao vote;
+	
+	public ResultUI() {
 		frame = new JFrame("Vote Result");
-		this.voterDB = voterDB;
+		vote = DaoFactory.getInstance().getVoterDao();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initComponents();
 		frame.pack();
@@ -27,7 +29,7 @@ public class ResultUI {
 	}
 	public void initComponents() {
 		try {
-			JOptionPane.showMessageDialog(frame,new JScrollPane(new JTable(voterDB.voteResult(null))),"Vote Result",JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(frame,new JScrollPane(new JTable(vote.voteResult(null))),"Vote Result",JOptionPane.INFORMATION_MESSAGE);
 		} catch (HeadlessException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

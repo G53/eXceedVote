@@ -35,6 +35,7 @@ import javax.swing.JScrollPane;
 
 
 import g53.exceedvote.domain.*;
+import g53.exceedvote.persistence.DaoFactory;
 import g53.exceedvote.persistence.VoterDao;
 
 
@@ -56,7 +57,7 @@ public class VoteUI extends RecordLog {
 	private JComboBox<Question> patternList;
 	private Font font = new Font("Tahoma", Font.BOLD, 16);
 	private Font font2 = new Font("Tahoma", Font.PLAIN, 14);
-	public VoterDao voterDB;
+	public VoterDao vote;
 	private ArrayList<Project> arrProject;
 	private JRadioButton[] projectTeam;
 	private ButtonGroup btg = new ButtonGroup();
@@ -68,11 +69,11 @@ public class VoteUI extends RecordLog {
 	private TextArea tx = new TextArea();
 	private String temp;
 
-	public VoteUI(VoterDao voterDB) {
-		this.voterDB = voterDB;
+	public VoteUI() {
+		vote = DaoFactory.getInstance().getVoterDao();
 		frame = new JFrame();
-		arrProject = voterDB.getProject();
-		listQues = voterDB.getQuestion();
+		arrProject = vote.getProject();
+		listQues = vote.getQuestion();
 		pl = new JPanel(new GridLayout(10, 1));
 		frame.setTitle("Vote for Projects");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -169,8 +170,8 @@ public class VoteUI extends RecordLog {
 			} else {
 				java.util.Date date = new java.util.Date();
 				java.sql.Timestamp timestamp = new java.sql.Timestamp(date.getTime());
-				if (voterDB.canInsert(
-						(int) voterDB.getVoter().getId(),
+				if (vote.canInsert(
+						(int) vote.getVoter().getId(),
 						(int) map
 								.get(btg.getSelection().getActionCommand())
 								.getID(),
@@ -187,8 +188,8 @@ public class VoteUI extends RecordLog {
 				try {
 					
 					
-						voterDB.insertVoteDB(
-								(int) voterDB.getVoter().getId(),
+						vote.insertVoteDB(
+								(int) vote.getVoter().getId(),
 								(int) map.get(
 										btg.getSelection().getActionCommand())
 										.getID(),
@@ -212,7 +213,7 @@ public class VoteUI extends RecordLog {
 			
 				clearRadioButton();
 				frame.dispose();
-				ResultUI resultUI= new ResultUI(voterDB);
+				ResultUI resultUI= new ResultUI();
 			}
 		}
 	}

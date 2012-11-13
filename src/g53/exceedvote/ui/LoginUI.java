@@ -24,6 +24,7 @@ import javax.swing.JTextField;
 
 
 import g53.exceedvote.domain.RecordLog;
+import g53.exceedvote.persistence.DaoFactory;
 import g53.exceedvote.persistence.VoterDao;
 
 
@@ -46,9 +47,9 @@ public class LoginUI extends RecordLog {
 	private Boolean isLogin = false;
 	private VoterDao vote;
 
-    public LoginUI(VoterDao vote) {
+    public LoginUI() {
     	frame = new JFrame();
-    	this.vote = vote;
+    	vote = DaoFactory.getInstance().getVoterDao();
     	frame.setTitle("Login");
     	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         initComponents();
@@ -56,6 +57,8 @@ public class LoginUI extends RecordLog {
         frame.setSize(400, 130);
         frame.setLocation(500, 250);
         frame.setResizable(false);
+        vote.LoadDriver();
+        vote.connect();
     }
 
     public void run() {
