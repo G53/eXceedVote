@@ -26,6 +26,11 @@ public class TestDaoFactory {
 	}
 
 	public void testVoter() {
+		Voter harry = new Voter(0, "harry", "potter");
+		if (dao.canInsertVoter(harry.getId(), harry.getName())) {
+			dao.insertVoter(harry);
+		}
+		System.out.println(dao.getVoter(harry.getName(), harry.getPassword()).getName());
 		System.out.print(" -- All Users in application -- \n");
 		for (Voter v : voters) {
 			System.out.printf("%s %s \n",v.getId(),v.getName());
