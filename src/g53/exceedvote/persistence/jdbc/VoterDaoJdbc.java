@@ -26,7 +26,7 @@ import g53.exceedvote.persistence.VoterDao;
  */
 
 /**
- * @author Wasupol Tungsakulthong 5310547304
+ * @author Wasupol Tungsakulthong 5310547304 
  * @Version November.15.2012
  */
 public class VoterDaoJdbc extends RecordLog implements VoterDao {
