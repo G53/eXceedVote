@@ -311,6 +311,9 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 		// TODO Auto-generated method stub
 		return voter;
 	}
+	/* (non-Javadoc)
+	 * @see g53.exceedvote.persistence.VoterDao#insertVoter(g53.exceedvote.domain.Voter)
+	 */
 	@Override
 	public void insertVoter(Voter voter) {
 		// TODO Auto-generated method stub
@@ -329,6 +332,9 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see g53.exceedvote.persistence.VoterDao#canInsertVoter(long, java.lang.String)
+	 */
 	@Override
 	public boolean canInsertVoter(long id, String name) {
 		// TODO Auto-generated method stub

@@ -22,6 +22,9 @@ import g53.exceedvote.domain.Voter;
 
 public interface VoterDao {
 
+	/**
+	 *  loading Driver of MySQL database
+	 */
 	public abstract void LoadDriver();
 
 	/**
@@ -113,8 +116,18 @@ public interface VoterDao {
 	 */
 	public abstract void close() throws SQLException;
 
+	/**
+	 * Insert Voter or new Voter to the database
+	 * @param vote - voter object
+	 */
 	public abstract void insertVoter( Voter vote );
 
+	/**
+	 * Check that User or ID is contained in database which can insert or not
+	 * @param id - ID of Voter
+	 * @param name - Username of Voter
+	 * @return true if can insert or false if not
+	 */
 	public abstract boolean canInsertVoter(long id, String name);
 
 }
