@@ -311,5 +311,40 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 		// TODO Auto-generated method stub
 		return voter;
 	}
+	@Override
+	public void insertVoter(Voter voter) {
+		// TODO Auto-generated method stub
+		long ID = voter.getId();
+		String username = voter.getName();
+		String password = voter.getPassword();
+		try {
+			String queryin = "INSERT INTO voter (ID, username, password) VALUES (?,?,?)";
+			pstmt = con.prepareStatement(queryin);
+			pstmt.setInt(1, (int)ID);
+			pstmt.setString(2, username);
+			pstmt.setString(3, password);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			record("Can't insert voter record");
+		}
+	}
 
+	@Override
+	public boolean canInsertVoter(long id, String name) {
+		// TODO Auto-generated method stub
+		boolean unique = true;
+		try {
+			ResultSet resultset = stmt.executeQuery("SELECT * FROM Voter");
+			while (resultset.next()) {
+				if (resultset.getInt("ID") == id
+						&& resultset.getString("username").equalsIgnoreCase(name)) {
+					unique = false;
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			record("Having duplicated record in Database");
+		}
+		return unique;
+	}
 }
