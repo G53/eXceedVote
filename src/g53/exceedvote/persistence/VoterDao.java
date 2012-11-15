@@ -22,9 +22,6 @@ import g53.exceedvote.domain.Voter;
 
 public interface VoterDao {
 
-	/**
-	 * Load the driver that is SQL or not
-	 */
 	public abstract void LoadDriver();
 
 	/**
@@ -115,5 +112,9 @@ public interface VoterDao {
 	 * disconnect from database sever
 	 */
 	public abstract void close() throws SQLException;
+
+	public abstract void insertVoter( Voter vote );
+
+	public abstract boolean canInsertVoter(long id, String name);
 
 }
