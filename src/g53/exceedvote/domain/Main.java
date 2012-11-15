@@ -23,14 +23,18 @@ public class Main {
 	 * @throws InterruptedException
 	 * @throws SQLException
 	 */
-	public static void main(String[] args) throws InterruptedException,
-			SQLException {
+	public static void main(String[] args) {
 		
 		LoginUI loginUI = new LoginUI();
 		VoteUI voteUI = new VoteUI();
 		loginUI.run();
 		while (!loginUI.getSatus()) {
-			Thread.sleep(500);
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		voteUI.run();
 
