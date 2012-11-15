@@ -16,8 +16,8 @@ import g53.exceedvote.domain.Voter;
  */
 
 /**
- * @author Wasupol Tungsakulthong 5310547304
- * @Version November.15.2012
+ * @author	 Metas Pongmetha 5310546529
+ * @Version	 2012.November.15
  */
 
 public interface VoterDao {

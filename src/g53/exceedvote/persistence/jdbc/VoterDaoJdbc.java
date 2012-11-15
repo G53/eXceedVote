@@ -22,12 +22,12 @@ import g53.exceedvote.persistence.VoterDao;
 
 
 /**
- * Class VoterDB actually likes controller of a System by controlling between UI and Database.
+ * Class VoterDB actually likes controller of a System by controlling between UI and Database
  */
 
 /**
- * @author Wasupol Tungsakulthong 5310547304 
- * @Version November.15.2012
+ * @author 	Wasupol Tungsakulthong 5310547304 
+ * @Version 2012.November.15
  */
 public class VoterDaoJdbc extends RecordLog implements VoterDao {
 

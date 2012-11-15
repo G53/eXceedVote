@@ -5,8 +5,8 @@ package g53.exceedvote.domain;
  */
 
 /**
- * @author Metas Pongmetha 5310546529
- * @Version November.15.2012
+ * @author 	Metas Pongmetha 5310546529
+ * @Version 2012.November.15
  */
 public class Voter {
 

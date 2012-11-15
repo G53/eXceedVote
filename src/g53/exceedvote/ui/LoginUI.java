@@ -33,8 +33,8 @@ import g53.exceedvote.persistence.VoterDao;
  */
 
 /**
- * @author Guysit Koonrungruang 5310547185
- * @Version November.15.2012
+ * @author	Guysit Koonrungruang 5310547185
+ * @Version 2012.November.15
  */
 public class LoginUI extends RecordLog {
 

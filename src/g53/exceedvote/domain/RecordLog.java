@@ -6,8 +6,8 @@ import org.apache.log4j.Logger;
  */
 
 /**
- * @author Metas Pongmetha 5310546529
- * @Version November.15.2012
+ * @author	 Metas Pongmetha 5310546529
+ * @Version 2012.November.15
  */
 public abstract class RecordLog{
 	

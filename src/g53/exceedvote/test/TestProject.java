@@ -5,8 +5,10 @@ import junit.framework.TestCase;
 
 /**
  * This class is about testing a Project Object
- * @author Wasupol Tungsakultong
- * @version 1.0
+ */
+ /**
+ * @author 	Wasupol Tungsakulthong 5310547304 
+ * @Version 2012.November.15
  */
 public class TestProject extends TestCase {
 	// relate attribute	to g53.exceedvote.test

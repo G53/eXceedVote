@@ -5,9 +5,8 @@ package g53.exceedvote.domain;
  */
 
 /**
- * @author Kamolporn Sanamlao 5310545557
- * @Version November.15.2012
- * 
+ * @author 	Kamolporn Sanamlao 5310545557
+ * @Version 2012.November.15
  */
 public class Question {
 	/** The criteria to vote the project */

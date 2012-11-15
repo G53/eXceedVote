@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import g53.exceedvote.domain.*;
 import g53.exceedvote.persistence.*;
 
+/**
+ * @author 	Wasupol Tungsakulthong 5310547304 
+ * @Version 2012.November.15
+ */
+
 public class TestDaoFactory {
 
 	private ArrayList<Voter> voters;

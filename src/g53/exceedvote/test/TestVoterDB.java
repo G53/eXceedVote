@@ -1,7 +1,10 @@
 package g53.exceedvote.test;
 
 import junit.framework.TestCase;
-
+/**
+ * @author 	Wasupol Tungsakulthong 5310547304 
+ * @Version 2012.November.15
+ */
 public class TestVoterDB extends TestCase {
 
 	public void testConnect() {

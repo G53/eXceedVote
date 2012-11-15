@@ -13,8 +13,8 @@ import g53.exceedvote.ui.VoteUI;
  */
 
 /**
- * @author Metas Pongmetha 5310546529
- * @Version November.15.2012
+ * @author	Metas Pongmetha 5310546529
+ * @Version 2012.November.15
  */
 public class Main {
 
