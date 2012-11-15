@@ -84,11 +84,16 @@ public interface VoterDao {
 			throws SQLException;
 
 	/**
-	 * return Voter object (voter that current login)
-	 * @return voter - Voter object
+	 * return All Voter object (which in database)
+	 * @return Array of voters - Voter object
+	 */
+	public abstract ArrayList<Voter> getAllVoter();
+
+	/**
+	 * return voter which currently log on
+	 * @return voter object
 	 */
 	public abstract Voter getVoter();
-
 	/**
 	 * return message log for display in UI
 	 * @return messageLog

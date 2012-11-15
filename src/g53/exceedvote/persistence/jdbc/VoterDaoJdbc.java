@@ -234,8 +234,24 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 	 * @see g53.exceedvote.persistence.VoterDao#getVoter()
 	 */
 	@Override
-	public Voter getVoter() {
-		return voter;
+	public ArrayList<Voter> getAllVoter() {
+		String query; // SQL select string
+		ResultSet rs; // SQL query results
+		ArrayList<Voter> voters = new ArrayList<Voter>();
+		query = "SELECT * FROM Voter ";
+		try {
+			rs = stmt.executeQuery(query);
+			while (rs.next()) {
+				voters.add(new Voter(rs.getInt("ID"), rs
+						.getNString("username"), rs.getNString("password")));
+			}
+			record("Access Voter Database");
+			return voters;
+			// Loop through the rows retrieved from the query
+		} catch (Exception e) {
+			record("Can't access Voter Database");
+		}
+		return null;
 	}
 
 	/* (non-Javadoc)
@@ -256,6 +272,12 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 			con.close();
 			record(messageLog = "exits");
 		}
+	}
+
+	@Override
+	public Voter getVoter() {
+		// TODO Auto-generated method stub
+		return voter;
 	}
 
 }

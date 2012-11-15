@@ -7,31 +7,38 @@ import g53.exceedvote.persistence.*;
 
 public class TestDaoFactory {
 
-	private Voter voter;
+	private ArrayList<Voter> voters;
 	private ArrayList<Project> project;
 	private ArrayList<Question> questions;
 	private VoterDao dao;
 	public void testDaoFactory() {
 		dao = DaoFactory.getInstance().getVoterDao();
-		voter = dao.getVoter();
+		dao.LoadDriver();
+		dao.connect();
+		voters = dao.getAllVoter();
 		project = dao.getProject();
 		questions = dao.getQuestion();
 	}
 
 	public void testVoter() {
-		System.out.printf("%s %s/n",voter.getId(),voter.getName());
+		System.out.print(" -- All Users in application -- \n");
+		for (Voter v : voters) {
+			System.out.printf("%s %s \n",v.getId(),v.getName());
+		}
 	}
 
 	public void testProject() {
+		System.out.print(" -- All Projects in application -- \n");
 		for (Project p : project) {
-			System.out.printf("%s %s %s/n",p.getID(),p.getProjectName(),p.getTeamName());
+			System.out.printf("%s %s %s \n",p.getID(),p.getProjectName(),p.getTeamName());
 		}
 		
 	}
 
 	public void testQuestion() {
+		System.out.print(" -- All Voting Topics in application -- \n");
 		for (Question q : questions) {
-			System.out.printf("%s %s /n",q.getQuestionID(),q.getQuestion());
+			System.out.printf("%s %s \n",q.getQuestionID(),q.getQuestion());
 		}
 	}
 
