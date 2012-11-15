@@ -1,10 +1,11 @@
 package g53.exceedvote.domain;
 /**
- * Project contains the information and vote score for each project
- * 
- * @author Kamolporn Sanamlao
- * @version 2012.10.05
- *
+ * Class Project contains the information and vote score for each project
+ */
+
+/**
+ * @author Kamolporn Sanamlao 5310545557
+ * @Version November.15.2012
  */
 public class Project {
 	/** Name of project */

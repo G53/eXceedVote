@@ -40,24 +40,23 @@ import g53.exceedvote.persistence.VoterDao;
 
 
 /**
- * UI for voter
- * @version 8.11.2012
- * @author Guy2jz
+ * Class VoteUI show the interface for vote to user
+ */
+
+/**
+ * @author Guysit Koonrungruang 5310547185
+ * @Version November.15.2012
  */
 public class VoteUI extends RecordLog {
 
-	/**
-	 * 
-	 */
-	private JFrame frame;
-	private JLabel question;
-	private String qname = " : Please select the question";
+	private JFrame frame; // frame attribute of this interface
+	private JLabel question; // show label of question
+	private String qname = " : Please select the question"; 
 	private JButton summit;
 	private JButton exit;
 	private JComboBox<Question> patternList;
 	private Font font = new Font("Tahoma", Font.BOLD, 16);
-	private Font font2 = new Font("Tahoma", Font.PLAIN, 14);
-	public VoterDao vote;
+	private Font font2 = new Font("Tahoma", Font.PLAIN, 14);	
 	private ArrayList<Project> arrProject;
 	private JRadioButton[] projectTeam;
 	private ButtonGroup btg = new ButtonGroup();
@@ -68,6 +67,7 @@ public class VoteUI extends RecordLog {
 	private ArrayList<Question> listQues;
 	private TextArea tx = new TextArea();
 	private String temp;
+	public VoterDao vote;
 
 	public VoteUI() {
 		vote = DaoFactory.getInstance().getVoterDao();

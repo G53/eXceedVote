@@ -1,11 +1,12 @@
 package g53.exceedvote.domain;
 
 /**
- * Voter contains the information of voter, voter ID, username, password
- * 
- * @author Metas Pongmetha
- * @version 2012.10.23
- *
+ * Class Voter contains the information of voter, voter ID, username, password
+ */
+
+/**
+ * @author Metas Pongmetha 5310546529
+ * @Version November.15.2012
  */
 public class Voter {
 

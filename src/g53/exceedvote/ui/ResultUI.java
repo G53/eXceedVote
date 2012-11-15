@@ -13,7 +13,14 @@ import g53.exceedvote.persistence.DaoFactory;
 import g53.exceedvote.persistence.VoterDao;
 
 
+/**
+ * Class
+ */
 
+/**
+ * @author Guysit Koonrungruang 5310547185
+ * @Version November.15.2012
+ */
 public class ResultUI {
 	private JFrame frame;
 	private VoterDao vote;

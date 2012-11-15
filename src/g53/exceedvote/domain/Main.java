@@ -8,12 +8,13 @@ import g53.exceedvote.ui.LoginUI;
 import g53.exceedvote.ui.VoteUI;
 
 /**
- * 
+ * 	Class Main create a GUI for program and call method run from LoginUI class
+ *  for run this program.
  */
 
 /**
- * @author Metas
- * 
+ * @author Metas Pongmetha 5310546529
+ * @Version November.15.2012
  */
 public class Main {
 

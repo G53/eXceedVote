@@ -22,9 +22,12 @@ import g53.exceedvote.persistence.VoterDao;
 
 
 /**
- * VoterDB actually likes controller of a System by controlling between UI and Database.
- * @author Wasupol Tungsakultong
- * @version 1.0
+ * Class VoterDB actually likes controller of a System by controlling between UI and Database.
+ */
+
+/**
+ * @author Wasupol Tungsakulthong 5310547304
+ * @Version November.15.2012
  */
 public class VoterDaoJdbc extends RecordLog implements VoterDao {
 
@@ -34,8 +37,8 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 	private String messageLog;
 	private Voter voter;
 
-	/* (non-Javadoc)
-	 * @see g53.exceedvote.persistence.VoterDao#LoadDriver()
+	/**
+	 * Load the driver that is SQL or not
 	 */
 	@Override
 	public void LoadDriver() {
@@ -48,8 +51,8 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see g53.exceedvote.persistence.VoterDao#connect()
+	/**
+	 * connect to database server
 	 */
 	@Override
 	public void connect() {
@@ -70,8 +73,9 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 
 	}
 
-	/* (non-Javadoc)
-	 * @see g53.exceedvote.persistence.VoterDao#getQuestion()
+	/**
+	 * access and get question from database server 
+	 * @return arraylist of question
 	 */
 	@Override
 	public ArrayList<Question> getQuestion() {
@@ -94,8 +98,9 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see g53.exceedvote.persistence.VoterDao#getProject()
+	/**
+	 * access and get project from database server 
+	 * @return arraylist of project
 	 */
 	@Override
 	public ArrayList<Project> getProject() {
@@ -118,8 +123,12 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see g53.exceedvote.persistence.VoterDao#getVoter(java.lang.String, java.lang.String)
+	/**
+	 * check username and password of voter from database server that exist in database or not
+	 * @param user - username of voter
+	 * @param pass - password of voter 
+	 * @return Voter object of voter that contain all information of voter from database
+	 * Voter object = null - if username and password not exist in database
 	 */
 	@Override
 	public Voter getVoter(String user, String pass) {
@@ -142,8 +151,11 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see g53.exceedvote.persistence.VoterDao#logIn(g53.exceedvote.domain.Voter)
+	/**
+	 * check login with Voter object that login success or fail
+	 * @param voter - Voter object
+	 * @return false - if Voter object = null
+	 * true - otherwise 
 	 */
 	@Override
 	public boolean logIn(Voter voter) {
@@ -159,8 +171,13 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see g53.exceedvote.persistence.VoterDao#insertVoteDB(int, int, int, int, java.sql.Timestamp)
+	/**
+	 * submit result that voter select (username , project Id, question Id ,nuymber of score , time of vote)
+	 * @param user_id - user Id of voter
+	 * @param project_id - project Id that user vote
+	 * @param question_id - question Id that user select
+	 * @param score - number of score that voter vote
+	 * @param voteTime - time that submit to server
 	 */
 	@Override
 	public void insertVoteDB(int user_id, int project_id, int question_id,
@@ -179,8 +196,15 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see g53.exceedvote.persistence.VoterDao#canInsert(int, int, int, int, java.sql.Timestamp)
+	/**
+	 * check that voter had voted the same thing(same project and question) before or not
+	 * @param user_id - user Id of voter
+	 * @param project_id - project Id that user vote
+	 * @param question_id - question Id that user select
+	 * @param score - number of score that voter vote
+	 * @param voteTime - time that submit to server
+	 * @return false - if voter had voted this thing(same project and question) before
+	 * true - otherwise
 	 */
 	@Override
 	public boolean canInsert(int user_id, int project_id, int question_id,
@@ -202,10 +226,12 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 		return unique;
 
 	}
-	
-	
-	/* (non-Javadoc)
-	 * @see g53.exceedvote.persistence.VoterDao#voteResult(javax.swing.table.DefaultTableModel)
+		
+	/**
+	 * create a table model of database to show as a result to user in form of JTable.
+	 * @param model - TableModel object which create from instance of database of voting system.
+	 * @return model of containing data of which project have been voted.
+	 * @throws SQLException
 	 */
 	@Override
 	public DefaultTableModel voteResult(DefaultTableModel model)
@@ -230,8 +256,9 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 		return model;
 	}
 
-	/* (non-Javadoc)
-	 * @see g53.exceedvote.persistence.VoterDao#getVoter()
+	/**
+	 * return All Voter object (which in database)
+	 * @return Array of voters - Voter object
 	 */
 	@Override
 	public ArrayList<Voter> getAllVoter() {
@@ -254,16 +281,18 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see g53.exceedvote.persistence.VoterDao#getMessage()
+	/**
+	 * return voter which currently log on
+	 * @return voter object
 	 */
 	@Override
 	public String getMessage() {
 		return messageLog;
 	}
 
-	/* (non-Javadoc)
-	 * @see g53.exceedvote.persistence.VoterDao#close()
+	/**
+	 * return message log for display in UI
+	 * @return messageLog
 	 */
 	@Override
 	public void close() throws SQLException {
@@ -274,6 +303,9 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 		}
 	}
 
+	/**
+	 * disconnect from database sever
+	 */
 	@Override
 	public Voter getVoter() {
 		// TODO Auto-generated method stub

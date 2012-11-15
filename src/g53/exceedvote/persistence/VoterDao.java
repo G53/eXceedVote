@@ -11,9 +11,20 @@ import g53.exceedvote.domain.Project;
 import g53.exceedvote.domain.Question;
 import g53.exceedvote.domain.Voter;
 
+/**
+ * Class VoterDao
+ */
+
+/**
+ * @author Wasupol Tungsakulthong 5310547304
+ * @Version November.15.2012
+ */
 
 public interface VoterDao {
 
+	/**
+	 * Load the driver that is SQL or not
+	 */
 	public abstract void LoadDriver();
 
 	/**

@@ -2,11 +2,12 @@ package g53.exceedvote.domain;
 import org.apache.log4j.Logger;
 
 /**
- * RecordLog is abstract class for every class that need to use record message to log file 
- * 
- * @author Metas Pongmetha
- * @version 2012.10.23
- *
+ * Class RecordLog is abstract class for every class that need to use record message to log file 
+ */
+
+/**
+ * @author Metas Pongmetha 5310546529
+ * @Version November.15.2012
  */
 public abstract class RecordLog{
 	
@@ -28,7 +29,7 @@ public abstract class RecordLog{
 				handler = new java.util.logging.FileHandler(logfile);
 			else
 				handler = new java.util.logging.ConsoleHandler(); // output to
-																	// System.err
+																  // System.err
 			// use plain text output instead of XML
 			handler.setFormatter(new java.util.logging.SimpleFormatter());
 			logger.addHandler(handler);
@@ -39,7 +40,6 @@ public abstract class RecordLog{
 		// minimum message level to log
 		logger.setLevel(java.util.logging.Level.ALL);
 	}
-
 	
 	/**
 	 * record message to log file
@@ -47,7 +47,5 @@ public abstract class RecordLog{
 	 */
 	public void record(String message){
 		logger.info(message);
-	}
-	
-	
+	}	
 }
