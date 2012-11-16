@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 
+import g53.exceedvote.domain.ElectionCommittee;
 import g53.exceedvote.domain.Project;
 import g53.exceedvote.domain.Question;
 import g53.exceedvote.domain.RecordLog;
@@ -36,6 +37,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 	private static Statement stmt;
 	private String messageLog;
 	private Voter voter;
+	private ElectionCommittee electionCommittee;
 
 	/**
 	 * Load the driver that is SQL or not
@@ -134,18 +136,18 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 	public Voter getVoter(String user, String pass) {
 		String query; // SQL select string
 		ResultSet rs; // SQL query results
-		query = "SELECT * FROM Voter ";
+		query = "SELECT * FROM User WHERE role_id = 1 or role_id = 2";
 		try {
 			rs = stmt.executeQuery(query);
 			while (rs.next()) {
 				if (user.equalsIgnoreCase(rs.getString("username"))
 						&& pass.equals(rs.getString("password"))) {
-					return new Voter(rs.getInt("ID"), user, pass);
+					return new Voter(rs.getInt("ID"), user, pass,rs.getInt("role_id"));
 				}
 			}
 			// Loop through the rows retrieved from the query
 		} catch (Exception e) {
-			record("Can't get Voter from Database");
+			record("Can't get User from Database");
 		}
 		record("User: " + user + "- Login fail");
 		return null;
@@ -211,7 +213,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 			int score, Timestamp votetime) {
 		boolean unique = true;
 		try {
-			ResultSet resultset = stmt.executeQuery("SELECT * FROM Vote");
+			ResultSet resultset = stmt.executeQuery("SELECT * FROM User");
 			while (resultset.next()) {
 				if (resultset.getInt("user_id") == user_id
 						&& resultset.getInt("project_id") == project_id
@@ -265,18 +267,18 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 		String query; // SQL select string
 		ResultSet rs; // SQL query results
 		ArrayList<Voter> voters = new ArrayList<Voter>();
-		query = "SELECT * FROM Voter ";
+		query = "SELECT User.username,Roles.role FROM User,Roles WHERE User.role_id = Roles.ID";
 		try {
 			rs = stmt.executeQuery(query);
 			while (rs.next()) {
 				voters.add(new Voter(rs.getInt("ID"), rs
-						.getNString("username"), rs.getNString("password")));
+						.getNString("username"), rs.getNString("password"),rs.getInt("role_id")));
 			}
-			record("Access Voter Database");
+			record("Access User Database");
 			return voters;
 			// Loop through the rows retrieved from the query
 		} catch (Exception e) {
-			record("Can't access Voter Database");
+			record("Can't access User Database");
 		}
 		return null;
 	}
@@ -321,14 +323,14 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 		String username = voter.getName();
 		String password = voter.getPassword();
 		try {
-			String queryin = "INSERT INTO voter (ID, username, password) VALUES (?,?,?)";
+			String queryin = "INSERT INTO user (ID, username, password) VALUES (?,?,?)";
 			pstmt = con.prepareStatement(queryin);
 			pstmt.setInt(1, (int)ID);
 			pstmt.setString(2, username);
 			pstmt.setString(3, password);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
-			record("Can't insert voter record");
+			record("Can't insert user record");
 		}
 	}
 
@@ -340,7 +342,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 		// TODO Auto-generated method stub
 		boolean unique = true;
 		try {
-			ResultSet resultset = stmt.executeQuery("SELECT * FROM Voter");
+			ResultSet resultset = stmt.executeQuery("SELECT * FROM User");
 			while (resultset.next()) {
 				if (resultset.getInt("ID") == id
 						&& resultset.getString("username").equalsIgnoreCase(name)) {
@@ -352,5 +354,42 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 			record("Having duplicated record in Database");
 		}
 		return unique;
+	}
+
+	@Override
+	public ElectionCommittee getElectionCommittee(String user,String pass) {
+		// TODO Auto-generated method stub
+		String query; // SQL select string
+		ResultSet rs; // SQL query results
+		query = "SELECT * FROM User WHERE role_id = 3";
+		try {
+			rs = stmt.executeQuery(query);
+			while (rs.next()) {
+				if (user.equalsIgnoreCase(rs.getString("username"))
+						&& pass.equals(rs.getString("password"))) {
+					return new ElectionCommittee(rs.getInt("ID"), user, pass);
+				}
+			}
+			// Loop through the rows retrieved from the query
+		} catch (Exception e) {
+			record("Can't get Election Committee from Database");
+		}
+		record("Election Committee: " + user + "- Login fail");
+		return null;
+	}
+
+	@Override
+	public boolean logIn(ElectionCommittee electionCommittee) {
+		// TODO Auto-generated method stub
+		if (electionCommittee == null) {
+			messageLog = "Invalid Username or Password";
+			return false;
+		} else {
+			this.electionCommittee = electionCommittee;
+			messageLog = "Login success!";
+			record("IDNo: " + this.electionCommittee.getId() + "| Username" + ":"
+					+ this.electionCommittee.getName() + " - " + messageLog);
+			return true;
+		}
 	}
 }

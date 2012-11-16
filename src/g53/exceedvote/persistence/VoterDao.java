@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import javax.swing.table.DefaultTableModel;
 
+import g53.exceedvote.domain.ElectionCommittee;
 import g53.exceedvote.domain.Project;
 import g53.exceedvote.domain.Question;
 import g53.exceedvote.domain.Voter;
@@ -129,5 +130,8 @@ public interface VoterDao {
 	 * @return true if can insert or false if not
 	 */
 	public abstract boolean canInsertVoter(long id, String name);
+	
+	public abstract ElectionCommittee getElectionCommittee(String user,String pass);
 
+	public abstract boolean logIn(ElectionCommittee electionCommittee);
 }
