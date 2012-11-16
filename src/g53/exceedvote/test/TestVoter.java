@@ -12,7 +12,7 @@ import junit.framework.TestCase;
  */
 public class TestVoter extends TestCase {
 	// relate attribute	to g53.exceedvote.test
-	private Voter v  = new Voter(1,"user1234","1234");
+	private Voter v  = new Voter(1,"user1234","1234",1);
 	private String newPassword = "23456";
 
 	/**

@@ -26,7 +26,7 @@ public class TestDaoFactory {
 	}
 
 	public void testVoter() {
-		Voter harry = new Voter(0, "harry", "potter");
+		Voter harry = new Voter(0, "harry", "potter",1);
 		if (dao.canInsertVoter(harry.getId(), harry.getName())) {
 			dao.insertVoter(harry);
 		}
