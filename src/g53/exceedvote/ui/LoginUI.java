@@ -45,6 +45,7 @@ public class LoginUI extends RecordLog {
     private Font font = new Font("Tahoma", Font.BOLD, 16);
     private Font font2 = new Font("Tahoma", Font.PLAIN, 14);
     private String userName;
+    private String typepass;
 	private Boolean isLogin = false;
 	private Controller control;
 
@@ -58,6 +59,7 @@ public class LoginUI extends RecordLog {
         frame.setSize(400, 130);
         frame.setLocation(500, 250);
         frame.setResizable(false);
+        control.connect();
         
     }
 
@@ -123,11 +125,18 @@ public class LoginUI extends RecordLog {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			userName = inputField1.getText();
-			if (control.login(userName, inputField2.getText())) {				
+			typepass = inputField2.getText();
+			if (control.login(userName, typepass)) {				
 				JOptionPane.showMessageDialog(null, control.getCurMessage());
 				close();
 				isLogin = true;
-			} else {
+			} 
+			else if (control.loginElectionCommittee(userName, typepass)) {
+				JOptionPane.showMessageDialog(null, control.getCurMessage());
+				close();
+				isLogin = true;
+			}
+			else {	
 				JOptionPane.showMessageDialog(null, control.getCurMessage());
 			}
 			inputField2.setText(null);
