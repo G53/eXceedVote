@@ -8,7 +8,7 @@ package g53.exceedvote.domain;
  * @author Metas Pongmetha 5310546529
  * @Version 2012.November.16
  */
-public class ElectionCommitment {
+public class ElectionCommittee {
 
 	private long ECID;
 	private String userName;
@@ -24,7 +24,7 @@ public class ElectionCommitment {
 	 * @param pass
 	 *            - password of Election Commitment
 	 */
-	public ElectionCommitment(long id, String user, String pass) {
+	public ElectionCommittee(long id, String user, String pass) {
 		this.ECID = id;
 		this.userName = user;
 		this.password = pass;
