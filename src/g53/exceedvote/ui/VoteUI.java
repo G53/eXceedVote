@@ -32,6 +32,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 
+import g53.exceedvote.controller.Controller;
 import g53.exceedvote.domain.*;
 import g53.exceedvote.persistence.DaoFactory;
 import g53.exceedvote.persistence.VoterDao;
@@ -64,13 +65,13 @@ public class VoteUI extends RecordLog {
 	private ArrayList<Question> listQues;
 	private TextArea tx = new TextArea();
 	private String temp;
-	public VoterDao vote;
+	private Controller control;
 
-	public VoteUI() {
-		vote = DaoFactory.getInstance().getVoterDao();
+	public VoteUI(Controller control) {
+		this.control = control;
 		frame = new JFrame();
-		arrProject = vote.getProject();
-		listQues = vote.getQuestion();
+		arrProject = control.getProject();
+		listQues = control.getQuestion();
 		pl = new JPanel(new GridLayout(10, 1));
 		frame.setTitle("Vote for Projects");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -168,8 +169,8 @@ public class VoteUI extends RecordLog {
 				java.util.Date date = new java.util.Date();
 				java.sql.Timestamp timestamp = new java.sql.Timestamp(
 						date.getTime());
-				if (vote.canInsert(
-						(int) vote.getVoter().getId(),
+				if (control.canInsert(
+						(int) control.getVoter().getId(),
 						(int) map.get(btg.getSelection().getActionCommand())
 								.getID(),
 						(int) patternList.getItemAt(
@@ -185,8 +186,8 @@ public class VoteUI extends RecordLog {
 							+ "| Vote - project : " + "" + temp);
 					try {
 
-						vote.insertVoteDB(
-								(int) vote.getVoter().getId(),
+						control.insertVoteDB(
+								(int) control.getVoter().getId(),
 								(int) map.get(
 										btg.getSelection().getActionCommand())
 										.getID(),

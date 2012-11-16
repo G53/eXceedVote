@@ -23,6 +23,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 
+import g53.exceedvote.controller.Controller;
 import g53.exceedvote.domain.RecordLog;
 import g53.exceedvote.persistence.DaoFactory;
 import g53.exceedvote.persistence.VoterDao;
@@ -45,11 +46,11 @@ public class LoginUI extends RecordLog {
     private Font font2 = new Font("Tahoma", Font.PLAIN, 14);
     private String userName;
 	private Boolean isLogin = false;
-	private VoterDao vote;
+	private Controller control;
 
-    public LoginUI() {
+    public LoginUI(Controller control) {
+    	this.control = control;
     	frame = new JFrame();
-    	vote = DaoFactory.getInstance().getVoterDao();
     	frame.setTitle("Login");
     	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         initComponents();
@@ -57,8 +58,7 @@ public class LoginUI extends RecordLog {
         frame.setSize(400, 130);
         frame.setLocation(500, 250);
         frame.setResizable(false);
-        vote.LoadDriver();
-        vote.connect();
+        
     }
 
     public void run() {
@@ -123,12 +123,12 @@ public class LoginUI extends RecordLog {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			userName = inputField1.getText();
-			if (vote.logIn(vote.getVoter(userName, inputField2.getText()))) {				
-				JOptionPane.showMessageDialog(null, vote.getMessage());
+			if (control.login(userName, inputField2.getText())) {				
+				JOptionPane.showMessageDialog(null, control.getCurMessage());
 				close();
 				isLogin = true;
 			} else {
-				JOptionPane.showMessageDialog(null, vote.getMessage());
+				JOptionPane.showMessageDialog(null, control.getCurMessage());
 			}
 			inputField2.setText(null);
 		}

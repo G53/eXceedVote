@@ -3,6 +3,7 @@ package g53.exceedvote.domain;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import g53.exceedvote.controller.Controller;
 import g53.exceedvote.persistence.VoterDao;
 import g53.exceedvote.persistence.jdbc.VoterDaoJdbc;
 import g53.exceedvote.ui.LanguageUI;
@@ -35,8 +36,9 @@ public class Main {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}		
-		LoginUI loginUI = new LoginUI();
+		}
+		Controller control = new Controller();
+		LoginUI loginUI = new LoginUI(control);
 		loginUI.run();
 		while (!loginUI.getSatus()) {
 			try {
@@ -46,7 +48,7 @@ public class Main {
 				e.printStackTrace();
 			}
 		}
-		VoteUI voteUI = new VoteUI();
+		VoteUI voteUI = new VoteUI(control);
 		voteUI.run();
 		
 
