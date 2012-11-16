@@ -43,6 +43,7 @@ public class LanguageUI{
 		frame.pack();
 		frame.setSize(300, 200);
 		frame.setLocation(550, 250);
+		frame.setResizable(false);
 	}
 	public void run() {
 		frame.setVisible(true);
