@@ -26,8 +26,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		
-		LoginUI loginUI = new LoginUI();
-		VoteUI voteUI = new VoteUI();
+		LoginUI loginUI = new LoginUI();		
 		LanguageUI languageUI = new LanguageUI();
 		languageUI.run();
 		
@@ -39,6 +38,7 @@ public class Main {
 				e.printStackTrace();
 			}
 		}
+		VoteUI voteUI = new VoteUI();
 		voteUI.run();
 		
 
