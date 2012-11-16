@@ -32,6 +32,7 @@ public class LanguageUI{
 	private JLabel thai;
 	private JLabel eng;
 	private ResourceBundle language;
+	public Boolean isChoose = false;
 	
 	public LanguageUI(ResourceBundle language){
 		this.language = language;
@@ -65,6 +66,8 @@ public class LanguageUI{
 		@Override
 		public void mouseClicked(MouseEvent e) {
 				language = ResourceBundle.getBundle("Language_th");
+				isChoose = true;
+				frame.dispose();
 		}
 
 		@Override
@@ -96,6 +99,8 @@ public class LanguageUI{
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			language = ResourceBundle.getBundle("Language");
+			isChoose = true;
+			frame.dispose();
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {

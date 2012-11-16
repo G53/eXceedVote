@@ -28,8 +28,16 @@ public class Main {
 		ResourceBundle language = ResourceBundle.getBundle("Language");
 		LanguageUI languageUI = new LanguageUI(language);
 		languageUI.run();
-		LoginUI loginUI = new LoginUI();		
-		
+		while (!languageUI.isChoose) {
+			try {
+				Thread.sleep(200);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}		
+		LoginUI loginUI = new LoginUI();
+		loginUI.run();
 		while (!loginUI.getSatus()) {
 			try {
 				Thread.sleep(500);
