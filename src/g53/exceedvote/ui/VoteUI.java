@@ -51,7 +51,7 @@ public class VoteUI extends RecordLog {
 
 	private JFrame frame; // frame attribute of this interface
 	private JLabel question; // show label of question
-	private String qname = " : Please select the question"; 
+	private String qname = ""; 
 	private JButton summit;
 	private JButton exit;
 	private JComboBox<Question> patternList;
@@ -102,7 +102,7 @@ public class VoteUI extends RecordLog {
 				.createTitledBorder("Project Description"));
 		scrollPane.setPreferredSize(new Dimension(700, 50));
 		scrollPane.setBorder(BorderFactory
-				.createTitledBorder("Choose Project Team"));
+				.createTitledBorder("Choose Team's Project"));
 
 		Question[] arrQ = new Question[listQues.size()];
 		listQues.toArray(arrQ);
@@ -112,15 +112,15 @@ public class VoteUI extends RecordLog {
 		patternList.setFont(font2);
 		summit = new JButton();
 		summit.setFont(font2);
-		summit.setText("summit");
-		summit.addActionListener(new SummitListener());
+		summit.setText("Vote");
+		summit.addActionListener(new VoteListener());
 		exit = new JButton();
 		exit.setFont(font2);
-		exit.setText("exit");
+		exit.setText("Exit");
 		exit.addActionListener(new ExitListener());
 		question = new JLabel();
 		question.setFont(font);
-		question.setText("Question: " + qname);
+		question.setText("Question : " + patternList.getItemAt(0).getQuestion());
 
 		tx.setFont(font2);
 		tx.setText(descrip);
@@ -160,7 +160,7 @@ public class VoteUI extends RecordLog {
 		btg.clearSelection();
 	}
 
-	class SummitListener implements ActionListener {
+	class VoteListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
