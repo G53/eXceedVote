@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import g53.exceedvote.persistence.VoterDao;
 import g53.exceedvote.persistence.jdbc.VoterDaoJdbc;
+import g53.exceedvote.ui.LanguageUI;
 import g53.exceedvote.ui.LoginUI;
 import g53.exceedvote.ui.VoteUI;
 
@@ -27,7 +28,9 @@ public class Main {
 		
 		LoginUI loginUI = new LoginUI();
 		VoteUI voteUI = new VoteUI();
-		loginUI.run();
+		LanguageUI languageUI = new LanguageUI();
+		languageUI.run();
+		
 		while (!loginUI.getSatus()) {
 			try {
 				Thread.sleep(500);
@@ -37,6 +40,7 @@ public class Main {
 			}
 		}
 		voteUI.run();
+		
 
 	}
 
