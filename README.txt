@@ -4,9 +4,11 @@ Developed by : G53 team
 
 /src
       /ui
-               :contains all user interface
+               	:contains all user interface
       /docs
-               
+      
+      /pic
+          	   	:contains all pictures which use in user interface     
       /domain
                 :contains all logic class
       /test
