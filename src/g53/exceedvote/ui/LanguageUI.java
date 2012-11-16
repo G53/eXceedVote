@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ResourceBundle;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -30,7 +31,10 @@ public class LanguageUI{
 	ImageIcon en = new ImageIcon("pic/en.jpg");
 	private JLabel thai;
 	private JLabel eng;
-	public LanguageUI(){
+	private ResourceBundle language;
+	
+	public LanguageUI(ResourceBundle language){
+		this.language = language;
 		frame = new JFrame();		
 		frame.setTitle("Language User Interface");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -60,38 +64,38 @@ public class LanguageUI{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			LoginUI logUI = new LoginUI();
-			logUI.run();
-			frame.dispose();
+				language = ResourceBundle.getBundle("Language_th");
 		}
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-		@Override
-		public void mouseExited(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
+
 		@Override
 		public void mousePressed(MouseEvent e) {
 			// TODO Auto-generated method stub
 			
 		}
+
 		@Override
 		public void mouseReleased(MouseEvent e) {
 			// TODO Auto-generated method stub
 			
-		}		
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}	
 	}
 	class EngSelectingListener implements MouseListener {
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			LoginUI logUI = new LoginUI();
-			logUI.run();
-			frame.dispose();
+			language = ResourceBundle.getBundle("Language");
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {

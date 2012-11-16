@@ -1,6 +1,7 @@
 package g53.exceedvote.domain;
 
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 import g53.exceedvote.persistence.VoterDao;
 import g53.exceedvote.persistence.jdbc.VoterDaoJdbc;
@@ -18,17 +19,16 @@ import g53.exceedvote.ui.VoteUI;
  * @Version 2012.November.15
  */
 public class Main {
-
 	/**
 	 * @param args
 	 * @throws InterruptedException
 	 * @throws SQLException
 	 */
 	public static void main(String[] args) {
-		
-		LoginUI loginUI = new LoginUI();		
-		LanguageUI languageUI = new LanguageUI();
+		ResourceBundle language = ResourceBundle.getBundle("Language");
+		LanguageUI languageUI = new LanguageUI(language);
 		languageUI.run();
+		LoginUI loginUI = new LoginUI();		
 		
 		while (!loginUI.getSatus()) {
 			try {

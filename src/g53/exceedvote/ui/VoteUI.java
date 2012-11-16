@@ -1,10 +1,9 @@
 package g53.exceedvote.ui;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -33,30 +32,28 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 
-
 import g53.exceedvote.domain.*;
 import g53.exceedvote.persistence.DaoFactory;
 import g53.exceedvote.persistence.VoterDao;
-
 
 /**
  * Class VoteUI show the interface for vote to user
  */
 
 /**
- * @author	Guysit Koonrungruang 5310547185
+ * @author Guysit Koonrungruang 5310547185
  * @Version 2012.November.15
  */
 public class VoteUI extends RecordLog {
 
 	private JFrame frame; // frame attribute of this interface
 	private JLabel question; // show label of question
-	private String qname = ""; 
+	private String qname = "";
 	private JButton summit;
 	private JButton exit;
 	private JComboBox<Question> patternList;
 	private Font font = new Font("Tahoma", Font.BOLD, 16);
-	private Font font2 = new Font("Tahoma", Font.PLAIN, 14);	
+	private Font font2 = new Font("Tahoma", Font.PLAIN, 14);
 	private ArrayList<Project> arrProject;
 	private JRadioButton[] projectTeam;
 	private ButtonGroup btg = new ButtonGroup();
@@ -169,25 +166,25 @@ public class VoteUI extends RecordLog {
 						" Select project before summit!");
 			} else {
 				java.util.Date date = new java.util.Date();
-				java.sql.Timestamp timestamp = new java.sql.Timestamp(date.getTime());
+				java.sql.Timestamp timestamp = new java.sql.Timestamp(
+						date.getTime());
 				if (vote.canInsert(
 						(int) vote.getVoter().getId(),
-						(int) map
-								.get(btg.getSelection().getActionCommand())
+						(int) map.get(btg.getSelection().getActionCommand())
 								.getID(),
 						(int) patternList.getItemAt(
-								patternList.getSelectedIndex())
-								.getQuestionID(), 1, timestamp)) {
-				temp = map.get(btg.getSelection().getActionCommand())
-						.getTeamName();
-				JOptionPane.showMessageDialog(null, " You voted \""
-						+ btg.getSelection().getActionCommand()
-						+ "\".\nTeam Name: " + temp);
-				record("Question : " + patternList.getSelectedItem().toString()
-						+ "| Vote - project : " + "" + temp);
-				try {
-					
-					
+								patternList.getSelectedIndex()).getQuestionID(),
+						1, timestamp)) {
+					temp = map.get(btg.getSelection().getActionCommand())
+							.getTeamName();
+					JOptionPane.showMessageDialog(null, " You voted \""
+							+ btg.getSelection().getActionCommand()
+							+ "\".\nTeam Name: " + temp);
+					record("Question : "
+							+ patternList.getSelectedItem().toString()
+							+ "| Vote - project : " + "" + temp);
+					try {
+
 						vote.insertVoteDB(
 								(int) vote.getVoter().getId(),
 								(int) map.get(
@@ -197,23 +194,25 @@ public class VoteUI extends RecordLog {
 										patternList.getSelectedIndex())
 										.getQuestionID(), 1, timestamp);
 						record("Vote have been added to database");
-				 
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-					record("Can't not add to database");
-				}
+
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+						record("Can't not add to database");
+					}
 				} else {
 					temp = map.get(btg.getSelection().getActionCommand())
 							.getTeamName();
-					JOptionPane.showMessageDialog(null, "You have vote the same team and question","Error!!",JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null,
+							"You have vote the same team and question",
+							"Error!!", JOptionPane.ERROR_MESSAGE);
 					record("You have vote the same team and question");
 					record("Vote doesn't add to database");
 				}
-			
+
 				clearRadioButton();
 				frame.dispose();
-				ResultUI resultUI= new ResultUI();
+				ResultUI resultUI = new ResultUI();
 			}
 		}
 	}
