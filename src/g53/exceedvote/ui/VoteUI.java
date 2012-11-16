@@ -112,11 +112,11 @@ public class VoteUI extends RecordLog {
 		patternList.setFont(font2);
 		summit = new JButton();
 		summit.setFont(font2);
-		summit.setText("summit");
-		summit.addActionListener(new SummitListener());
+		summit.setText("Vote");
+		summit.addActionListener(new VoteListener());
 		exit = new JButton();
 		exit.setFont(font2);
-		exit.setText("exit");
+		exit.setText("Exit");
 		exit.addActionListener(new ExitListener());
 		question = new JLabel();
 		question.setFont(font);
@@ -160,7 +160,7 @@ public class VoteUI extends RecordLog {
 		btg.clearSelection();
 	}
 
-	class SummitListener implements ActionListener {
+	class VoteListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
