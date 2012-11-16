@@ -27,12 +27,8 @@ import g53.exceedvote.domain.RecordLog;
 import g53.exceedvote.persistence.DaoFactory;
 import g53.exceedvote.persistence.VoterDao;
 
-
 /**
- * Class
- */
-
-/**
+ * A Class which User Interface of Any Actor to access application
  * @author	Guysit Koonrungruang 5310547185
  * @Version 2012.November.15
  */
