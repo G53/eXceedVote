@@ -51,7 +51,7 @@ public class VoteUI extends RecordLog {
 
 	private JFrame frame; // frame attribute of this interface
 	private JLabel question; // show label of question
-	private String qname = " Please select the question"; 
+	private String qname = ""; 
 	private JButton summit;
 	private JButton exit;
 	private JComboBox<Question> patternList;
