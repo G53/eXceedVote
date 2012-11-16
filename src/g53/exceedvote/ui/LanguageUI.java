@@ -26,8 +26,8 @@ import javax.swing.JPanel;
 public class LanguageUI{
 	private JFrame frame;
 	private JPanel pl;
-	ImageIcon th = new ImageIcon("ui/thai.jpg");	
-	ImageIcon en = new ImageIcon("ui/en.jpg");
+	ImageIcon th = new ImageIcon("pic/thai.jpg");	
+	ImageIcon en = new ImageIcon("pic/en.jpg");
 	private JLabel thai;
 	private JLabel eng;
 	public LanguageUI(){
