@@ -36,7 +36,11 @@ public class Controller {
 	public boolean login(String userName, String inputField2) {
 		return vote.logIn(vote.getVoter(userName, inputField2));
 	}
-
+	
+	public boolean loginElectionCommittee (String userName, String inputField2) {
+		return vote.logIn(vote.getElectionCommittee(userName, inputField2));
+	}
+	
 	public boolean canInsert(int user_id, int project_id, int question_id,
 			int score, Timestamp votetime) {
 		return vote.canInsert(user_id,project_id,question_id,score,votetime);
