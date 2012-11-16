@@ -8,7 +8,7 @@ Developed by : G53 team
       /docs
       
       /pic
-          	   	:contains all pictures which use in user interface     
+		:contains all pictures which use in user interface     
       /domain
                 :contains all logic class
       /test
