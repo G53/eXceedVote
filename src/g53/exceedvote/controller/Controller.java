@@ -24,9 +24,11 @@ public class Controller {
 		return vote.getQuestion();
 	}
 
-	public void connect() {
-		vote.LoadDriver();
-		vote.connect();
+	public boolean connect() {
+		if(vote.LoadDriver() && vote.connect())return true;
+		else return false;
+		
+		
 	}
 
 	public String getCurMessage() {

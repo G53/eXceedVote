@@ -13,6 +13,8 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.UnsupportedEncodingException;
+import java.util.ResourceBundle;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -48,9 +50,11 @@ public class LoginUI extends RecordLog {
     private String typepass;
 	private Boolean isLogin = false;
 	private Controller control;
+	private ResourceBundle language;
 
-    public LoginUI(Controller control) {
+    public LoginUI(Controller control, ResourceBundle language) throws UnsupportedEncodingException {
     	this.control = control;
+    	this.language = language;
     	frame = new JFrame();
     	frame.setTitle("Login");
     	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,7 +63,7 @@ public class LoginUI extends RecordLog {
         frame.setSize(400, 130);
         frame.setLocation(500, 250);
         frame.setResizable(false);
-        control.connect();
+        //control.connect();
         
     }
 
@@ -71,7 +75,7 @@ public class LoginUI extends RecordLog {
     	frame.dispose();
     }
 
-    public void initComponents() {
+    public void initComponents() throws UnsupportedEncodingException {
     	frame.setLayout(new BorderLayout());
         JPanel pl1 = new JPanel(new FlowLayout());
         JPanel pl2 = new JPanel(new FlowLayout());
@@ -82,19 +86,19 @@ public class LoginUI extends RecordLog {
         inputField2.setPreferredSize(new Dimension(200, 20));
         ok = new JButton();
         ok.setFont(font2);
-        ok.setText("Login");
+        ok.setText(language.getString("login"));
 
         ok.addActionListener(new ButtonListener());
         cancel = new JButton();
         cancel.setFont(font2);
-        cancel.setText("Cancel");
+        cancel.setText(language.getString("Cancel"));
         cancel.addActionListener(new CancelListener());
         user = new JLabel();
         password = new JLabel();
         user.setFont(font);
         password.setFont(font);
-        user.setText("Username : ");
-        password.setText("Password  : ");
+        user.setText(language.getString("Username"));
+        password.setText(language.getString("Password"));
         inputField1.setFont(font2);
         inputField2.setFont(font2);
         inputField1.addActionListener(new ButtonListener());

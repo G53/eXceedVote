@@ -25,13 +25,15 @@ public interface VoterDao {
 
 	/**
 	 *  loading Driver of MySQL database
+	 * @return 
 	 */
-	public abstract void LoadDriver();
+	public abstract boolean LoadDriver();
 
 	/**
 	 * connect to database server
+	 * @return 
 	 */
-	public abstract void connect();
+	public abstract boolean connect();
 
 	/**
 	 * access and get question from database server 

@@ -68,6 +68,7 @@ public class LanguageUI{
 		public void mouseClicked(MouseEvent e) {
 				language = ResourceBundle.getBundle("Language_th");
 				isChoose = true;
+				System.out.println("TH");
 				frame.dispose();
 		}
 

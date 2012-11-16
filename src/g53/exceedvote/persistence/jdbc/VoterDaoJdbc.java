@@ -43,13 +43,15 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 	 * Load the driver that is SQL or not
 	 */
 	@Override
-	public void LoadDriver() {
+	public boolean LoadDriver() {
 
 		// Load the JDBC-ODBC bridge driver
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
+			return true;
 		} catch (ClassNotFoundException e) {
 			record("Can't Find Database Driver");
+			return false;
 		}
 	}
 
@@ -57,7 +59,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 	 * connect to database server
 	 */
 	@Override
-	public void connect() {
+	public boolean connect() {
 
 		try {
 			con = DriverManager.getConnection(
@@ -68,9 +70,10 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 			record(messageLog = "Connected to database");
 //			con.close();
 //			record(messageLog = "Disconnected from database"); 
+			return true;
 		} catch (SQLException e) {
 			record(messageLog = "Can not connect to database!");
-			
+			return false;
 		}
 
 	}

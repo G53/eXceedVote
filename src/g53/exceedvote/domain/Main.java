@@ -1,12 +1,16 @@
 package g53.exceedvote.domain;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+import javax.swing.JOptionPane;
 
 import g53.exceedvote.controller.Controller;
 import g53.exceedvote.persistence.VoterDao;
 import g53.exceedvote.persistence.jdbc.VoterDaoJdbc;
 import g53.exceedvote.ui.LanguageUI;
+import g53.exceedvote.ui.LoadingUI;
 import g53.exceedvote.ui.LoginUI;
 import g53.exceedvote.ui.VoteUI;
 
@@ -22,10 +26,11 @@ import g53.exceedvote.ui.VoteUI;
 public class Main {
 	/**
 	 * @param args
+	 * @throws UnsupportedEncodingException 
 	 * @throws InterruptedException
 	 * @throws SQLException
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws UnsupportedEncodingException {
 		ResourceBundle language = ResourceBundle.getBundle("Language");
 		LanguageUI languageUI = new LanguageUI(language);
 		languageUI.run();
@@ -38,7 +43,22 @@ public class Main {
 			}
 		}
 		Controller control = new Controller();
-		LoginUI loginUI = new LoginUI(control);
+		int i = 0;
+		LoadingUI loadUI = new LoadingUI();
+		while(!control.connect()){
+			try {
+				Thread.sleep(500);
+				i++;
+				if (i>20){
+					JOptionPane.showMessageDialog(null, control.getCurMessage());
+					return;
+				}
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		LoginUI loginUI = new LoginUI(control,language);
 		loginUI.run();
 		while (!loginUI.getSatus()) {
 			try {
