@@ -152,3 +152,104 @@
 14:14:16 - Access Question Database
 14:14:27 - User: harry- Login fail
 14:14:38 - User: peepo- Login fail
+23:18:03 - Can't get Voter from Database
+23:18:03 - User: Tun- Login fail
+23:18:03 - Can't get Voter from Database
+23:18:03 - User: Tun- Login fail
+23:18:12 - Can't get Voter from Database
+23:18:12 - User: Tun- Login fail
+23:18:12 - Can't get Voter from Database
+23:18:12 - User: Tun- Login fail
+23:18:53 - Can't get Voter from Database
+23:18:53 - User: Oor  - Login fail
+23:18:53 - Can't get Election Committee from Database
+23:18:53 - Election Committee: Oor  - Login fail
+23:19:00 - Can't get Voter from Database
+23:19:00 - User: oor- Login fail
+23:19:00 - Can't get Election Committee from Database
+23:19:00 - Election Committee: oor- Login fail
+23:22:52 - Can't get User from Database
+23:22:52 - User: oor- Login fail
+23:22:52 - Can't get Election Committee from Database
+23:22:52 - Election Committee: oor- Login fail
+23:22:55 - Can't get User from Database
+23:22:55 - User: oor- Login fail
+23:22:55 - Can't get Election Committee from Database
+23:22:55 - Election Committee: oor- Login fail
+23:24:06 - Can't get User from Database
+23:24:06 - User: oor- Login fail
+23:24:06 - Can't get Election Committee from Database
+23:24:06 - Election Committee: oor- Login fail
+23:26:00 - Can't get User from Database
+23:26:00 - User: oor- Login fail
+23:26:03 - Can't get Election Committee from Database
+23:26:03 - Election Committee: oor- Login fail
+23:33:36 - Can't get User from Database
+23:33:36 - User: oor- Login fail
+23:36:52 - Can't get User from Database
+23:36:52 - User: oor- Login fail
+23:36:52 - Can't get Election Committee from Database
+23:36:52 - Election Committee: oor- Login fail
+23:38:22 - Can't get User from Database
+23:38:22 - User: oor- Login fail
+23:38:22 - Can't get Election Committee from Database
+23:38:22 - Election Committee: oor- Login fail
+23:42:00 - Can't get User from Database
+23:42:00 - User: oor- Login fail
+23:42:00 - Can't get Election Committee from Database
+23:42:00 - Election Committee: oor- Login fail
+23:46:49 - Can't get User from Database
+23:46:49 - User: oor- Login fail
+23:46:49 - Can't get Election Committee from Database
+23:46:49 - Election Committee: oor- Login fail
+23:47:25 - Can't get User from Database
+23:47:25 - User: oor- Login fail
+23:47:25 - Can't get Election Committee from Database
+23:47:25 - Election Committee: oor- Login fail
+23:47:31 - Can't get User from Database
+23:47:31 - User: oor- Login fail
+23:47:31 - Can't get Election Committee from Database
+23:47:31 - Election Committee: oor- Login fail
+23:48:03 - Can't get User from Database
+23:48:03 - User: Oor- Login fail
+23:48:03 - Can't get Election Committee from Database
+23:48:03 - Election Committee: Oor- Login fail
+23:52:39 - Can't get User from Database
+23:52:39 - User: Oor- Login fail
+23:52:39 - Can't get Election Committee from Database
+23:52:39 - Election Committee: Oor- Login fail
+23:57:55 - Connected to database
+23:57:59 - IDNo: 1| Username:Oor - Login success!
+23:58:01 - Access Project Database
+23:58:01 - Access Question Database
+23:59:55 - Connected to database
+00:00:04 - IDNo: 5| Username:James - Login success!
+00:00:06 - Access Project Database
+00:00:06 - Access Question Database
+00:00:14 - Connected to database
+00:00:20 - User: Tun- Login fail
+00:00:30 - User: Tun- Login fail
+00:01:02 - Connected to database
+00:03:24 - Connected to database
+00:03:51 - User: tun- Login fail
+00:07:01 - Connected to database
+00:07:12 - User: Tun- Login fail
+00:09:08 - Connected to database
+00:09:20 - User: Tun- Login fail
+00:10:49 - Connected to database
+00:10:56 - User: Tun- Login fail
+00:11:18 - Connected to database
+00:11:29 - User: Tun- Login fail
+00:12:56 - Connected to database
+00:13:18 - User: Tun- Login fail
+00:15:06 - Connected to database
+00:15:14 - User: Tun- Login fail
+00:19:23 - Connected to database
+00:19:46 - User: Tun- Login fail
+00:24:41 - Connected to database
+00:24:55 - User: Tun- Login fail
+00:27:25 - Connected to database
+00:27:31 - User: Tun- Login fail
+00:27:31 - IDNo: 6| Username:Tun - Login success!
+00:27:33 - Access Project Database
+00:27:33 - Access Question Database
