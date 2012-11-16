@@ -51,7 +51,7 @@ public class VoteUI extends RecordLog {
 
 	private JFrame frame; // frame attribute of this interface
 	private JLabel question; // show label of question
-	private String qname = " : Please select the question"; 
+	private String qname = " Please select the question"; 
 	private JButton summit;
 	private JButton exit;
 	private JComboBox<Question> patternList;
@@ -120,7 +120,7 @@ public class VoteUI extends RecordLog {
 		exit.addActionListener(new ExitListener());
 		question = new JLabel();
 		question.setFont(font);
-		question.setText("Question: " + qname);
+		question.setText("Question : " + patternList.getItemAt(0).getQuestion());
 
 		tx.setFont(font2);
 		tx.setText(descrip);
