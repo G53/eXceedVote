@@ -13,19 +13,24 @@ public class Voter {
 	private long voteID; 
 	private String userName;
 	private String password;
-	
+	private long role_id;
 	/**
 	 * Initialize a new Voter
 	 * @param id - Id number of voter
 	 * @param user - username of voter
 	 * @param pass - password of voter
 	 */
-	public Voter(long id,String user,String pass){
+	public Voter(long id,String user,String pass, long rote_id){
 		this.voteID = id;
 		this.userName = user;
 		this.password = pass;
+		this.role_id = rote_id;
 	}
 	
+	public long getRole_id() {
+		return role_id;
+	}
+
 	/**
 	 * return username of voter
 	 * @return userName - username of project
