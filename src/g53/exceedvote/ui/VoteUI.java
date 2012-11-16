@@ -102,7 +102,7 @@ public class VoteUI extends RecordLog {
 				.createTitledBorder("Project Description"));
 		scrollPane.setPreferredSize(new Dimension(700, 50));
 		scrollPane.setBorder(BorderFactory
-				.createTitledBorder("Choose Project Team"));
+				.createTitledBorder("Choose Team's Project"));
 
 		Question[] arrQ = new Question[listQues.size()];
 		listQues.toArray(arrQ);
