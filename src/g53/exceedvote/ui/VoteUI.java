@@ -13,6 +13,7 @@ import java.awt.GridLayout;
 import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.UnsupportedEncodingException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ResourceBundle;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -43,9 +45,9 @@ import g53.exceedvote.persistence.VoterDao;
 
 /**
  * @author Guysit Koonrungruang 5310547185
- * @Version 2012.November.15
+ * @Version 2012.November.18
  */
-public class VoteUI extends RecordLog {
+public class VoteUI extends RecordLog implements InterfaceUI{
 
 	private JFrame frame; // frame attribute of this interface
 	private JLabel question; // show label of question
@@ -59,21 +61,23 @@ public class VoteUI extends RecordLog {
 	private JRadioButton[] projectTeam;
 	private ButtonGroup btg = new ButtonGroup();
 	private JPanel pl;
-	private String descrip = "Project Description\n";
+	private String descrip;
 	private Map<String, Project> map = new HashMap<String, Project>();
 	private String s;
 	private ArrayList<Question> listQues;
 	private TextArea tx = new TextArea();
 	private String temp;
 	private Controller control;
+	private ResourceBundle language;
 
-	public VoteUI(Controller control) {
+	public VoteUI(Controller control,ResourceBundle language) {
 		this.control = control;
+		this.language = language;
 		frame = new JFrame();
 		arrProject = control.getProject();
 		listQues = control.getQuestion();
 		pl = new JPanel(new GridLayout(10, 1));
-		frame.setTitle("Vote for Projects");
+		frame.setTitle(encode("Vote_Projects"));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initComponents();
 		frame.pack();
@@ -90,17 +94,17 @@ public class VoteUI extends RecordLog {
 		JPanel scllpl = new JPanel(new GridLayout(1, 2));
 		JPanel questionPlane = new JPanel(new GridLayout(1, 2));
 		questionPlane.setBorder(BorderFactory
-				.createTitledBorder("Question Detail"));
+				.createTitledBorder(encode("Question_Detail")));
 		JPanel buttonPlane = new JPanel(new BorderLayout());
 		JPanel insideButtonPlane = new JPanel(new FlowLayout());
 		JScrollPane scrollPane = new JScrollPane(pl);
 		scrollPane.setPreferredSize(new Dimension(700, 50));
 		JScrollPane txscll = new JScrollPane(tx);
 		txscll.setBorder(BorderFactory
-				.createTitledBorder("Project Description"));
+				.createTitledBorder(encode("Project_Description")));
 		scrollPane.setPreferredSize(new Dimension(700, 50));
 		scrollPane.setBorder(BorderFactory
-				.createTitledBorder("Choose Team's Project"));
+				.createTitledBorder(encode("Choose_Project_Team")));
 
 		Question[] arrQ = new Question[listQues.size()];
 		listQues.toArray(arrQ);
@@ -118,9 +122,10 @@ public class VoteUI extends RecordLog {
 		exit.addActionListener(new ExitListener());
 		question = new JLabel();
 		question.setFont(font);
-		question.setText("Question : " + patternList.getItemAt(0).getQuestion());
+		question.setText(encode("Question") + patternList.getItemAt(0).getQuestion());
 
 		tx.setFont(font2);
+		descrip = encode("Project_Description")+"\n";
 		tx.setText(descrip);
 		tx.setEditable(false);
 
@@ -164,7 +169,7 @@ public class VoteUI extends RecordLog {
 		public void actionPerformed(ActionEvent arg0) {
 			if (btg.getSelection() == null) {
 				JOptionPane.showMessageDialog(null,
-						" Select project before summit!");
+						encode("Before_summit"));
 			} else {
 				java.util.Date date = new java.util.Date();
 				java.sql.Timestamp timestamp = new java.sql.Timestamp(
@@ -178,7 +183,7 @@ public class VoteUI extends RecordLog {
 						1, timestamp)) {
 					temp = map.get(btg.getSelection().getActionCommand())
 							.getTeamName();
-					JOptionPane.showMessageDialog(null, " You voted \""
+					JOptionPane.showMessageDialog(null, encode("You_voted") +"\n"
 							+ btg.getSelection().getActionCommand()
 							+ "\".\nTeam Name: " + temp);
 					record("Question : "
@@ -205,7 +210,7 @@ public class VoteUI extends RecordLog {
 					temp = map.get(btg.getSelection().getActionCommand())
 							.getTeamName();
 					JOptionPane.showMessageDialog(null,
-							"You have vote the same team and question",
+							encode("vote_same"),
 							"Error!!", JOptionPane.ERROR_MESSAGE);
 					record("You have vote the same team and question");
 					record("Vote doesn't add to database");
@@ -242,9 +247,28 @@ public class VoteUI extends RecordLog {
 					.toString())) {
 				qname = (patternList.getItemAt(patternList.getSelectedIndex())
 						.getQuestion());
-				question.setText("Question : " + qname);
+				question.setText(encode("Question") + qname);
 				clearRadioButton();
 			}
+		}
+	}
+
+	@Override
+	public void close() {
+		frame.dispose();
+		
+	}
+
+	@Override
+	public String encode(String key) {
+		try {
+			return new String(language.getString(key).getBytes("ISO8859-1"), "UTF-8");
+			
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			return null;
 		}
 	}
 }

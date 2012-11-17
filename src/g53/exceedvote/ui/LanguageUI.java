@@ -1,7 +1,5 @@
 package g53.exceedvote.ui;
 
-import g53.exceedvote.persistence.DaoFactory;
-
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -21,7 +19,7 @@ import javax.swing.JPanel;
 
 /**
  * @author	Guysit Koonrungruang 5310547185
- * @Version 2012.November.16
+ * @Version 2012.November.18
  */
 
 public class LanguageUI{
@@ -34,8 +32,7 @@ public class LanguageUI{
 	private ResourceBundle language;
 	public Boolean isChoose = false;
 	
-	public LanguageUI(ResourceBundle language){
-		this.language = language;
+	public LanguageUI(){
 		frame = new JFrame();		
 		frame.setTitle("Language User Interface");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -68,7 +65,7 @@ public class LanguageUI{
 		public void mouseClicked(MouseEvent e) {
 				language = ResourceBundle.getBundle("Language_th");
 				isChoose = true;
-				System.out.println("TH");
+				//System.out.println("TH");
 				frame.dispose();
 		}
 
@@ -102,6 +99,7 @@ public class LanguageUI{
 		public void mouseClicked(MouseEvent e) {
 			language = ResourceBundle.getBundle("Language");
 			isChoose = true;
+			//System.out.println("EN");
 			frame.dispose();
 		}
 		@Override
@@ -124,5 +122,8 @@ public class LanguageUI{
 			// TODO Auto-generated method stub
 			
 		}		
+	}
+	public ResourceBundle getLanguage(){
+		return language;
 	}
 }

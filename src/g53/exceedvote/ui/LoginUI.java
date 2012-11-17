@@ -27,15 +27,13 @@ import javax.swing.JTextField;
 
 import g53.exceedvote.controller.Controller;
 import g53.exceedvote.domain.RecordLog;
-import g53.exceedvote.persistence.DaoFactory;
-import g53.exceedvote.persistence.VoterDao;
 
 /**
  * A Class which User Interface of Any Actor to access application
  * @author	Guysit Koonrungruang 5310547185
  * @Version 2012.November.15
  */
-public class LoginUI extends RecordLog {
+public class LoginUI extends RecordLog implements InterfaceUI{
 
     private JFrame frame;
     private JTextField inputField1;
@@ -52,11 +50,11 @@ public class LoginUI extends RecordLog {
 	private Controller control;
 	private ResourceBundle language;
 
-    public LoginUI(Controller control, ResourceBundle language) throws UnsupportedEncodingException {
+    public LoginUI(Controller control, ResourceBundle language){
     	this.control = control;
     	this.language = language;
     	frame = new JFrame();
-    	frame.setTitle("Login");
+    	frame.setTitle(encode("login"));
     	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         initComponents();
         frame.pack();
@@ -75,7 +73,7 @@ public class LoginUI extends RecordLog {
     	frame.dispose();
     }
 
-    public void initComponents() throws UnsupportedEncodingException {
+    public void initComponents(){
     	frame.setLayout(new BorderLayout());
         JPanel pl1 = new JPanel(new FlowLayout());
         JPanel pl2 = new JPanel(new FlowLayout());
@@ -86,19 +84,19 @@ public class LoginUI extends RecordLog {
         inputField2.setPreferredSize(new Dimension(200, 20));
         ok = new JButton();
         ok.setFont(font2);
-        ok.setText(language.getString("login"));
+        ok.setText(encode("login"));
 
         ok.addActionListener(new ButtonListener());
         cancel = new JButton();
         cancel.setFont(font2);
-        cancel.setText(language.getString("Cancel"));
+        cancel.setText(encode("Cancel"));
         cancel.addActionListener(new CancelListener());
         user = new JLabel();
         password = new JLabel();
         user.setFont(font);
         password.setFont(font);
-        user.setText(language.getString("Username"));
-        password.setText(language.getString("Password"));
+        user.setText(encode("Username"));
+        password.setText(encode("Password"));
         inputField1.setFont(font2);
         inputField2.setFont(font2);
         inputField1.addActionListener(new ButtonListener());
@@ -155,4 +153,17 @@ public class LoginUI extends RecordLog {
             close();
         }
     }
+
+	@Override
+	public String encode(String key) {
+		try {
+			return new String(language.getString(key).getBytes("ISO8859-1"), "UTF-8");
+			
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			return null;
+		}
+	}
 }
