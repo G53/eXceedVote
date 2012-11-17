@@ -1,390 +1,292 @@
-01:08:49 - Connected to database
-01:08:49 - Access Project Database
-01:08:49 - Access Question Database
-01:08:55 - IDNo: 4| Username:admin - Login success!
-01:09:02 - Question : Which project do you like most?| Vote - project : Ugly
-01:10:08 - Connected to database
-01:10:09 - Access Project Database
-01:10:09 - Access Question Database
-01:10:13 - IDNo: 4| Username:admin - Login success!
-01:10:18 - Question : Which project do you like most?| Vote - project : Ugly
-01:11:43 - Connected to database
-01:11:44 - Access Project Database
-01:11:44 - Access Question Database
-01:11:49 - IDNo: 4| Username:admin - Login success!
-01:12:04 - Connected to database
-01:12:04 - Access Project Database
-01:12:04 - Access Question Database
-01:12:09 - User: mjn- Login fail
-01:14:07 - Connected to database
-01:14:07 - Access Project Database
-01:14:07 - Access Question Database
-01:14:10 - User: asdfug- Login fail
-01:14:11 - User: asdfug- Login fail
-01:14:55 - Connected to database
-01:14:55 - Access Project Database
-01:14:55 - Access Question Database
-01:14:59 - User: jiojoi- Login fail
-01:15:07 - IDNo: 4| Username:admin - Login success!
-01:16:33 - Can not connect to database!
-01:19:05 - Connected to database
-01:19:05 - Access Project Database
-01:19:05 - Access Question Database
-01:19:09 - IDNo: 4| Username:admin - Login success!
-01:19:15 - Question : Which project do you like most?| Vote - project : Handsome
-01:20:56 - Can not connect to database!
-01:23:36 - Can not connect to database!
-02:12:10 - Can not connect to database!
-02:12:35 - Can not connect to database!
-02:14:29 - Can not connect to database!
-02:15:25 - Can not connect to database!
-02:16:16 - Can not connect to database!
-02:17:41 - Can not connect to database!
-02:18:35 - Can not connect to database!
-02:18:52 - Can not connect to database!
-02:20:38 - Can not connect to database!
-02:21:09 - Can not connect to database!
-02:22:17 - Can not connect to database!
-02:24:42 - Can not connect to database!
-02:26:28 - Can not connect to database!
-02:27:32 - Can not connect to database!
-02:32:25 - Can not connect to database!
-02:33:36 - Can not connect to database!
-02:39:41 - Can not connect to database!
-02:40:52 - Can not connect to database!
+22:51:06 - Can not connect to database!
+22:51:08 - Can not connect to database!
+22:51:09 - Can not connect to database!
+22:51:11 - Can not connect to database!
+22:51:12 - Can not connect to database!
+22:51:14 - Can not connect to database!
+22:51:15 - Can not connect to database!
+23:40:28 - Can not connect to database!
+23:40:29 - Can not connect to database!
+23:40:29 - Can not connect to database!
+23:42:11 - Can not connect to database!
+23:42:12 - Can not connect to database!
+23:42:12 - Can not connect to database!
+23:42:13 - Can not connect to database!
+23:42:13 - Can not connect to database!
+23:42:14 - Can not connect to database!
+23:42:14 - Can not connect to database!
+23:42:15 - Can not connect to database!
+23:42:15 - Can not connect to database!
+23:42:16 - Can not connect to database!
+23:42:16 - Can not connect to database!
+23:42:17 - Can not connect to database!
+23:42:17 - Can not connect to database!
+23:42:18 - Can not connect to database!
+23:42:18 - Can not connect to database!
+23:42:19 - Can not connect to database!
+23:42:19 - Can not connect to database!
+23:42:20 - Can not connect to database!
+23:42:20 - Can not connect to database!
+23:42:21 - Can not connect to database!
+23:42:21 - Can not connect to database!
+23:44:15 - Can not connect to database!
+23:44:15 - Can not connect to database!
+23:44:16 - Can not connect to database!
+23:44:16 - Can not connect to database!
+23:44:17 - Can not connect to database!
+23:44:17 - Can not connect to database!
+23:44:18 - Can not connect to database!
+23:44:18 - Can not connect to database!
+23:44:19 - Can not connect to database!
+23:44:19 - Can not connect to database!
+23:44:20 - Can not connect to database!
+23:49:49 - Can not connect to database!
+23:49:49 - Can not connect to database!
+23:49:50 - Can not connect to database!
+23:49:50 - Can not connect to database!
+23:49:51 - Can not connect to database!
+23:49:51 - Can not connect to database!
+23:49:52 - Can not connect to database!
+23:49:52 - Can not connect to database!
+23:52:32 - Can not connect to database!
+23:52:32 - Can not connect to database!
+23:52:33 - Can not connect to database!
+23:52:33 - Can not connect to database!
+23:52:34 - Can not connect to database!
+23:52:34 - Can not connect to database!
+23:52:35 - Can not connect to database!
+23:52:35 - Can not connect to database!
+23:52:36 - Can not connect to database!
+23:52:36 - Can not connect to database!
+23:52:37 - Can not connect to database!
+23:52:48 - Can not connect to database!
+23:52:48 - Can not connect to database!
+23:52:49 - Can not connect to database!
+23:53:39 - Can not connect to database!
+23:53:40 - Can not connect to database!
+23:53:40 - Can not connect to database!
+23:53:41 - Can not connect to database!
+23:53:41 - Can not connect to database!
+23:53:42 - Can not connect to database!
+23:53:42 - Can not connect to database!
+23:53:43 - Can not connect to database!
+23:53:43 - Can not connect to database!
+23:53:44 - Can not connect to database!
+23:53:44 - Can not connect to database!
+23:54:27 - Can not connect to database!
+23:54:27 - Can not connect to database!
+23:54:28 - Can not connect to database!
+23:54:28 - Can not connect to database!
+23:54:29 - Can not connect to database!
+23:54:29 - Can not connect to database!
+23:54:30 - Can not connect to database!
+23:54:30 - Can not connect to database!
+23:54:31 - Can not connect to database!
+23:54:31 - Can not connect to database!
+23:54:32 - Can not connect to database!
+23:55:36 - Can not connect to database!
+23:55:37 - Can not connect to database!
+23:55:37 - Can not connect to database!
+23:55:38 - Can not connect to database!
+23:55:42 - Can not connect to database!
+23:55:43 - Can not connect to database!
+23:55:43 - Can not connect to database!
+23:57:46 - Can not connect to database!
+23:57:46 - Can not connect to database!
+23:57:47 - Can not connect to database!
+23:57:47 - Can not connect to database!
+23:57:48 - Can not connect to database!
+23:57:48 - Can not connect to database!
+23:57:49 - Can not connect to database!
+23:57:49 - Can not connect to database!
+23:57:50 - Can not connect to database!
+23:57:50 - Can not connect to database!
+23:57:51 - Can not connect to database!
+00:06:47 - Can not connect to database!
+00:06:48 - Can not connect to database!
+00:06:48 - Can not connect to database!
+01:39:11 - Can not connect to database!
+01:39:12 - Can not connect to database!
+01:39:12 - Can not connect to database!
+01:39:13 - Can not connect to database!
+01:39:13 - Can not connect to database!
+01:39:14 - Can not connect to database!
+01:39:14 - Can not connect to database!
+01:44:45 - Can not connect to database!
+01:44:45 - Can not connect to database!
+01:44:46 - Can not connect to database!
+01:44:46 - Can not connect to database!
+01:44:47 - Can not connect to database!
+01:44:47 - Can not connect to database!
+01:44:48 - Can not connect to database!
+01:44:48 - Can not connect to database!
+01:44:49 - Can not connect to database!
+01:44:49 - Can not connect to database!
+01:44:50 - Can not connect to database!
+01:45:02 - Can not connect to database!
+01:45:03 - Can not connect to database!
+01:45:03 - Can not connect to database!
+01:45:04 - Can not connect to database!
+01:47:50 - Can not connect to database!
+01:47:51 - Can not connect to database!
+01:47:51 - Can not connect to database!
+01:47:52 - Can not connect to database!
+01:47:53 - Can not connect to database!
+01:47:53 - Can not connect to database!
+01:47:54 - Can not connect to database!
+01:48:36 - Can not connect to database!
+01:48:37 - Can not connect to database!
+01:48:37 - Can not connect to database!
+01:48:38 - Can not connect to database!
+01:48:38 - Can not connect to database!
+01:48:39 - Can not connect to database!
+01:48:39 - Can not connect to database!
+01:48:40 - Can not connect to database!
+01:48:40 - Can not connect to database!
+01:48:41 - Can not connect to database!
+01:48:41 - Can not connect to database!
+02:24:31 - Can not connect to database!
+02:24:31 - Can not connect to database!
+02:24:32 - Can not connect to database!
+02:24:32 - Can not connect to database!
+02:24:33 - Can not connect to database!
+02:24:33 - Can not connect to database!
+02:24:34 - Can not connect to database!
+02:24:34 - Can not connect to database!
+02:24:35 - Can not connect to database!
+02:24:35 - Can not connect to database!
+02:24:36 - Can not connect to database!
+02:41:38 - Can not connect to database!
+02:41:39 - Can not connect to database!
+02:41:39 - Can not connect to database!
+02:41:40 - Can not connect to database!
+02:41:40 - Can not connect to database!
 02:41:41 - Can not connect to database!
-02:58:50 - Can not connect to database!
-02:59:17 - Can not connect to database!
-03:01:36 - Can not connect to database!
-03:07:24 - Can not connect to database!
-03:12:02 - Can not connect to database!
-03:12:37 - Connected to database
-03:12:38 - Access Project Database
-03:12:38 - Access Question Database
-03:12:44 - IDNo: 4| Username:admin - Login success!
-03:12:55 - Question : Which project do you like most?| Vote - project : Beauty
-03:12:55 - Vote have been added to database
-03:21:37 - Connected to database
-03:21:37 - Access Project Database
-03:21:37 - Access Question Database
-03:21:44 - IDNo: 4| Username:admin - Login success!
-03:21:52 - Question : Which project's design is the best?| Vote - project : Beauty
-03:21:52 - Vote have been added to database
-03:24:55 - Connected to database
-03:24:55 - Access Project Database
-03:24:55 - Access Question Database
-03:25:01 - IDNo: 1| Username:Oor - Login success!
-03:25:22 - Question : Which project do you like most?| Vote - project : Beauty
-03:25:22 - Vote have been added to database
-03:44:55 - Connected to database
-03:44:55 - Access Project Database
-03:44:55 - Access Question Database
-04:07:08 - Can not connect to database!
-04:13:03 - Can not connect to database!
-04:13:03 - Can't access Project Database
-04:13:03 - Can't Access Question Database
-04:13:40 - Connected to database
-04:13:40 - Disconnected from database
-04:13:40 - Can't access Project Database
-04:13:40 - Can't Access Question Database
-04:13:43 - Connected to database
-04:13:43 - Disconnected from database
-04:13:44 - Can't access Project Database
-04:13:44 - Can't Access Question Database
-04:13:45 - Connected to database
-04:13:45 - Disconnected from database
-04:13:46 - Can't access Project Database
-04:13:46 - Can't Access Question Database
-04:14:21 - Connected to database
-04:14:21 - Disconnected from database
-04:14:22 - Can't access Project Database
-04:14:22 - Can't Access Question Database
-04:14:33 - Connected to database
-04:14:33 - Access Project Database
-04:14:33 - Access Question Database
-04:14:47 - User: Hello- Login fail
-04:15:32 - Connected to database
-04:15:32 - Access Project Database
-04:15:32 - Access Question Database
-04:16:40 - IDNo: 4| Username:admin - Login success!
-09:54:55 - Connected to database
-09:54:58 - Access Project Database
-09:54:58 - Access Question Database
-09:17:21 - Can't access Project Database
-09:17:21 - Can't Access Question Database
-09:18:38 - Connected to database
-09:18:38 - Access Project Database
-09:18:38 - Access Question Database
-09:19:41 - Connected to database
-09:19:41 - Access Project Database
-09:19:41 - Access Question Database
-09:19:50 - IDNo: 4| Username:admin - Login success!
-09:20:48 - Connected to database
-09:20:48 - Access Project Database
-09:20:48 - Access Question Database
-09:21:42 - Connected to database
-09:21:42 - Access Project Database
-09:21:42 - Access Question Database
-09:22:02 - Connected to database
-09:22:16 - Access Project Database
-09:22:16 - Access Question Database
-09:22:38 - Connected to database
-09:22:41 - Access Project Database
-09:22:45 - Access Question Database
-09:37:47 - Connected to database
-09:37:47 - Access Voter Database
-09:37:47 - Access Project Database
-09:37:47 - Access Question Database
-09:38:18 - Connected to database
-09:38:18 - Access Voter Database
-09:38:18 - Access Project Database
-09:38:18 - Access Question Database
-09:40:19 - Connected to database
-09:40:19 - Access Voter Database
-09:40:19 - Access Project Database
-09:40:19 - Access Question Database
-09:41:08 - Connected to database
-09:41:08 - Access Voter Database
-09:41:08 - Access Project Database
-09:41:08 - Access Question Database
-14:14:16 - Connected to database
-14:14:16 - Access Project Database
-14:14:16 - Access Question Database
-14:14:27 - User: harry- Login fail
-14:14:38 - User: peepo- Login fail
-23:18:03 - Can't get Voter from Database
-23:18:03 - User: Tun- Login fail
-23:18:03 - Can't get Voter from Database
-23:18:03 - User: Tun- Login fail
-23:18:12 - Can't get Voter from Database
-23:18:12 - User: Tun- Login fail
-23:18:12 - Can't get Voter from Database
-23:18:12 - User: Tun- Login fail
-23:18:53 - Can't get Voter from Database
-23:18:53 - User: Oor  - Login fail
-23:18:53 - Can't get Election Committee from Database
-23:18:53 - Election Committee: Oor  - Login fail
-23:19:00 - Can't get Voter from Database
-23:19:00 - User: oor- Login fail
-23:19:00 - Can't get Election Committee from Database
-23:19:00 - Election Committee: oor- Login fail
-23:22:52 - Can't get User from Database
-23:22:52 - User: oor- Login fail
-23:22:52 - Can't get Election Committee from Database
-23:22:52 - Election Committee: oor- Login fail
-23:22:55 - Can't get User from Database
-23:22:55 - User: oor- Login fail
-23:22:55 - Can't get Election Committee from Database
-23:22:55 - Election Committee: oor- Login fail
-23:24:06 - Can't get User from Database
-23:24:06 - User: oor- Login fail
-23:24:06 - Can't get Election Committee from Database
-23:24:06 - Election Committee: oor- Login fail
-23:26:00 - Can't get User from Database
-23:26:00 - User: oor- Login fail
-23:26:03 - Can't get Election Committee from Database
-23:26:03 - Election Committee: oor- Login fail
-23:33:36 - Can't get User from Database
-23:33:36 - User: oor- Login fail
-23:36:52 - Can't get User from Database
-23:36:52 - User: oor- Login fail
-23:36:52 - Can't get Election Committee from Database
-23:36:52 - Election Committee: oor- Login fail
-23:38:22 - Can't get User from Database
-23:38:22 - User: oor- Login fail
-23:38:22 - Can't get Election Committee from Database
-23:38:22 - Election Committee: oor- Login fail
-23:42:00 - Can't get User from Database
-23:42:00 - User: oor- Login fail
-23:42:00 - Can't get Election Committee from Database
-23:42:00 - Election Committee: oor- Login fail
-23:46:49 - Can't get User from Database
-23:46:49 - User: oor- Login fail
-23:46:49 - Can't get Election Committee from Database
-23:46:49 - Election Committee: oor- Login fail
-23:47:25 - Can't get User from Database
-23:47:25 - User: oor- Login fail
-23:47:25 - Can't get Election Committee from Database
-23:47:25 - Election Committee: oor- Login fail
-23:47:31 - Can't get User from Database
-23:47:31 - User: oor- Login fail
-23:47:31 - Can't get Election Committee from Database
-23:47:31 - Election Committee: oor- Login fail
-23:48:03 - Can't get User from Database
-23:48:03 - User: Oor- Login fail
-23:48:03 - Can't get Election Committee from Database
-23:48:03 - Election Committee: Oor- Login fail
-23:52:39 - Can't get User from Database
-23:52:39 - User: Oor- Login fail
-23:52:39 - Can't get Election Committee from Database
-23:52:39 - Election Committee: Oor- Login fail
-23:57:55 - Connected to database
-23:57:59 - IDNo: 1| Username:Oor - Login success!
-23:58:01 - Access Project Database
-23:58:01 - Access Question Database
-23:59:55 - Connected to database
-00:00:04 - IDNo: 5| Username:James - Login success!
-00:00:06 - Access Project Database
-00:00:06 - Access Question Database
-00:00:14 - Connected to database
-00:00:20 - User: Tun- Login fail
-00:00:30 - User: Tun- Login fail
-00:01:02 - Connected to database
-00:03:24 - Connected to database
-00:03:51 - User: tun- Login fail
-00:07:01 - Connected to database
-00:07:12 - User: Tun- Login fail
-00:09:08 - Connected to database
-00:09:20 - User: Tun- Login fail
-00:10:49 - Connected to database
-00:10:56 - User: Tun- Login fail
-00:11:18 - Connected to database
-00:11:29 - User: Tun- Login fail
-00:12:56 - Connected to database
-00:13:18 - User: Tun- Login fail
-00:15:06 - Connected to database
-00:15:14 - User: Tun- Login fail
-00:19:23 - Connected to database
-00:19:46 - User: Tun- Login fail
-00:24:41 - Connected to database
-00:24:55 - User: Tun- Login fail
-00:27:25 - Connected to database
-00:27:31 - User: Tun- Login fail
-00:27:31 - IDNo: 6| Username:Tun - Login success!
-00:27:33 - Access Project Database
-00:27:33 - Access Question Database
-02:49:51 - Can not connect to database!
-02:49:57 - Can't get User from Database
-02:49:57 - User: admin- Login fail
-02:49:57 - Can't get Election Committee from Database
-02:49:57 - Election Committee: admin- Login fail
-02:50:05 - Can't get User from Database
-02:50:05 - User: Oor- Login fail
-02:50:05 - Can't get Election Committee from Database
-02:50:05 - Election Committee: Oor- Login fail
-02:51:31 - Can't get User from Database
-02:51:31 - User: Oor- Login fail
-02:51:31 - Can't get Election Committee from Database
-02:51:31 - Election Committee: Oor- Login fail
-03:01:00 - Can not connect to database!
-03:03:00 - Can not connect to database!
-03:03:04 - Can not connect to database!
-03:03:56 - Can not connect to database!
-03:04:02 - Can't get User from Database
-03:04:02 - User: Oor- Login fail
-03:04:02 - Can't get Election Committee from Database
-03:04:02 - Election Committee: Oor- Login fail
-03:04:04 - Can't get User from Database
-03:04:04 - User: Oor- Login fail
-03:04:04 - Can't get Election Committee from Database
-03:04:04 - Election Committee: Oor- Login fail
-03:04:20 - Can't get User from Database
-03:04:20 - User: James- Login fail
-03:04:20 - Can't get Election Committee from Database
-03:04:20 - Election Committee: James- Login fail
-03:04:32 - Can't get User from Database
-03:04:32 - User: Metas- Login fail
-03:04:32 - Can't get Election Committee from Database
-03:04:32 - Election Committee: Metas- Login fail
-03:30:44 - Can not connect to database!
-03:30:45 - Can not connect to database!
-03:30:46 - Can not connect to database!
-03:30:47 - Can not connect to database!
-03:30:48 - Can not connect to database!
-03:30:49 - Can not connect to database!
-03:30:50 - Can not connect to database!
-03:30:51 - Can not connect to database!
-03:30:52 - Can not connect to database!
-03:30:53 - Can not connect to database!
-03:30:54 - Can not connect to database!
-03:30:58 - Can not connect to database!
-03:31:02 - Can not connect to database!
-03:31:04 - Can not connect to database!
-03:31:19 - Can not connect to database!
-03:31:20 - Can not connect to database!
-03:31:21 - Can not connect to database!
-03:31:22 - Can not connect to database!
-03:31:23 - Can not connect to database!
-03:31:24 - Can not connect to database!
-03:31:25 - Can not connect to database!
-03:31:26 - Can not connect to database!
-03:31:27 - Can not connect to database!
-03:31:28 - Can not connect to database!
-03:31:29 - Can not connect to database!
-03:33:07 - Can not connect to database!
-03:33:08 - Can not connect to database!
-03:33:09 - Can not connect to database!
-03:33:10 - Can not connect to database!
-03:33:11 - Can not connect to database!
-03:33:12 - Can not connect to database!
-03:33:13 - Can not connect to database!
-03:33:14 - Can not connect to database!
-03:33:15 - Can not connect to database!
-03:33:16 - Can not connect to database!
-03:33:17 - Can not connect to database!
-03:41:37 - Can not connect to database!
-03:41:37 - Can not connect to database!
-03:41:38 - Can not connect to database!
-03:41:38 - Can not connect to database!
-03:41:39 - Can not connect to database!
-03:41:40 - Can not connect to database!
-03:41:40 - Can not connect to database!
-03:41:41 - Can not connect to database!
-03:41:41 - Can not connect to database!
-03:41:42 - Can not connect to database!
-03:41:42 - Can not connect to database!
-03:41:43 - Can not connect to database!
-03:41:43 - Can not connect to database!
-03:41:44 - Can not connect to database!
-03:41:44 - Can not connect to database!
-03:44:24 - Can not connect to database!
-03:44:25 - Can not connect to database!
-03:44:25 - Can not connect to database!
-03:44:26 - Can not connect to database!
-03:44:26 - Can not connect to database!
-03:44:27 - Can not connect to database!
-03:44:27 - Can not connect to database!
-03:44:28 - Can not connect to database!
-03:44:28 - Can not connect to database!
-03:47:26 - Can not connect to database!
-03:47:27 - Can not connect to database!
-03:47:27 - Can not connect to database!
-03:47:28 - Can not connect to database!
-03:47:28 - Can not connect to database!
-03:47:29 - Can not connect to database!
-03:47:29 - Can not connect to database!
-03:47:30 - Can not connect to database!
-03:47:30 - Can not connect to database!
-03:47:31 - Can not connect to database!
-03:47:31 - Can not connect to database!
-03:47:32 - Can not connect to database!
-03:47:32 - Can not connect to database!
-03:47:33 - Can not connect to database!
-03:47:33 - Can not connect to database!
-03:47:34 - Can not connect to database!
-03:47:34 - Can not connect to database!
-03:47:35 - Can not connect to database!
-03:47:35 - Can not connect to database!
-03:47:36 - Can not connect to database!
-03:47:36 - Can not connect to database!
-03:48:31 - Can not connect to database!
-03:48:32 - Can not connect to database!
-03:48:32 - Can not connect to database!
-03:48:33 - Can not connect to database!
-03:48:33 - Can not connect to database!
-03:48:34 - Can not connect to database!
-03:48:34 - Can not connect to database!
-03:48:35 - Can not connect to database!
-03:48:35 - Can not connect to database!
-03:48:36 - Can not connect to database!
-03:48:36 - Can not connect to database!
-03:48:37 - Can not connect to database!
-03:48:37 - Can not connect to database!
-03:48:38 - Can not connect to database!
-03:48:38 - Can not connect to database!
-03:48:39 - Can not connect to database!
-03:48:39 - Can not connect to database!
-03:48:40 - Can not connect to database!
-03:48:40 - Can not connect to database!
-03:48:41 - Can not connect to database!
-03:48:41 - Can not connect to database!
+02:41:41 - Can not connect to database!
+02:41:42 - Can not connect to database!
+02:41:42 - Can not connect to database!
+02:41:43 - Can not connect to database!
+02:41:43 - Can not connect to database!
+03:03:35 - Can not connect to database!
+03:03:35 - Can not connect to database!
+03:03:36 - Can not connect to database!
+03:03:36 - Can not connect to database!
+03:03:37 - Can not connect to database!
+03:03:37 - Can not connect to database!
+03:03:38 - Can not connect to database!
+03:03:38 - Can not connect to database!
+03:03:39 - Can not connect to database!
+03:03:39 - Can not connect to database!
+03:03:40 - Can not connect to database!
+03:04:00 - Can not connect to database!
+03:04:01 - Can not connect to database!
+03:04:02 - Can not connect to database!
+03:04:02 - Can not connect to database!
+03:04:14 - Can not connect to database!
+03:04:15 - Can not connect to database!
+03:04:15 - Can not connect to database!
+03:04:16 - Can not connect to database!
+03:04:16 - Can not connect to database!
+03:04:17 - Can not connect to database!
+03:04:17 - Can not connect to database!
+03:04:18 - Can not connect to database!
+03:04:18 - Can not connect to database!
+03:04:19 - Can not connect to database!
+03:04:19 - Can not connect to database!
+03:06:10 - Can not connect to database!
+03:06:11 - Can not connect to database!
+03:06:11 - Can not connect to database!
+03:06:12 - Can not connect to database!
+03:06:12 - Can not connect to database!
+03:06:13 - Can not connect to database!
+03:06:13 - Can not connect to database!
+03:06:14 - Can not connect to database!
+03:06:15 - Can not connect to database!
+03:06:15 - Can not connect to database!
+03:06:16 - Can not connect to database!
+03:06:54 - Can not connect to database!
+03:06:55 - Can not connect to database!
+03:06:55 - Can not connect to database!
+03:06:56 - Can not connect to database!
+03:06:56 - Can not connect to database!
+03:06:57 - Can not connect to database!
+03:06:57 - Can not connect to database!
+03:06:58 - Can not connect to database!
+03:06:58 - Can not connect to database!
+03:06:59 - Can not connect to database!
+03:06:59 - Can not connect to database!
+03:08:52 - Connected to database
+03:14:51 - Connected to database
+03:15:29 - Connected to database
+03:15:40 - Can't get User from Database
+03:15:40 - User: Oor- Login fail
+03:15:40 - Can't get Election Committee from Database
+03:15:40 - Election Committee: Oor- Login fail
+03:15:42 - Can't get User from Database
+03:15:42 - User: Oor- Login fail
+03:15:42 - Can't get Election Committee from Database
+03:15:42 - Election Committee: Oor- Login fail
+03:15:46 - Can't get User from Database
+03:15:46 - User: Oor- Login fail
+03:15:46 - Can't get Election Committee from Database
+03:15:46 - Election Committee: Oor- Login fail
+03:15:52 - Can't get User from Database
+03:15:52 - User: Jame- Login fail
+03:15:52 - Can't get Election Committee from Database
+03:15:52 - Election Committee: Jame- Login fail
+03:16:00 - Can't get User from Database
+03:16:00 - User: admin- Login fail
+03:16:00 - Can't get Election Committee from Database
+03:16:00 - Election Committee: admin- Login fail
+03:16:18 - Can't get User from Database
+03:16:18 - User: Metas- Login fail
+03:16:18 - Can't get Election Committee from Database
+03:16:18 - Election Committee: Metas- Login fail
+03:16:21 - Can't get User from Database
+03:16:21 - User: Metas- Login fail
+03:16:21 - Can't get Election Committee from Database
+03:16:21 - Election Committee: Metas- Login fail
+03:20:30 - Connected to database
+03:20:45 - Can't get User from Database
+03:20:45 - User: James- Login fail
+03:20:45 - Can't get Election Committee from Database
+03:20:45 - Election Committee: James- Login fail
+03:20:57 - Can't get User from Database
+03:20:57 - User: Oor- Login fail
+03:20:57 - Can't get Election Committee from Database
+03:20:57 - Election Committee: Oor- Login fail
+03:24:49 - Connected to database
+03:24:57 - Can't get User from Database
+03:24:57 - User: James- Login fail
+03:24:57 - Can't get Election Committee from Database
+03:24:57 - Election Committee: James- Login fail
+03:32:12 - Connected to database
+03:32:19 - IDNo: 5| Username:James - Login success!
+03:32:44 - Connected to database
+03:32:49 - IDNo: 1| Username:Oor - Login success!
+04:04:58 - Connected to database
+04:05:04 - IDNo: 4| Username:peepo - Login success!
+04:07:38 - Connected to database
+04:07:46 - IDNo: 4| Username:peepo - Login success!
+04:07:48 - Access Project Database
+04:07:48 - Access Question Database
+04:08:08 - Connected to database
+04:08:12 - IDNo: 4| Username:peepo - Login success!
+04:08:13 - Access Project Database
+04:08:13 - Access Question Database
+04:11:55 - Connected to database
+04:12:00 - IDNo: 4| Username:peepo - Login success!
+04:12:01 - Access Project Database
+04:12:01 - Access Question Database
+04:12:28 - Connected to database
+04:12:32 - IDNo: 4| Username:peepo - Login success!
+04:12:33 - Access Project Database
+04:12:33 - Access Question Database
+04:21:07 - Connected to database
+04:21:11 - IDNo: 4| Username:peepo - Login success!
+04:21:12 - Access Project Database
+04:21:12 - Access Question Database
+04:22:16 - Connected to database
+04:22:21 - IDNo: 4| Username:peepo - Login success!
+04:22:21 - Access Project Database
+04:22:21 - Access Question Database
