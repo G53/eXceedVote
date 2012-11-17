@@ -23,12 +23,12 @@ import g53.exceedvote.persistence.VoterDao;
 
 
 /**
- * Class VoterDB actually likes controller of a System by controlling between UI and Database
+ * Class VoterDB is class that connect and get data from database 
  */
 
 /**
  * @author 	Wasupol Tungsakulthong 5310547304 
- * @Version 2012.November.15
+ * @Version 2012.November.18
  */
 public class VoterDaoJdbc extends RecordLog implements VoterDao {
 
@@ -63,7 +63,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 
 		try {
 			con = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/exceed_vote", System.getProperty("user.name"), "");
+					"jdbc:mysql://localhost:3306/exceed_vote", "root", "");
 			stmt = con.createStatement();
 			// turn on autocommit
 			con.setAutoCommit(true);
