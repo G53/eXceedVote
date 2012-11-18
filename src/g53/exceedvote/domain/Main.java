@@ -48,10 +48,10 @@ public class Main {
 		InterfaceUI loadUI = new LoadingUI(language);
 		do {
 			try {
-				Thread.sleep(100);
+				Thread.sleep(50);
 				i++;
 				//timeout after wait 5 sec
-				if (i > 100) {
+				if (i > 10) {
 					JOptionPane
 							.showMessageDialog(null, control.getCurMessage());
 					loadUI.close();
