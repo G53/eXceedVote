@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.1
+-- version 3.5.2.2
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Nov 17, 2012 at 09:47 PM
--- Server version: 5.5.16
--- PHP Version: 5.4.3
+-- Host: 127.0.0.1
+-- Generation Time: Nov 21, 2012 at 07:24 PM
+-- Server version: 5.5.28
+-- PHP Version: 5.4.7
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,27 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `exceed_vote`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `election_committee`
---
-
-CREATE TABLE IF NOT EXISTS `election_committee` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  PRIMARY KEY (`ID`),
-  UNIQUE KEY `ID` (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
-
---
--- Dumping data for table `election_committee`
---
-
-INSERT INTO `election_committee` (`ID`, `username`, `password`) VALUES
-(1, 'Tun', 'athiwatc');
 
 -- --------------------------------------------------------
 
@@ -98,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
   `score` int(11) NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `ID` (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `roles`
@@ -106,7 +85,8 @@ CREATE TABLE IF NOT EXISTS `roles` (
 
 INSERT INTO `roles` (`ID`, `role`, `score`) VALUES
 (1, 'Student', 1),
-(2, 'Teacher', 3);
+(2, 'Teacher', 3),
+(3, 'Election Committee', 0);
 
 -- --------------------------------------------------------
 
@@ -126,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   KEY `username` (`username`),
   KEY `role_id` (`role_id`),
   KEY `role_id_2` (`role_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `user`
@@ -137,7 +117,8 @@ INSERT INTO `user` (`ID`, `username`, `password`, `role_id`) VALUES
 (2, 'Metas', '5678', 1),
 (3, 'Guysit', 'i4cu', 1),
 (4, 'peepo', 'peepo', 1),
-(5, 'James', 'OOP', 2);
+(5, 'James', 'OOP', 2),
+(6, 'Tun', 'athiwatc', 3);
 
 -- --------------------------------------------------------
 
