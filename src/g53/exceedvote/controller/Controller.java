@@ -2,8 +2,12 @@ package g53.exceedvote.controller;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 import g53.exceedvote.domain.Project;
 import g53.exceedvote.domain.Question;
@@ -123,4 +127,9 @@ public class Controller extends RecordLog{
 			int score, Timestamp voteTime){
 		vote.insertVoteDB(user_id, project_id, question_id, score, voteTime);
 	}
-}
+
+	public DefaultTableModel voteResult(DefaultTableModel model, int id) throws SQLException {
+		// TODO Auto-generated method stub
+		return vote.voteResult(model, id);
+	}
+	}
