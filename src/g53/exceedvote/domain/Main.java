@@ -11,6 +11,7 @@ import g53.exceedvote.ui.InterfaceUI;
 import g53.exceedvote.ui.LanguageUI;
 import g53.exceedvote.ui.LoadingUI;
 import g53.exceedvote.ui.LoginUI;
+import g53.exceedvote.ui.SetVotingUI;
 import g53.exceedvote.ui.VoteUI;
 
 /**
@@ -75,9 +76,16 @@ public class Main {
 			}
 		}
 		//login success
-		//create voteUI for vote
-		VoteUI voteUI = new VoteUI(control, language);
-		voteUI.run();
+		if(loginUI.getRole().equalsIgnoreCase("voter")){
+			//create voteUI for vote
+			VoteUI voteUI = new VoteUI(control, language);
+			voteUI.run();
+		}
+		else if(loginUI.getRole().equalsIgnoreCase("election")){
+			SetVotingUI setVotingUI = new SetVotingUI(control, language);
+			setVotingUI.run();
+		}
+		
 
 	}
 
