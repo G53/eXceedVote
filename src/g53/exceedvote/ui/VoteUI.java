@@ -242,7 +242,6 @@ public class VoteUI extends RecordLog implements InterfaceUI{
 
 				clearRadioButton();
 				frame.dispose();
-				ResultUI resultUI = new ResultUI();
 			}
 		}
 	}
