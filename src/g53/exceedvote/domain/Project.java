@@ -1,7 +1,11 @@
 package g53.exceedvote.domain;
-/**
- * Class Project contains the information and vote score for each project
- */
+
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+
+import javax.imageio.ImageIO;
 
 /**
  * @author 	Kamolporn Sanamlao 5310545557
@@ -16,6 +20,11 @@ public class Project {
 	private long projectID;
 	/** number of vote score */
 	private int score;
+	/** Picture of Project Team **/
+	private File file;
+	// get BinaryStream of Image
+	private InputStream birStream;
+	private BufferedImage buffimg = null;
 	
 	/**
 	 * Initialize a new ProjectDescription
@@ -23,12 +32,23 @@ public class Project {
 	 * @param teamName is name of team who develops the project 
 	 * @param projectID is id of project
 	 */
-	public Project(long projectID, String name, String teamName ){
+		public Project(long projectID, String name, String teamName, InputStream birStream){
 		this.projectName = name;
 		this.teamName = teamName;
 		this.projectID = projectID;
+		this.birStream = birStream;
 	}
 	
+	public BufferedImage getImage() {
+		try {
+			buffimg = ImageIO.read(birStream);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return buffimg;
+	}
+
 	/**
 	 * Display the string to shoe the description of project
 	 */
