@@ -65,7 +65,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 
 		try {
 			con = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/exceed_vote", "root", "");
+					"jdbc:mysql://localhost:3306/exceed_vote", System.getProperty("user.name"), "");
 			stmt = con.createStatement();
 			// turn on autocommit
 			con.setAutoCommit(true);
@@ -222,7 +222,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 			int score, Timestamp votetime) {
 		boolean unique = true;
 		try {
-			ResultSet resultset = stmt.executeQuery("SELECT * FROM User");
+			ResultSet resultset = stmt.executeQuery("SELECT * FROM Vote");
 			while (resultset.next()) {
 				if (resultset.getInt("user_id") == user_id
 						&& resultset.getInt("project_id") == project_id
@@ -405,4 +405,21 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 			return true;
 		}
 	}
+//	public boolean isVoted(int user_id) {
+//	boolean voted = true;
+//	try {
+//		ResultSet resultset = stmt.executeQuery("SELECT User.username, Project.name,Question.questions FROM Vote,Project,User,Question WHERE User.ID = vote.user_id AND Project.ID = vote.project_id AND Question.ID = vote.question_id AND vote.user_id = " + );
+//		while (resultset.next()) {
+//			if (resultset.getInt("user_id") == user_id
+//					&& resultset.getInt("project_id") == project_id
+//					&& resultset.getInt("question_id") == question_id) {
+//				voted = false;
+//			}
+//		}
+//	} catch (SQLException e) {
+//		// TODO Auto-generated catch block
+//		record("Having duplicated record in Database");
+//	}
+//	return voted;
+//}
 }
