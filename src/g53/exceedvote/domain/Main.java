@@ -1,5 +1,6 @@
 package g53.exceedvote.domain;
 
+import java.awt.Menu;
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -11,6 +12,8 @@ import g53.exceedvote.ui.InterfaceUI;
 import g53.exceedvote.ui.LanguageUI;
 import g53.exceedvote.ui.LoadingUI;
 import g53.exceedvote.ui.LoginUI;
+import g53.exceedvote.ui.MenuUI;
+import g53.exceedvote.ui.ResultUI;
 import g53.exceedvote.ui.SetVotingUI;
 import g53.exceedvote.ui.VoteUI;
 
@@ -78,13 +81,25 @@ public class Main {
 		//login success
 		if(loginUI.getRole().equalsIgnoreCase("voter")){
 			//create voteUI for vote
-			VoteUI voteUI = new VoteUI(control, language);
-			voteUI.run();
+			
+			
+			MenuUI menuUI = new MenuUI(control, language);
+			menuUI.run();
+			if (menuUI.getMenuSelect().equalsIgnoreCase("vote")) {
+				VoteUI voteUI = new VoteUI(control, language);
+				menuUI.close();
+				voteUI.run();
+			}else if (menuUI.getMenuSelect().equalsIgnoreCase("result")) {
+				 ResultUI resultUI = new ResultUI(control, language);
+				 menuUI.close();
+				 resultUI.run();
+			}
 		}
 		else if(loginUI.getRole().equalsIgnoreCase("election")){
 			SetVotingUI setVotingUI = new SetVotingUI(control, language);
 			setVotingUI.run();
 		}
+		
 		
 
 	}
