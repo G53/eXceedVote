@@ -1,9 +1,14 @@
 package g53.exceedvote.ui;
 
+import g53.exceedvote.controller.Controller;
+
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -11,6 +16,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -37,12 +43,16 @@ public class SetVotingUI {
 	private JLabel criteria2;
 	private JList<String> criterialist;
 	private JLabel projectt;
-	private JList<String> projectlist;	
+	private JList<String> projectlist;
+	private Controller control;
+	private ResourceBundle language;
 	private String[] houritem = {"00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24"};
 	private String[] minitem = {"00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60"};
 	
 	
-	public SetVotingUI(){
+	public SetVotingUI(Controller control, ResourceBundle language){
+		this.control = control;
+    	this.language = language;
 		frame = new JFrame();		
 		frame.setTitle("Voting Configurating");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -130,6 +140,30 @@ public class SetVotingUI {
 		big.add(four);
 		frame.add(head,BorderLayout.PAGE_START);
 		frame.add(big,BorderLayout.CENTER);
+		
+		// confirm exit
+				frame.addWindowListener(new WindowAdapter() {
+					public void windowClosing(WindowEvent e) {
+						String textYes = language.getString("textYes");
+						String textNo = language.getString("textNo");
+						String textTitle = language.getString("textTitle");
+						String textMessage = language.getString("textMessage");
+						Object[] options = { textYes, textNo };
+						int result = JOptionPane
+								.showOptionDialog(frame, textTitle, textMessage,
+										JOptionPane.YES_NO_OPTION,
+										JOptionPane.QUESTION_MESSAGE, null, options,
+										options[0]);
+
+						if(result == JOptionPane.YES_OPTION) {
+					           ((JFrame)e.getSource()).setDefaultCloseOperation(
+					                   JFrame.EXIT_ON_CLOSE);
+					        } else {
+					           ((JFrame)e.getSource()).setDefaultCloseOperation(
+					                   JFrame.DO_NOTHING_ON_CLOSE);
+					        }
+					}
+				});
 		
 	}
 }

@@ -2,12 +2,15 @@ package g53.exceedvote.ui;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.UnsupportedEncodingException;
 import java.util.ResourceBundle;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 /**
  * Class LoadingUI show the simple animation to user during program try to connecting to database
@@ -45,6 +48,30 @@ public class LoadingUI implements InterfaceUI{
 		JPanel pn = new JPanel(new GridLayout(1, 1));	
 		pn.add(new JLabel(encode("load"), loading, JLabel.CENTER));	
 		frame.add(pn);
+		
+		// confirm exit
+				frame.addWindowListener(new WindowAdapter() {
+					public void windowClosing(WindowEvent e) {
+						String textYes = language.getString("textYes");
+						String textNo = language.getString("textNo");
+						String textTitle = language.getString("textTitle");
+						String textMessage = language.getString("textMessage");
+						Object[] options = { textYes, textNo };
+						int result = JOptionPane
+								.showOptionDialog(frame, textTitle, textMessage,
+										JOptionPane.YES_NO_OPTION,
+										JOptionPane.QUESTION_MESSAGE, null, options,
+										options[0]);
+
+						if(result == JOptionPane.YES_OPTION) {
+					           ((JFrame)e.getSource()).setDefaultCloseOperation(
+					                   JFrame.EXIT_ON_CLOSE);
+					        } else {
+					           ((JFrame)e.getSource()).setDefaultCloseOperation(
+					                   JFrame.DO_NOTHING_ON_CLOSE);
+					        }
+					}
+				});
 	}
 	
 	/* (non-Javadoc)

@@ -13,6 +13,8 @@ import java.awt.GridLayout;
 import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.UnsupportedEncodingException;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -141,6 +143,30 @@ public class VoteUI extends RecordLog implements InterfaceUI{
 		frame.add(scllpl, BorderLayout.CENTER);
 		frame.add(questionPlane, BorderLayout.NORTH);
 		frame.add(buttonPlane, BorderLayout.SOUTH);
+		
+		// confirm exit
+				frame.addWindowListener(new WindowAdapter() {
+					public void windowClosing(WindowEvent e) {
+						String textYes = language.getString("textYes");
+						String textNo = language.getString("textNo");
+						String textTitle = language.getString("textTitle");
+						String textMessage = language.getString("textMessage");
+						Object[] options = { textYes, textNo };
+						int result = JOptionPane
+								.showOptionDialog(frame, textTitle, textMessage,
+										JOptionPane.YES_NO_OPTION,
+										JOptionPane.QUESTION_MESSAGE, null, options,
+										options[0]);
+
+						if(result == JOptionPane.YES_OPTION) {
+					           ((JFrame)e.getSource()).setDefaultCloseOperation(
+					                   JFrame.EXIT_ON_CLOSE);
+					        } else {
+					           ((JFrame)e.getSource()).setDefaultCloseOperation(
+					                   JFrame.DO_NOTHING_ON_CLOSE);
+					        }
+					}
+				});
 
 	}
 

@@ -62,7 +62,7 @@ public class LanguageUI {
 		pl.add(eng);
 		frame.add(pl);
 
-		// exit
+		// confirm exit
 		frame.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				String textYes = language.getString("textYes");
