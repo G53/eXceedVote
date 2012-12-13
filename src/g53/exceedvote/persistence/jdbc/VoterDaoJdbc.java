@@ -1,6 +1,7 @@
 package g53.exceedvote.persistence.jdbc;
 
 
+import java.io.InputStream;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.sql.Connection;
@@ -12,6 +13,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -40,6 +43,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 	private String messageLog;
 	private Voter voter;
 	private ElectionCommittee electionCommittee;
+	private FileInputStream fis;
 
 	/**
 	 * Load the driver that is SQL or not
@@ -421,4 +425,25 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 //	}
 //	return voted;
 //}
+
+	@Override
+	public void addProject(Project p) {
+		// TODO Auto-generated method stub
+		long ID = p.getID()
+		String tname = p.getTeamName();
+		String pname = p.getProjectName();
+		ImageIcon imc = p.getImage();
+		try {
+			String queryin = "INSERT INTO user (ID, username, password,Pictures) VALUES (?,?,?,?)";
+			pstmt = con.prepareStatement(queryin);
+			pstmt.setInt(1, (int)ID);
+			pstmt.setString(2, username);
+			pstmt.setString(3, password);
+			fis = new FileInputStream(imc.getImage());
+			pstmt.setBinaryStream(4, (InputStream)fis, imc.getImage().l)
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			record("Can't insert user record");
+		}
+	}
 }
