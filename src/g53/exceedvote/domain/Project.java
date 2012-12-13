@@ -21,11 +21,11 @@ public class Project {
 	private long projectID;
 	/** number of vote score */
 	private int score;
-	/** Picture of Project Team **/
-	private File file;
 	// get BinaryStream of Image
 	private InputStream birStream;
+	/** Icon Object of Picture **/
 	private ImageIcon pictureImage;
+	/** Image Object of Picture **/
 	private Image img;
 	/**
 	 * Initialize a new ProjectDescription
@@ -43,8 +43,8 @@ public class Project {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
-		pictureImage = new ImageIcon(img);
+		}
+		pictureImage = new ImageIcon(img.getScaledInstance(200, 200, 1));
 	}
 	
 	public ImageIcon getImage() {
