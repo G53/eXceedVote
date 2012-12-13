@@ -12,7 +12,7 @@ import junit.framework.TestCase;
  */
 public class TestProject extends TestCase {
 	// relate attribute	to g53.exceedvote.test
-	private Project p  = new Project(1, "Something", "Someone");
+	private Project p  = new Project(1, "Something", "Someone",null);
 	/**
 	 *  Test object have to be created
 	 */
