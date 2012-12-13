@@ -1,6 +1,8 @@
 package g53.exceedvote.ui;
 
 import g53.exceedvote.controller.Controller;
+import g53.exceedvote.domain.Project;
+import g53.exceedvote.domain.Question;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -11,6 +13,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -19,7 +23,11 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+
+import sun.font.EAttribute;
 
 /**
  * @author	Guysit Koonrungruang 5310547185
@@ -27,13 +35,15 @@ import javax.swing.JTextField;
  */
 
 public class SetVotingUI {
+	
+	private DefaultListModel<Project> modelproject;
+	private DefaultListModel<Question> modelcriteria;
 	private JFrame frame;
 	private JComboBox hour;
 	private JComboBox min;
 	private JLabel colon;
 	private JButton setTime;
-	private JLabel head;
-	private JLabel criteria;
+	private JLabel head,criteria;
 	private JTextField criteriafield;
 	private JButton criteriaSave;
 	private JLabel projectName;
@@ -42,11 +52,18 @@ public class SetVotingUI {
 	private JTextField team;
 	private JButton teamSave;
 	private JLabel criteria2;
-	private JList<String> criterialist;
+	private JList<Question> criterialist;
 	private JLabel projectt;
-	private JList<String> projectlist;
+	private JList<Project> projectlist;
+	private JButton addQuestion;
+	private JButton addProject;
 	private Controller control;
 	private ResourceBundle language;
+	private ArrayList<Project> projects;
+	private ArrayList<Question> questions;
+	private JScrollPane scrollPane;
+	private JButton browse;
+	private JButton savepic;
 	private String[] houritem = {"00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"};
 	private String[] minitem = {"00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59"};
 	
@@ -59,8 +76,8 @@ public class SetVotingUI {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initComponents();
 		frame.pack();
-		frame.setSize(500, 400);
-		frame.setLocation(300, 100);
+		frame.setSize(640, 480);
+		frame.setLocation(280, 100);
 		frame.setResizable(false);
 	}
 	
@@ -87,16 +104,32 @@ public class SetVotingUI {
 		JPanel three = new JPanel();
 		three.setLayout(new FlowLayout());
 		JPanel four = new JPanel();
-		four.setLayout(new FlowLayout());
-		
+		four.setLayout(new BorderLayout());
+		projects = control.getProject();
+		modelproject = new DefaultListModel<Project>();
+		for (Project p : projects) {
+			modelproject.addElement(p);
+		}
+		projectlist = new JList<Project>(modelproject);
+		projectlist.setVisibleRowCount(6);  
+	    projectlist.setFixedCellHeight(30);  
+	    projectlist.setFixedCellWidth(200);  
+	    projectlist.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		questions = control.getQuestion();
+		modelcriteria = new DefaultListModel<Question>();
+		for (Question q : questions) {
+			modelcriteria.addElement(q);
+		}
+		criterialist = new JList<Question>(modelcriteria);
+		criterialist.setVisibleRowCount(6);  
+		criterialist.setFixedCellHeight(30);  
+		criterialist.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		head = new JLabel("Set Voting");
-		
-		hour = new JComboBox(houritem);
-		min = new JComboBox(minitem);
+		hour = new JComboBox<String>(houritem);
+		min = new JComboBox<String>(minitem);
 		
 		colon = new JLabel(" : ");
 		setTime = new JButton("Save");
-		JLabel space = new JLabel("                  ");
 		criteria = new JLabel("Criteria");
 		criteriafield = new JTextField(10);
 		criteriaSave = new JButton("Save");
@@ -106,28 +139,29 @@ public class SetVotingUI {
 		teamName = new JLabel("Team   Name");
 		team = new JTextField(10);
 		teamSave = new JButton("Save");
-		
-		criterialist = new JList<String>();
-		projectlist = new JList<String>();
-		
+		scrollPane = new JScrollPane(projectlist);
+		browse = new JButton("Upload Browse");
+		savepic = new JButton("Save Picture");
 		three.add(criteria);
-		three.add(criterialist);
+		three.add(new JScrollPane(criterialist));
+		three.setBorder(BorderFactory.createTitledBorder("Criteria (In Database) :"));
 		
 		four.add(projectName);
-		four.add(projectlist);
+		four.add(scrollPane, BorderLayout.CENTER);
+		four.setBorder(BorderFactory.createTitledBorder("Project (In Database) :"));
 		
-		two.add(projectName);
+		two1.add(projectName);
 		two1.add(project);
 		two.add(two1);
-		two.add(teamName);
+		two2.add(teamName);
 		two2.add(team);
+		two2.add(teamSave);
 		two.add(two2);
-		two.add(teamSave);
+		
 		
 		one1.add(hour);
 		one1.add(colon);
 		one1.add(min);
-		one1.add(space);
 		one1.add(setTime);
 		one.add(one1);
 		one2.add(criteria);
@@ -136,8 +170,8 @@ public class SetVotingUI {
 		one.add(one2);
 		
 		big.add(one);
-		big.add(two);
 		big.add(three);
+		big.add(two);
 		big.add(four);
 		frame.add(head,BorderLayout.PAGE_START);
 		frame.add(big,BorderLayout.CENTER);
@@ -181,5 +215,13 @@ public class SetVotingUI {
 			System.out.println(e.getMessage());
 			return null;
 		}
+	}
+	public static void main(String[] args) {
+		LanguageUI languageUI = new LanguageUI();
+		ResourceBundle language = languageUI.getLanguage();
+		Controller control = new Controller();
+		control.connect();
+		SetVotingUI ui = new SetVotingUI(control, language);
+		ui.run();
 	}
 }
