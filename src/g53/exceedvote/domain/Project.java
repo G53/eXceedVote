@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-
+import java.awt.Image;
 import javax.imageio.ImageIO;
 
 /**
@@ -24,8 +24,6 @@ public class Project {
 	private File file;
 	// get BinaryStream of Image
 	private InputStream birStream;
-	private BufferedImage buffimg = null;
-	
 	/**
 	 * Initialize a new ProjectDescription
 	 * @param name is name of project
@@ -39,14 +37,14 @@ public class Project {
 		this.birStream = birStream;
 	}
 	
-	public BufferedImage getImage() {
+	public Image getImage() {
 		try {
-			buffimg = ImageIO.read(birStream);
+			return ImageIO.read(birStream);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return buffimg;
+		return null;
 	}
 
 	/**
