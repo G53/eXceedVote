@@ -51,6 +51,7 @@ public class LoginUI extends RecordLog implements InterfaceUI{
 	private Boolean isLogin = false;
 	private Controller control;
 	private ResourceBundle language;
+	private String role = null;
 
     public LoginUI(Controller control, ResourceBundle language){
     	this.control = control;
@@ -146,6 +147,10 @@ public class LoginUI extends RecordLog implements InterfaceUI{
     public Boolean getSatus() {
 		return isLogin;
 	}
+    
+    public String getRole(){
+    	return role;
+    }
 
     class ButtonListener implements ActionListener {
 
@@ -158,11 +163,13 @@ public class LoginUI extends RecordLog implements InterfaceUI{
 				JOptionPane.showMessageDialog(null,  encode("success"));
 				close();
 				isLogin = true;
+				role = "voter";
 			} 
 			else if (control.loginElectionCommittee(userName, typepass)) {
 				JOptionPane.showMessageDialog(null, encode("success"));
 				close();
 				isLogin = true;
+				role = "election";
 			}
 			else {	
 				JOptionPane.showMessageDialog(null, encode("fail"));
