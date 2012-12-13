@@ -176,7 +176,7 @@ public class LoginUI extends RecordLog implements InterfaceUI{
 
         @Override
         public void actionPerformed(ActionEvent arg0) {
-            close();
+            System.exit(0);
         }
     }
 
