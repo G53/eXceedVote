@@ -118,8 +118,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 		try {
 			rs = stmt.executeQuery(query);
 			while (rs.next()) {
-				arrProject.add(new Project(rs.getInt("ID"), rs
-						.getNString("name"), rs.getNString("teamname")));
+				arrProject.add(new Project(rs.getInt("ID"), rs.getNString("name"), rs.getNString("teamname"),rs.getBinaryStream("Pictures")));
 			}
 			record("Access Project Database");
 			return arrProject;
