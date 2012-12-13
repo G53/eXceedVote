@@ -161,7 +161,7 @@ public class SetVotingUI
 		browse.addActionListener(new axnListener());
 		c.anchor = GridBagConstraints.LAST_LINE_START;
 		five.add(browse);
-		savepic = new JButton("Save Picture");
+		savepic = new JButton(encode("Save"));
 		c.anchor = GridBagConstraints.LAST_LINE_END;
 		five.add(savepic);
 		three.add(criteria);
