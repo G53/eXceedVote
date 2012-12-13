@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -44,7 +45,7 @@ public class ResultUI {
 	public ResultUI(Controller control,ResourceBundle language) {
 		controller = control;
     	this.language = language;
-		frame = new JFrame("Vote Result");
+		frame = new JFrame(encode("Vote_Result"));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLayout(new BorderLayout());
 	    initComponents();
@@ -76,12 +77,19 @@ public class ResultUI {
 			}
 		}
 	}
-	public static void main(String[] args) {
-		LanguageUI languageUI = new LanguageUI();
-		ResourceBundle language = languageUI.getLanguage();
-		Controller con = new Controller();
-		con.connect();
-		ResultUI ui = new ResultUI(con, language);
-		ui.run();
+	
+	/* (non-Javadoc)
+	 * @see g53.exceedvote.ui.InterfaceUI#encode(java.lang.String)
+	 */
+	public String encode(String key){
+		try {
+			return new String(language.getString(key).getBytes("ISO8859-1"), "UTF-8");
+			
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			return null;
+		}
 	}
 }
