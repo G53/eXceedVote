@@ -259,8 +259,7 @@ public class VoteUI extends RecordLog implements InterfaceUI{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			s = e.getActionCommand();
-			tx.setText(descrip + "This project is " + s + " made by "
-					+ map.get(s).getTeamName());
+			tx.setText(descrip + "This project is " + s + " made by " + map.get(s).getTeamName() + "\n");
 			tx.insertIcon(map.get(s).getImage());
 		}
 	}
