@@ -154,7 +154,12 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 		} catch (Exception e) {
 			record("Can't get User from Database");
 		}
-		record("User: " + user + "- Login fail");
+		try {
+			record("User: " + user + "- Login fail" + " IP: "+InetAddress.getLocalHost().getHostAddress().toString());
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 
