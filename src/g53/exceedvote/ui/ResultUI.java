@@ -43,7 +43,7 @@ public class ResultUI {
 	private int qid; 
 	
 	public ResultUI(Controller control,ResourceBundle language) {
-		controller = control;
+		this.controller = control;
     	this.language = language;
 		frame = new JFrame(encode("Vote_Result"));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
