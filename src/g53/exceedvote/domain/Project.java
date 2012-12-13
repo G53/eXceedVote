@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.awt.Image;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 /**
  * @author 	Kamolporn Sanamlao 5310545557
@@ -24,6 +25,8 @@ public class Project {
 	private File file;
 	// get BinaryStream of Image
 	private InputStream birStream;
+	private ImageIcon pictureImage;
+	private Image img;
 	/**
 	 * Initialize a new ProjectDescription
 	 * @param name is name of project
@@ -35,16 +38,17 @@ public class Project {
 		this.teamName = teamName;
 		this.projectID = projectID;
 		this.birStream = birStream;
-	}
-	
-	public Image getImage() {
 		try {
-			return ImageIO.read(birStream);
+			img = ImageIO.read(birStream);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		return null;
+		} 
+		pictureImage = new ImageIcon(img);
+	}
+	
+	public ImageIcon getImage() {
+		return pictureImage;
 	}
 
 	/**
