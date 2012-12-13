@@ -155,7 +155,7 @@ public class LoginUI extends RecordLog implements InterfaceUI{
 			userName = inputField1.getText();
 			typepass = inputField2.getText();
 			if (control.login(userName, typepass)) {				
-				JOptionPane.showMessageDialog(null, control.getCurMessage());
+				JOptionPane.showMessageDialog(null,  encode("success"));
 				close();
 				isLogin = true;
 			} 
@@ -166,6 +166,7 @@ public class LoginUI extends RecordLog implements InterfaceUI{
 			}
 			else {	
 				JOptionPane.showMessageDialog(null, encode("fail"));
+				control.recordLoginFail(userName);
 			}
 			inputField2.setText(null);
 		}

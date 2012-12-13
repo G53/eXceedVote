@@ -1,10 +1,13 @@
 package g53.exceedvote.controller;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import g53.exceedvote.domain.Project;
 import g53.exceedvote.domain.Question;
+import g53.exceedvote.domain.RecordLog;
 import g53.exceedvote.domain.Voter;
 import g53.exceedvote.persistence.DaoFactory;
 import g53.exceedvote.persistence.VoterDao;
@@ -16,7 +19,7 @@ import g53.exceedvote.persistence.VoterDao;
  * @author Metas Pongmetha 5310546529
  * @version 2012.November.18
  */
-public class Controller {
+public class Controller extends RecordLog{
 	private VoterDao vote;
 
 	public Controller() {
@@ -68,6 +71,14 @@ public class Controller {
 		return vote.logIn(vote.getVoter(userName, password));
 	}
 	
+	public void recordLoginFail(String userName) {
+		try {
+			record(" Username: "+ userName + " - " + getCurMessage()+ " |IP: "+InetAddress.getLocalHost().getHostAddress().toString());
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	/**
 	 * call VoterDao to check login of Election Committee
 	 * @param userName

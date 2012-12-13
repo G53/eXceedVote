@@ -154,12 +154,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 		} catch (Exception e) {
 			record("Can't get User from Database");
 		}
-		try {
-			record("User: " + user + "- Login fail" + " IP: "+InetAddress.getLocalHost().getHostAddress().toString());
-		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 		return null;
 	}
 
@@ -179,7 +174,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 			messageLog = "Login success!";
 			try {
 				record("IDNo: " + voter.getId() + "| Username: "
-						+ voter.getName() + " - " + messageLog + " IP: "+InetAddress.getLocalHost().getHostAddress().toString());
+						+ voter.getName() + " - " + messageLog + " |IP: "+InetAddress.getLocalHost().getHostAddress().toString());
 			} catch (UnknownHostException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -389,7 +384,6 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 		} catch (Exception e) {
 			record("Can't get Election Committee from Database");
 		}
-		record("Election Committee: " + user + "- Login fail");
 		return null;
 	}
 
@@ -402,8 +396,13 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 		} else {
 			this.electionCommittee = electionCommittee;
 			messageLog = "Login success!";
-			record("IDNo: " + this.electionCommittee.getId() + "| Username" + ":"
-					+ this.electionCommittee.getName() + " - " + messageLog);
+			try {
+				record("IDNo: " + this.electionCommittee.getId() + "| Username" + ":"
+						+ this.electionCommittee.getName() + " - " + messageLog + " |IP: "+InetAddress.getLocalHost().getHostAddress().toString());
+			} catch (UnknownHostException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			return true;
 		}
 	}
