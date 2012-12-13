@@ -160,12 +160,12 @@ public class LoginUI extends RecordLog implements InterfaceUI{
 				isLogin = true;
 			} 
 			else if (control.loginElectionCommittee(userName, typepass)) {
-				JOptionPane.showMessageDialog(null, control.getCurMessage());
+				JOptionPane.showMessageDialog(null, encode("success"));
 				close();
 				isLogin = true;
 			}
 			else {	
-				JOptionPane.showMessageDialog(null, control.getCurMessage());
+				JOptionPane.showMessageDialog(null, encode("fail"));
 			}
 			inputField2.setText(null);
 		}
