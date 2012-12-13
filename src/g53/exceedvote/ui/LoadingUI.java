@@ -52,10 +52,10 @@ public class LoadingUI implements InterfaceUI{
 		// confirm exit
 				frame.addWindowListener(new WindowAdapter() {
 					public void windowClosing(WindowEvent e) {
-						String textYes = language.getString("textYes");
-						String textNo = language.getString("textNo");
-						String textTitle = language.getString("textTitle");
-						String textMessage = language.getString("textMessage");
+						String textYes = encode("textYes");
+						String textNo = encode("textNo");
+						String textTitle = encode("textTitle");
+						String textMessage = encode("textMessage");
 						Object[] options = { textYes, textNo };
 						int result = JOptionPane
 								.showOptionDialog(frame, textTitle, textMessage,

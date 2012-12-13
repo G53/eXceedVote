@@ -7,6 +7,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -144,10 +145,10 @@ public class SetVotingUI {
 		// confirm exit
 				frame.addWindowListener(new WindowAdapter() {
 					public void windowClosing(WindowEvent e) {
-						String textYes = language.getString("textYes");
-						String textNo = language.getString("textNo");
-						String textTitle = language.getString("textTitle");
-						String textMessage = language.getString("textMessage");
+						String textYes = encode("textYes");
+						String textNo = encode("textNo");
+						String textTitle = encode("textTitle");
+						String textMessage = encode("textMessage");
 						Object[] options = { textYes, textNo };
 						int result = JOptionPane
 								.showOptionDialog(frame, textTitle, textMessage,
@@ -164,6 +165,22 @@ public class SetVotingUI {
 					        }
 					}
 				});
+		
+	}
+	
+	/* (non-Javadoc)
+	 * @see g53.exceedvote.ui.InterfaceUI#encode(java.lang.String)
+	 */
+	public String encode(String key){
+		try {
+			return new String(language.getString(key).getBytes("ISO8859-1"), "UTF-8");
+			
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			return null;
+		}
 		
 	}
 }
