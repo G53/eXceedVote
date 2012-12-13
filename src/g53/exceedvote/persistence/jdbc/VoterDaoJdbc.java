@@ -245,10 +245,9 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 	 * @throws SQLException
 	 */
 	@Override
-	public DefaultTableModel voteResult(DefaultTableModel model)
-			throws SQLException {
+	public DefaultTableModel voteResult(DefaultTableModel model, int id) throws SQLException {
 		ResultSet row = stmt
-				.executeQuery("SELECT project.teamname,sum(vote.score) as total_vote_score, question.questions FROM vote,voter,question,project WHERE voter.ID = vote.user_id and project.ID = vote.project_id and question.ID = vote.question_id GROUP BY project.teamname ORDER BY  total_vote_score DESC");
+				.executeQuery("SELECT project.teamname,sum(vote.score) as total_vote_score FROM vote,user,question,project WHERE user.ID = vote.user_id and project.ID = vote.project_id and question.ID = vote.question_id and question.ID = "+ id + " GROUP BY project.teamname ORDER BY  total_vote_score DESC");
 		ResultSetMetaData meta = row.getMetaData();
 		if (model == null)
 			model = new DefaultTableModel();
