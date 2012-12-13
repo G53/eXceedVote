@@ -94,7 +94,7 @@ public interface VoterDao {
 	 * @return model of containing data of which project have been voted.
 	 * @throws SQLException
 	 */
-	public abstract DefaultTableModel voteResult(DefaultTableModel model)
+	public abstract DefaultTableModel voteResult(DefaultTableModel model, int id)
 			throws SQLException;
 
 	/**
@@ -136,4 +136,5 @@ public interface VoterDao {
 	public abstract ElectionCommittee getElectionCommittee(String user,String pass);
 
 	public abstract boolean logIn(ElectionCommittee electionCommittee);
+
 }
