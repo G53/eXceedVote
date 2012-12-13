@@ -5,8 +5,15 @@ import g53.exceedvote.domain.Project;
 import g53.exceedvote.domain.Question;
 
 import java.awt.BorderLayout;
+import java.awt.FileDialog;
 import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.UnsupportedEncodingException;
@@ -14,8 +21,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -26,6 +33,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
+import javax.swing.event.AncestorListener;
 
 import sun.font.EAttribute;
 
@@ -34,8 +42,8 @@ import sun.font.EAttribute;
  * @Version 2012.November.18
  */
 
-public class SetVotingUI {
-	
+public class SetVotingUI
+{
 	private DefaultListModel<Project> modelproject;
 	private DefaultListModel<Question> modelcriteria;
 	private JFrame frame;
@@ -43,7 +51,7 @@ public class SetVotingUI {
 	private JComboBox min;
 	private JLabel colon;
 	private JButton setTime;
-	private JLabel head,criteria;
+	private JLabel time,criteria;
 	private JTextField criteriafield;
 	private JButton criteriaSave;
 	private JLabel projectName;
@@ -64,6 +72,9 @@ public class SetVotingUI {
 	private JScrollPane scrollPane;
 	private JButton browse;
 	private JButton savepic;
+	private String dir = null;
+	private Image m = null;
+	private ImageIcon img = new ImageIcon();
 	private String[] houritem = {"00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"};
 	private String[] minitem = {"00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59"};
 	
@@ -76,7 +87,7 @@ public class SetVotingUI {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initComponents();
 		frame.pack();
-		frame.setSize(640, 480);
+		frame.setSize(1024, 768);
 		frame.setLocation(280, 100);
 		frame.setResizable(false);
 	}
@@ -88,7 +99,7 @@ public class SetVotingUI {
 	public void initComponents() {
 		frame.setLayout(new BorderLayout());
 		JPanel big = new JPanel();
-		big.setLayout(new GridLayout(2,2));
+		big.setLayout(new GridLayout(3,2));
 		JPanel one = new JPanel();
 		one.setLayout(new FlowLayout());
 		JPanel one1 = new JPanel();
@@ -104,7 +115,12 @@ public class SetVotingUI {
 		JPanel three = new JPanel();
 		three.setLayout(new FlowLayout());
 		JPanel four = new JPanel();
-		four.setLayout(new BorderLayout());
+		four.setLayout(new FlowLayout());
+		JPanel five = new JPanel();
+		five.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		JLabel six = new JLabel(img);
+		six.setLayout(new FlowLayout());
 		projects = control.getProject();
 		modelproject = new DefaultListModel<Project>();
 		for (Project p : projects) {
@@ -124,7 +140,7 @@ public class SetVotingUI {
 		criterialist.setVisibleRowCount(6);  
 		criterialist.setFixedCellHeight(30);  
 		criterialist.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		head = new JLabel("Set Voting");
+		time = new JLabel("Set Timing");
 		hour = new JComboBox<String>(houritem);
 		min = new JComboBox<String>(minitem);
 		
@@ -140,14 +156,19 @@ public class SetVotingUI {
 		team = new JTextField(10);
 		teamSave = new JButton("Save");
 		scrollPane = new JScrollPane(projectlist);
-		browse = new JButton("Upload Browse");
+		browse = new JButton("Upload Team's Picture");
+		browse.addActionListener(new axnListener());
+		c.anchor = GridBagConstraints.LAST_LINE_START;
+		five.add(browse);
 		savepic = new JButton("Save Picture");
+		c.anchor = GridBagConstraints.LAST_LINE_END;
+		five.add(savepic);
 		three.add(criteria);
 		three.add(new JScrollPane(criterialist));
 		three.setBorder(BorderFactory.createTitledBorder("Criteria (In Database) :"));
 		
 		four.add(projectName);
-		four.add(scrollPane, BorderLayout.CENTER);
+		four.add(scrollPane);
 		four.setBorder(BorderFactory.createTitledBorder("Project (In Database) :"));
 		
 		two1.add(projectName);
@@ -158,7 +179,7 @@ public class SetVotingUI {
 		two2.add(teamSave);
 		two.add(two2);
 		
-		
+		one1.add(time);
 		one1.add(hour);
 		one1.add(colon);
 		one1.add(min);
@@ -173,7 +194,8 @@ public class SetVotingUI {
 		big.add(three);
 		big.add(two);
 		big.add(four);
-		frame.add(head,BorderLayout.PAGE_START);
+		big.add(six);
+		big.add(five);
 		frame.add(big,BorderLayout.CENTER);
 		
 		// confirm exit
@@ -216,6 +238,34 @@ public class SetVotingUI {
 			return null;
 		}
 	}
+	public void loadImage()
+	  {
+	    FileDialog dlg = new FileDialog(new JFrame(), "Choose Image", FileDialog.LOAD);
+	    //set current directory
+	    if(dir != null){
+	      dlg.setDirectory(dir);
+	    }
+	    dlg.setVisible(true);
+	    //get image name and path
+	    String imgFile = dlg.getDirectory()+dlg.getFile();
+	    dir = dlg.getDirectory();
+	    //create image using filename
+	    Toolkit tk = Toolkit.getDefaultToolkit();
+	    m = tk.getImage(imgFile);
+	    //call repaint to draw image
+	    m.flush();
+	  }
+
+	  //inner class to listen menu actions
+	  class axnListener implements ActionListener{
+	    public void actionPerformed(ActionEvent e){
+	      if(e.getActionCommand().equalsIgnoreCase("Upload Team's Picture")){
+	        loadImage();
+	        img.setImage(m);
+	      }
+	      else System.exit(0);
+	    }
+	  }
 	public static void main(String[] args) {
 		LanguageUI languageUI = new LanguageUI();
 		ResourceBundle language = languageUI.getLanguage();
