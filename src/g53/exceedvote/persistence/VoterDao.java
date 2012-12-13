@@ -136,5 +136,7 @@ public interface VoterDao {
 	public abstract ElectionCommittee getElectionCommittee(String user,String pass);
 
 	public abstract boolean logIn(ElectionCommittee electionCommittee);
+	
+	public abstract void addProject(Project p);
 
 }

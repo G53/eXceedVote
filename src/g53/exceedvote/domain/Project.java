@@ -89,4 +89,7 @@ public class Project {
 	public int getScore(){
 		return score;
 	}
+	public InputStream getBirStream() {
+		return birStream;
+	}
 }

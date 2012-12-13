@@ -5,6 +5,7 @@ import g53.exceedvote.domain.Project;
 import g53.exceedvote.domain.Question;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.FileDialog;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
@@ -21,6 +22,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -71,14 +74,23 @@ public class SetVotingUI
 	private ArrayList<Question> questions;
 	private JScrollPane scrollPane;
 	private JButton browse;
-	private JButton savepic;
 	private String dir = null;
 	private Image m = null;
 	private ImageIcon img = new ImageIcon();
     private JLabel six;
 	private String[] houritem = {"00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"};
 	private String[] minitem = {"00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59"};
-	
+	private JPanel four;
+	private JScrollPane criscrollPane;
+	private JPanel three;
+	private JPanel two;
+	private JPanel big;
+	private JPanel two2;
+	private JPanel two1;
+	private JPanel one2;
+	private JPanel one1;
+	private JPanel one;
+	private JPanel five;
 	
 	public SetVotingUI(Controller control, ResourceBundle language){
 		this.control = control;
@@ -99,25 +111,25 @@ public class SetVotingUI
 	
 	public void initComponents() {
 		frame.setLayout(new BorderLayout());
-		JPanel big = new JPanel();
+		big = new JPanel();
 		big.setLayout(new GridLayout(3,2));
-		JPanel one = new JPanel();
-		one.setLayout(new FlowLayout());
-		JPanel one1 = new JPanel();
-		one1.setLayout(new FlowLayout());
-		JPanel one2 = new JPanel();
-		one2.setLayout(new FlowLayout());
-		JPanel two = new JPanel();
-		two.setLayout(new FlowLayout());
-		JPanel two1 = new JPanel();
-		two1.setLayout(new FlowLayout());
-		JPanel two2 = new JPanel();
-		two2.setLayout(new FlowLayout());
-		JPanel three = new JPanel();
-		three.setLayout(new FlowLayout());
-		JPanel four = new JPanel();
-		four.setLayout(new FlowLayout());
-		JPanel five = new JPanel();
+		one = new JPanel();
+		one.setLayout(new FlowLayout(FlowLayout.LEFT));
+		one1 = new JPanel();
+		one1.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
+		one2 = new JPanel();
+		one2.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
+		two = new JPanel();
+		two.setLayout(new FlowLayout(FlowLayout.LEFT));
+		two1 = new JPanel();
+		two1.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
+		two2 = new JPanel();
+		two2.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
+		three = new JPanel();
+		three.setLayout(new BorderLayout());
+		four = new JPanel();
+		four.setLayout(new BorderLayout());
+		five = new JPanel();
 		five.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		six = new JLabel(img);
@@ -130,7 +142,7 @@ public class SetVotingUI
 		projectlist = new JList<Project>(modelproject);
 		projectlist.setVisibleRowCount(6);  
 	    projectlist.setFixedCellHeight(30);  
-	    projectlist.setFixedCellWidth(200);  
+	    projectlist.setFixedCellWidth(344);  
 	    projectlist.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		questions = control.getQuestion();
 		modelcriteria = new DefaultListModel<Question>();
@@ -139,7 +151,8 @@ public class SetVotingUI
 		}
 		criterialist = new JList<Question>(modelcriteria);
 		criterialist.setVisibleRowCount(6);  
-		criterialist.setFixedCellHeight(30);  
+		criterialist.setFixedCellHeight(30);
+		criterialist.setFixedCellWidth(344);
 		criterialist.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		time = new JLabel(encode("Set_Timing"));
 		hour = new JComboBox<String>(houritem);
@@ -148,28 +161,30 @@ public class SetVotingUI
 		colon = new JLabel(" : ");
 		setTime = new JButton(encode("Save"));
 		criteria = new JLabel(encode("Question"));
-		criteriafield = new JTextField(10);
+		criteriafield = new JTextField(20);
 		criteriaSave = new JButton(encode("Save"));
-		
+		addProject = new JButton("Add Project");
+		addQuestion = new JButton("Add Question");
 		projectName = new JLabel(encode("ProjectName"));
-		project = new JTextField(10);
+		project = new JTextField(20);
 		teamName = new JLabel(encode("TeamName"));
-		team = new JTextField(10);
+		team = new JTextField(20);
 		teamSave = new JButton(encode("Save"));
+		criscrollPane = new JScrollPane(criterialist);
 		scrollPane = new JScrollPane(projectlist);
 		browse = new JButton(encode("UploadPic"));
 		browse.addActionListener(new axnListener());
-		c.anchor = GridBagConstraints.LAST_LINE_START;
 		five.add(browse);
-		savepic = new JButton(encode("Save"));
+		c.anchor = GridBagConstraints.LAST_LINE_START;
+		five.add(teamSave);
 		c.anchor = GridBagConstraints.LAST_LINE_END;
-		five.add(savepic);
-		three.add(criteria);
-		three.add(new JScrollPane(criterialist));
+		
+		three.add(criscrollPane,BorderLayout.CENTER);
+		three.add(addQuestion,BorderLayout.PAGE_END);
 		three.setBorder(BorderFactory.createTitledBorder(encode("Question")));
 		
-		four.add(projectName);
-		four.add(scrollPane);
+		four.add(scrollPane,BorderLayout.CENTER);
+		four.add(addProject,BorderLayout.PAGE_END);
 		four.setBorder(BorderFactory.createTitledBorder(encode("Project")));
 		
 		two1.add(projectName);
@@ -177,7 +192,6 @@ public class SetVotingUI
 		two.add(two1);
 		two2.add(teamName);
 		two2.add(team);
-		two2.add(teamSave);
 		two.add(two2);
 		
 		one1.add(time);
@@ -261,9 +275,19 @@ public class SetVotingUI
 	  class axnListener implements ActionListener{
 	    public void actionPerformed(ActionEvent e){
 	        loadImage();
-	        img.setImage(m);
+	        img.setImage(m.getScaledInstance(341, 348, 1));
 	        six.revalidate();
 	        six.repaint();
 	    }
 	}
+	  class teamSaveListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			// TODO Auto-generated method stub
+			if (projectlist.isSelectionEmpty()) {
+				String tempteam = team.getText();
+			}
+		}
+		  
+	  }
 }
