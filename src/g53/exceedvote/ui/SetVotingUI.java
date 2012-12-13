@@ -75,6 +75,7 @@ public class SetVotingUI
 	private String dir = null;
 	private Image m = null;
 	private ImageIcon img = new ImageIcon();
+    private JLabel six;
 	private String[] houritem = {"00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"};
 	private String[] minitem = {"00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59"};
 	
@@ -83,7 +84,7 @@ public class SetVotingUI
 		this.control = control;
     	this.language = language;
 		frame = new JFrame();		
-		frame.setTitle("Voting Configurating");
+		frame.setTitle(encode("Voting_Configuration"));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initComponents();
 		frame.pack();
@@ -119,7 +120,7 @@ public class SetVotingUI
 		JPanel five = new JPanel();
 		five.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
-		JLabel six = new JLabel(img);
+		six = new JLabel(img);
 		six.setLayout(new FlowLayout());
 		projects = control.getProject();
 		modelproject = new DefaultListModel<Project>();
@@ -140,23 +141,23 @@ public class SetVotingUI
 		criterialist.setVisibleRowCount(6);  
 		criterialist.setFixedCellHeight(30);  
 		criterialist.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		time = new JLabel("Set Timing");
+		time = new JLabel(encode("Set_Timing"));
 		hour = new JComboBox<String>(houritem);
 		min = new JComboBox<String>(minitem);
 		
 		colon = new JLabel(" : ");
-		setTime = new JButton("Save");
-		criteria = new JLabel("Criteria");
+		setTime = new JButton(encode("Save"));
+		criteria = new JLabel(encode("Question"));
 		criteriafield = new JTextField(10);
-		criteriaSave = new JButton("Save");
+		criteriaSave = new JButton(encode("Save"));
 		
-		projectName = new JLabel("ProjectName");
+		projectName = new JLabel(encode("ProjectName"));
 		project = new JTextField(10);
-		teamName = new JLabel("Team   Name");
+		teamName = new JLabel(encode("TeamName"));
 		team = new JTextField(10);
-		teamSave = new JButton("Save");
+		teamSave = new JButton(encode("Save"));
 		scrollPane = new JScrollPane(projectlist);
-		browse = new JButton("Upload Team's Picture");
+		browse = new JButton(encode("UploadPic"));
 		browse.addActionListener(new axnListener());
 		c.anchor = GridBagConstraints.LAST_LINE_START;
 		five.add(browse);
@@ -165,11 +166,11 @@ public class SetVotingUI
 		five.add(savepic);
 		three.add(criteria);
 		three.add(new JScrollPane(criterialist));
-		three.setBorder(BorderFactory.createTitledBorder("Criteria (In Database) :"));
+		three.setBorder(BorderFactory.createTitledBorder(encode("Question")));
 		
 		four.add(projectName);
 		four.add(scrollPane);
-		four.setBorder(BorderFactory.createTitledBorder("Project (In Database) :"));
+		four.setBorder(BorderFactory.createTitledBorder(encode("Project")));
 		
 		two1.add(projectName);
 		two1.add(project);
@@ -240,7 +241,7 @@ public class SetVotingUI
 	}
 	public void loadImage()
 	  {
-	    FileDialog dlg = new FileDialog(new JFrame(), "Choose Image", FileDialog.LOAD);
+	    FileDialog dlg = new FileDialog(new JFrame(), encode("Choose_Image"), FileDialog.LOAD);
 	    //set current directory
 	    if(dir != null){
 	      dlg.setDirectory(dir);
@@ -253,16 +254,16 @@ public class SetVotingUI
 	    Toolkit tk = Toolkit.getDefaultToolkit();
 	    m = tk.getImage(imgFile);
 	    //call repaint to draw image
-	    m.flush();
+	    //m.flush();
 	  }
 
 	  //inner class to listen menu actions
 	  class axnListener implements ActionListener{
 	    public void actionPerformed(ActionEvent e){
-	      if(e.getActionCommand().equalsIgnoreCase("Upload Team's Picture")){
 	        loadImage();
 	        img.setImage(m);
-	      }
+	        six.revalidate();
+	        six.repaint();
 	    }
 	}
 }
