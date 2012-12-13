@@ -13,6 +13,8 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.UnsupportedEncodingException;
 import java.util.ResourceBundle;
 
@@ -111,6 +113,30 @@ public class LoginUI extends RecordLog implements InterfaceUI{
         frame.add(pl1, BorderLayout.NORTH);
         frame.add(pl2, BorderLayout.CENTER);
         frame.add(pl3, BorderLayout.SOUTH);
+        
+     // confirm exit
+     		frame.addWindowListener(new WindowAdapter() {
+     			public void windowClosing(WindowEvent e) {
+     				String textYes = encode("textYes");
+					String textNo = encode("textNo");
+					String textTitle = encode("textTitle");
+					String textMessage = encode("textMessage");
+     				Object[] options = { textYes, textNo };
+     				int result = JOptionPane
+     						.showOptionDialog(frame, textTitle, textMessage,
+     								JOptionPane.YES_NO_OPTION,
+     								JOptionPane.QUESTION_MESSAGE, null, options,
+     								options[0]);
+
+     				if(result == JOptionPane.YES_OPTION) {
+     			           ((JFrame)e.getSource()).setDefaultCloseOperation(
+     			                   JFrame.EXIT_ON_CLOSE);
+     			        } else {
+     			           ((JFrame)e.getSource()).setDefaultCloseOperation(
+     			                   JFrame.DO_NOTHING_ON_CLOSE);
+     			        }
+     			}
+     		});
     }
 
     public String getName() {
@@ -129,17 +155,18 @@ public class LoginUI extends RecordLog implements InterfaceUI{
 			userName = inputField1.getText();
 			typepass = inputField2.getText();
 			if (control.login(userName, typepass)) {				
-				JOptionPane.showMessageDialog(null, control.getCurMessage());
+				JOptionPane.showMessageDialog(null,  encode("success"));
 				close();
 				isLogin = true;
 			} 
 			else if (control.loginElectionCommittee(userName, typepass)) {
-				JOptionPane.showMessageDialog(null, control.getCurMessage());
+				JOptionPane.showMessageDialog(null, encode("success"));
 				close();
 				isLogin = true;
 			}
 			else {	
-				JOptionPane.showMessageDialog(null, control.getCurMessage());
+				JOptionPane.showMessageDialog(null, encode("fail"));
+				control.recordLoginFail(userName);
 			}
 			inputField2.setText(null);
 		}
@@ -150,7 +177,7 @@ public class LoginUI extends RecordLog implements InterfaceUI{
 
         @Override
         public void actionPerformed(ActionEvent arg0) {
-            close();
+            System.exit(0);
         }
     }
 
