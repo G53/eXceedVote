@@ -263,15 +263,6 @@ public class SetVotingUI
 	        loadImage();
 	        img.setImage(m);
 	      }
-	      else System.exit(0);
 	    }
-	  }
-	public static void main(String[] args) {
-		LanguageUI languageUI = new LanguageUI();
-		ResourceBundle language = languageUI.getLanguage();
-		Controller control = new Controller();
-		control.connect();
-		SetVotingUI ui = new SetVotingUI(control, language);
-		ui.run();
 	}
 }
