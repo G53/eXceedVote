@@ -1,6 +1,8 @@
 package g53.exceedvote.persistence.jdbc;
 
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -170,8 +172,13 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 		} else {
 			this.voter = voter;
 			messageLog = "Login success!";
-			record("IDNo: " + voter.getId() + "| Username" + ":"
-					+ voter.getName() + " - " + messageLog);
+			try {
+				record("IDNo: " + voter.getId() + "| Username: "
+						+ voter.getName() + " - " + messageLog + " IP: "+InetAddress.getLocalHost().getHostAddress().toString());
+			} catch (UnknownHostException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			return true;
 		}
 	}
