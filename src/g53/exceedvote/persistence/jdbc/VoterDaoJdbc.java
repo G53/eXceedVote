@@ -1,6 +1,9 @@
 package g53.exceedvote.persistence.jdbc;
 
 
+import java.io.InputStream;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -10,6 +13,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -38,6 +43,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 	private String messageLog;
 	private Voter voter;
 	private ElectionCommittee electionCommittee;
+	private FileInputStream fis;
 
 	/**
 	 * Load the driver that is SQL or not
@@ -63,7 +69,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 
 		try {
 			con = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/exceed_vote", "root", "");
+					"jdbc:mysql://localhost:3306/exceed_vote", System.getProperty("user.name"), "");
 			stmt = con.createStatement();
 			// turn on autocommit
 			con.setAutoCommit(true);
@@ -116,8 +122,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 		try {
 			rs = stmt.executeQuery(query);
 			while (rs.next()) {
-				arrProject.add(new Project(rs.getInt("ID"), rs
-						.getNString("name"), rs.getNString("teamname")));
+				arrProject.add(new Project(rs.getInt("ID"), rs.getNString("name"), rs.getNString("teamname"),rs.getBinaryStream("Pictures")));
 			}
 			record("Access Project Database");
 			return arrProject;
@@ -152,7 +157,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 		} catch (Exception e) {
 			record("Can't get User from Database");
 		}
-		record("User: " + user + "- Login fail");
+		
 		return null;
 	}
 
@@ -170,8 +175,13 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 		} else {
 			this.voter = voter;
 			messageLog = "Login success!";
-			record("IDNo: " + voter.getId() + "| Username" + ":"
-					+ voter.getName() + " - " + messageLog);
+			try {
+				record("IDNo: " + voter.getId() + "| Username: "
+						+ voter.getName() + " - " + messageLog + " |IP: "+InetAddress.getLocalHost().getHostAddress().toString());
+			} catch (UnknownHostException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			return true;
 		}
 	}
@@ -216,7 +226,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 			int score, Timestamp votetime) {
 		boolean unique = true;
 		try {
-			ResultSet resultset = stmt.executeQuery("SELECT * FROM User");
+			ResultSet resultset = stmt.executeQuery("SELECT * FROM Vote");
 			while (resultset.next()) {
 				if (resultset.getInt("user_id") == user_id
 						&& resultset.getInt("project_id") == project_id
@@ -239,10 +249,9 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 	 * @throws SQLException
 	 */
 	@Override
-	public DefaultTableModel voteResult(DefaultTableModel model)
-			throws SQLException {
+	public DefaultTableModel voteResult(DefaultTableModel model, int id) throws SQLException {
 		ResultSet row = stmt
-				.executeQuery("SELECT project.teamname,sum(vote.score) as total_vote_score, question.questions FROM vote,voter,question,project WHERE voter.ID = vote.user_id and project.ID = vote.project_id and question.ID = vote.question_id GROUP BY project.teamname ORDER BY  total_vote_score DESC");
+				.executeQuery("SELECT project.teamname,sum(vote.score) as total_vote_score FROM vote,user,question,project WHERE user.ID = vote.user_id and project.ID = vote.project_id and question.ID = vote.question_id and question.ID = "+ id + " GROUP BY project.teamname ORDER BY  total_vote_score DESC");
 		ResultSetMetaData meta = row.getMetaData();
 		if (model == null)
 			model = new DefaultTableModel();
@@ -377,7 +386,6 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 		} catch (Exception e) {
 			record("Can't get Election Committee from Database");
 		}
-		record("Election Committee: " + user + "- Login fail");
 		return null;
 	}
 
@@ -390,9 +398,52 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 		} else {
 			this.electionCommittee = electionCommittee;
 			messageLog = "Login success!";
-			record("IDNo: " + this.electionCommittee.getId() + "| Username" + ":"
-					+ this.electionCommittee.getName() + " - " + messageLog);
+			try {
+				record("IDNo: " + this.electionCommittee.getId() + "| Username" + ":"
+						+ this.electionCommittee.getName() + " - " + messageLog + " |IP: "+InetAddress.getLocalHost().getHostAddress().toString());
+			} catch (UnknownHostException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			return true;
+		}
+	}
+//	public boolean isVoted(int user_id) {
+//	boolean voted = true;
+//	try {
+//		ResultSet resultset = stmt.executeQuery("SELECT User.username, Project.name,Question.questions FROM Vote,Project,User,Question WHERE User.ID = vote.user_id AND Project.ID = vote.project_id AND Question.ID = vote.question_id AND vote.user_id = " + );
+//		while (resultset.next()) {
+//			if (resultset.getInt("user_id") == user_id
+//					&& resultset.getInt("project_id") == project_id
+//					&& resultset.getInt("question_id") == question_id) {
+//				voted = false;
+//			}
+//		}
+//	} catch (SQLException e) {
+//		// TODO Auto-generated catch block
+//		record("Having duplicated record in Database");
+//	}
+//	return voted;
+//}
+
+	@Override
+	public void addProject(Project p) {
+		// TODO Auto-generated method stub
+		long ID = p.getID()
+		String tname = p.getTeamName();
+		String pname = p.getProjectName();
+		ImageIcon imc = p.getImage();
+		try {
+			String queryin = "INSERT INTO user (ID, username, password,Pictures) VALUES (?,?,?,?)";
+			pstmt = con.prepareStatement(queryin);
+			pstmt.setInt(1, (int)ID);
+			pstmt.setString(2, username);
+			pstmt.setString(3, password);
+			fis = new FileInputStream(imc.getImage());
+			pstmt.setBinaryStream(4, (InputStream)fis, imc.getImage().l)
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			record("Can't insert user record");
 		}
 	}
 }

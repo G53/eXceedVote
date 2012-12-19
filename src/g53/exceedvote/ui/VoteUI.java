@@ -10,21 +10,19 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.UnsupportedEncodingException;
-import java.sql.Date;
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -33,6 +31,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
+import javax.swing.JTextPane;
 
 import g53.exceedvote.controller.Controller;
 import g53.exceedvote.domain.*;
@@ -65,11 +64,12 @@ public class VoteUI extends RecordLog implements InterfaceUI{
 	private Map<String, Project> map = new HashMap<String, Project>();
 	private String s;
 	private ArrayList<Question> listQues;
-	private TextArea tx = new TextArea();
+	private JTextPane tx = new JTextPane();
 	private String temp;
 	private Controller control;
 	private ResourceBundle language;
-
+	private ImageIcon images;
+	
 	public VoteUI(Controller control,ResourceBundle language) {
 		this.control = control;
 		this.language = language;
@@ -141,6 +141,30 @@ public class VoteUI extends RecordLog implements InterfaceUI{
 		frame.add(scllpl, BorderLayout.CENTER);
 		frame.add(questionPlane, BorderLayout.NORTH);
 		frame.add(buttonPlane, BorderLayout.SOUTH);
+		
+		// confirm exit
+				frame.addWindowListener(new WindowAdapter() {
+					public void windowClosing(WindowEvent e) {
+						String textYes = encode("textYes");
+						String textNo = encode("textNo");
+						String textTitle = encode("textTitle");
+						String textMessage = encode("textMessage");
+						Object[] options = { textYes, textNo };
+						int result = JOptionPane
+								.showOptionDialog(frame, textTitle, textMessage,
+										JOptionPane.YES_NO_OPTION,
+										JOptionPane.QUESTION_MESSAGE, null, options,
+										options[0]);
+
+						if(result == JOptionPane.YES_OPTION) {
+					           ((JFrame)e.getSource()).setDefaultCloseOperation(
+					                   JFrame.EXIT_ON_CLOSE);
+					        } else {
+					           ((JFrame)e.getSource()).setDefaultCloseOperation(
+					                   JFrame.DO_NOTHING_ON_CLOSE);
+					        }
+					}
+				});
 
 	}
 
@@ -218,7 +242,6 @@ public class VoteUI extends RecordLog implements InterfaceUI{
 
 				clearRadioButton();
 				frame.dispose();
-				ResultUI resultUI = new ResultUI();
 			}
 		}
 	}
@@ -235,8 +258,8 @@ public class VoteUI extends RecordLog implements InterfaceUI{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			s = e.getActionCommand();
-			tx.setText(descrip + "This project is " + s + " made by "
-					+ map.get(s).getTeamName());
+			tx.setText(descrip + "This project is " + s + " made by " + map.get(s).getTeamName() + "\n");
+			tx.insertIcon(map.get(s).getImage());
 		}
 	}
 
