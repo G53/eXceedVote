@@ -1,6 +1,8 @@
 package g53.exceedvote.domain;
 
 import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -44,7 +46,7 @@ public class Project {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		pictureImage = new ImageIcon(img.getScaledInstance(200, 200, 1));
+		pictureImage = new ImageIcon(img);
 	}
 	
 	public ImageIcon getImage() {

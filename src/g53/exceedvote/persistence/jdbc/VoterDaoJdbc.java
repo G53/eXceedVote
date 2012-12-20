@@ -1,6 +1,7 @@
 package g53.exceedvote.persistence.jdbc;
 
 
+import java.awt.Image;
 import java.io.InputStream;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -43,7 +44,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 	private String messageLog;
 	private Voter voter;
 	private ElectionCommittee electionCommittee;
-	private FileInputStream fis;
+//	private FileInputStream fis;
 
 	/**
 	 * Load the driver that is SQL or not
@@ -69,7 +70,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 
 		try {
 			con = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/exceed_vote", System.getProperty("user.name"), "");
+					"jdbc:mysql://localhost:3306/exceed_vote", "root", "password");
 			stmt = con.createStatement();
 			// turn on autocommit
 			con.setAutoCommit(true);
@@ -429,21 +430,63 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 	@Override
 	public void addProject(Project p) {
 		// TODO Auto-generated method stub
-		long ID = p.getID()
 		String tname = p.getTeamName();
 		String pname = p.getProjectName();
-		ImageIcon imc = p.getImage();
+		InputStream in = p.getBirStream();
 		try {
-			String queryin = "INSERT INTO user (ID, username, password,Pictures) VALUES (?,?,?,?)";
+			String queryin = "INSERT INTO project (name, teamname,Pictures) VALUES (?,?,?)";
 			pstmt = con.prepareStatement(queryin);
-			pstmt.setInt(1, (int)ID);
-			pstmt.setString(2, username);
-			pstmt.setString(3, password);
-			fis = new FileInputStream(imc.getImage());
-			pstmt.setBinaryStream(4, (InputStream)fis, imc.getImage().l)
+			pstmt.setString(1, tname);
+			pstmt.setString(2, pname);
+			pstmt.setBinaryStream(3, in);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			record("Can't insert user record");
 		}
 	}
+
+	@Override
+	public void modifyProject(int id,String name,String teamname,InputStream in) {
+		// TODO Auto-generated method stub
+		try {
+			String queryin = "UPDATE project SET name = ?, teamname = ?, Picture = ? WHERE ID = ?";
+			pstmt = con.prepareStatement(queryin);
+			pstmt.setString(1, name);
+			pstmt.setString(2, teamname);
+			pstmt.setBinaryStream(3, in);
+			pstmt.setInt(4, id);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			record("Can't insert user record");
+		}
+	}
+
+	@Override
+	public void addQuestion(Question q) {
+		// TODO Auto-generated method stub
+		String question = q.getQuestion();
+		try {
+			String queryin = "INSERT INTO question (questions) VALUES (?)";
+			pstmt = con.prepareStatement(queryin);
+			pstmt.setString(1, question);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			record("Can't insert user record");
+		}
+	}
+
+	@Override
+	public void modifyQuestion(int id, String changeQuestion) {
+		// TODO Auto-generated method stub
+		try {
+			String queryin = "UPDATE question SET questions = ? WHERE ID = ?";
+			pstmt = con.prepareStatement(queryin);
+			pstmt.setString(1, changeQuestion);
+			pstmt.setInt(2, id);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			record("Can't insert user record");
+		}
+	}
+	
 }

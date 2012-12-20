@@ -1,6 +1,7 @@
 package g53.exceedvote.persistence;
 
 
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -138,5 +139,10 @@ public interface VoterDao {
 	public abstract boolean logIn(ElectionCommittee electionCommittee);
 	
 	public abstract void addProject(Project p);
+	
+	public abstract void modifyProject(int id, String name,String teamname,InputStream in);
+	
+	public abstract void addQuestion(Question q);
 
+	public abstract void modifyQuestion(int id, String changeQuestion);
 }

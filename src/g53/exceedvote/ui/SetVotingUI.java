@@ -17,10 +17,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -37,16 +41,17 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.AncestorListener;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import sun.font.EAttribute;
 
 /**
- * @author	Guysit Koonrungruang 5310547185
+ * @author Guysit Koonrungruang 5310547185
  * @Version 2012.November.18
  */
 
-public class SetVotingUI
-{
+public class SetVotingUI {
 	private DefaultListModel<Project> modelproject;
 	private DefaultListModel<Question> modelcriteria;
 	private JFrame frame;
@@ -54,7 +59,7 @@ public class SetVotingUI
 	private JComboBox min;
 	private JLabel colon;
 	private JButton setTime;
-	private JLabel time,criteria;
+	private JLabel time, criteria;
 	private JTextField criteriafield;
 	private JButton criteriaSave;
 	private JLabel projectName;
@@ -77,9 +82,16 @@ public class SetVotingUI
 	private String dir = null;
 	private Image m = null;
 	private ImageIcon img = new ImageIcon();
-    private JLabel six;
-	private String[] houritem = {"00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"};
-	private String[] minitem = {"00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59"};
+	private JLabel six;
+	private String[] houritem = { "00", "01", "02", "03", "04", "05", "06",
+			"07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17",
+			"18", "19", "20", "21", "22", "23" };
+	private String[] minitem = { "00", "01", "02", "03", "04", "05", "06",
+			"07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17",
+			"18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28",
+			"29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39",
+			"40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50",
+			"51", "52", "53", "54", "55", "56", "57", "58", "59" };
 	private JPanel four;
 	private JScrollPane criscrollPane;
 	private JPanel three;
@@ -91,11 +103,11 @@ public class SetVotingUI
 	private JPanel one1;
 	private JPanel one;
 	private JPanel five;
-	
-	public SetVotingUI(Controller control, ResourceBundle language){
+
+	public SetVotingUI(Controller control, ResourceBundle language) {
 		this.control = control;
-    	this.language = language;
-		frame = new JFrame();		
+		this.language = language;
+		frame = new JFrame();
 		frame.setTitle(encode("Voting_Configuration"));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initComponents();
@@ -104,27 +116,27 @@ public class SetVotingUI
 		frame.setLocation(280, 100);
 		frame.setResizable(false);
 	}
-	
+
 	public void run() {
 		frame.setVisible(true);
 	}
-	
+
 	public void initComponents() {
 		frame.setLayout(new BorderLayout());
 		big = new JPanel();
-		big.setLayout(new GridLayout(3,2));
+		big.setLayout(new GridLayout(3, 2));
 		one = new JPanel();
 		one.setLayout(new FlowLayout(FlowLayout.LEFT));
 		one1 = new JPanel();
-		one1.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
+		one1.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
 		one2 = new JPanel();
-		one2.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
+		one2.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
 		two = new JPanel();
 		two.setLayout(new FlowLayout(FlowLayout.LEFT));
 		two1 = new JPanel();
-		two1.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
+		two1.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
 		two2 = new JPanel();
-		two2.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
+		two2.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
 		three = new JPanel();
 		three.setLayout(new BorderLayout());
 		four = new JPanel();
@@ -140,24 +152,24 @@ public class SetVotingUI
 			modelproject.addElement(p);
 		}
 		projectlist = new JList<Project>(modelproject);
-		projectlist.setVisibleRowCount(6);  
-	    projectlist.setFixedCellHeight(30);  
-	    projectlist.setFixedCellWidth(344);  
-	    projectlist.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		projectlist.setVisibleRowCount(6);
+		projectlist.setFixedCellHeight(30);
+		projectlist.setFixedCellWidth(344);
+		projectlist.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		questions = control.getQuestion();
 		modelcriteria = new DefaultListModel<Question>();
 		for (Question q : questions) {
 			modelcriteria.addElement(q);
 		}
 		criterialist = new JList<Question>(modelcriteria);
-		criterialist.setVisibleRowCount(6);  
+		criterialist.setVisibleRowCount(6);
 		criterialist.setFixedCellHeight(30);
 		criterialist.setFixedCellWidth(344);
 		criterialist.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		time = new JLabel(encode("Set_Timing"));
 		hour = new JComboBox<String>(houritem);
 		min = new JComboBox<String>(minitem);
-		
+
 		colon = new JLabel(" : ");
 		setTime = new JButton(encode("Save"));
 		criteria = new JLabel(encode("Question"));
@@ -178,22 +190,28 @@ public class SetVotingUI
 		c.anchor = GridBagConstraints.LAST_LINE_START;
 		five.add(teamSave);
 		c.anchor = GridBagConstraints.LAST_LINE_END;
-		
-		three.add(criscrollPane,BorderLayout.CENTER);
-		three.add(addQuestion,BorderLayout.PAGE_END);
+
+		three.add(criscrollPane, BorderLayout.CENTER);
+		three.add(addQuestion, BorderLayout.PAGE_END);
 		three.setBorder(BorderFactory.createTitledBorder(encode("Question")));
-		
-		four.add(scrollPane,BorderLayout.CENTER);
-		four.add(addProject,BorderLayout.PAGE_END);
+
+		four.add(scrollPane, BorderLayout.CENTER);
+		four.add(addProject, BorderLayout.PAGE_END);
 		four.setBorder(BorderFactory.createTitledBorder(encode("Project")));
-		
+
+		teamSave.addActionListener(new teamSaveListener());
+		criteriaSave.addActionListener(new questionSave());
+		projectlist.addListSelectionListener(new projectListSelected());
+		criterialist.addListSelectionListener(new criteriaListSelected());
+		addProject.addActionListener(new addNewProject());
+		addQuestion.addActionListener(new addNewQuestion());
 		two1.add(projectName);
 		two1.add(project);
 		two.add(two1);
 		two2.add(teamName);
 		two2.add(team);
 		two.add(two2);
-		
+
 		one1.add(time);
 		one1.add(hour);
 		one1.add(colon);
@@ -204,48 +222,51 @@ public class SetVotingUI
 		one2.add(criteriafield);
 		one2.add(criteriaSave);
 		one.add(one2);
-		
+
 		big.add(one);
 		big.add(three);
 		big.add(two);
 		big.add(four);
 		big.add(six);
 		big.add(five);
-		frame.add(big,BorderLayout.CENTER);
-		
-		// confirm exit
-				frame.addWindowListener(new WindowAdapter() {
-					public void windowClosing(WindowEvent e) {
-						String textYes = encode("textYes");
-						String textNo = encode("textNo");
-						String textTitle = encode("textTitle");
-						String textMessage = encode("textMessage");
-						Object[] options = { textYes, textNo };
-						int result = JOptionPane
-								.showOptionDialog(frame, textTitle, textMessage,
-										JOptionPane.YES_NO_OPTION,
-										JOptionPane.QUESTION_MESSAGE, null, options,
-										options[0]);
+		frame.add(big, BorderLayout.CENTER);
 
-						if(result == JOptionPane.YES_OPTION) {
-					           ((JFrame)e.getSource()).setDefaultCloseOperation(
-					                   JFrame.EXIT_ON_CLOSE);
-					        } else {
-					           ((JFrame)e.getSource()).setDefaultCloseOperation(
-					                   JFrame.DO_NOTHING_ON_CLOSE);
-					        }
-					}
-				});
-		
+		// confirm exit
+		frame.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				String textYes = encode("textYes");
+				String textNo = encode("textNo");
+				String textTitle = encode("textTitle");
+				String textMessage = encode("textMessage");
+				Object[] options = { textYes, textNo };
+				int result = JOptionPane
+						.showOptionDialog(frame, textTitle, textMessage,
+								JOptionPane.YES_NO_OPTION,
+								JOptionPane.QUESTION_MESSAGE, null, options,
+								options[0]);
+
+				if (result == JOptionPane.YES_OPTION) {
+					((JFrame) e.getSource())
+							.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				} else {
+					((JFrame) e.getSource())
+							.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+				}
+			}
+		});
+
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see g53.exceedvote.ui.InterfaceUI#encode(java.lang.String)
 	 */
-	public String encode(String key){
+	public String encode(String key) {
 		try {
-			return new String(language.getString(key).getBytes("ISO8859-1"), "UTF-8");
-			
+			return new String(language.getString(key).getBytes("ISO8859-1"),
+					"UTF-8");
+
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -253,41 +274,130 @@ public class SetVotingUI
 			return null;
 		}
 	}
-	public void loadImage()
-	  {
-	    FileDialog dlg = new FileDialog(new JFrame(), encode("Choose_Image"), FileDialog.LOAD);
-	    //set current directory
-	    if(dir != null){
-	      dlg.setDirectory(dir);
-	    }
-	    dlg.setVisible(true);
-	    //get image name and path
-	    String imgFile = dlg.getDirectory()+dlg.getFile();
-	    dir = dlg.getDirectory();
-	    //create image using filename
-	    Toolkit tk = Toolkit.getDefaultToolkit();
-	    m = tk.getImage(imgFile);
-	    //call repaint to draw image
-	    //m.flush();
-	  }
 
-	  //inner class to listen menu actions
-	  class axnListener implements ActionListener{
-	    public void actionPerformed(ActionEvent e){
-	        loadImage();
-	        img.setImage(m.getScaledInstance(341, 348, 1));
-	        six.revalidate();
-	        six.repaint();
-	    }
+	public void loadImage() {
+		FileDialog dlg = new FileDialog(new JFrame(), encode("Choose_Image"),
+				FileDialog.LOAD);
+		// set current directory
+		if (dir != null) {
+			dlg.setDirectory(dir);
+		}
+		dlg.setVisible(true);
+		// get image name and path
+		String imgFile = dlg.getDirectory() + dlg.getFile();
+		dir = dlg.getDirectory();
+		// create image using filename
+		Toolkit tk = Toolkit.getDefaultToolkit();
+		m = tk.getImage(imgFile);
+		// call repaint to draw image
+		// m.flush();
 	}
-	  class teamSaveListener implements ActionListener {
+
+	// inner class to listen menu actions
+	class axnListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			loadImage();
+			img.setImage(m.getScaledInstance(341, 348, 1));
+			six.revalidate();
+			six.repaint();
+		}
+	}
+
+	class teamSaveListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			// TODO Auto-generated method stub
 			if (projectlist.isSelectionEmpty()) {
-				String tempteam = team.getText();
+				String tempTeam = team.getText();
+				String projName = project.getText();
+				InputStream in = null;
+				try {
+					in = (InputStream) ImageIO.createImageInputStream(m);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				Project p = new Project(0, tempTeam, projName, in);
+				control.addProject(p);
+			} else {
+				Project p = projectlist.getSelectedValue();
+				long id = p.getID();
+				String changeName = project.getText();
+				String teamNameChange = team.getText();
+				InputStream in = null;
+				try {
+					in = (InputStream) ImageIO.createImageInputStream(m);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				control.modifyProject((int) id, teamNameChange, changeName, in);
 			}
 		}
-		  
-	  }
+	}
+
+	class questionSave implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			if (criterialist.isSelectionEmpty()) {
+				String tempq = criteriafield.getText();
+				Question q = new Question(0, tempq);
+				control.addQuestion(q);
+				modelcriteria.addElement(q);
+			} else {
+				Question q = criterialist.getSelectedValue();
+				long id = q.getQuestionID();
+				String changeQuestion = criteria.getText();
+				control.modifyQuestion((int) id, changeQuestion);
+			}
+		}
+	}
+
+	class criteriaListSelected implements ListSelectionListener {
+
+		@Override
+		public void valueChanged(ListSelectionEvent e) {
+			// TODO Auto-generated method stub
+			if (!criterialist.isSelectionEmpty()) {
+				Question q = criterialist.getSelectedValue();
+				criteriafield.setText(q.getQuestion());
+			}
+		}
+	}
+	class projectListSelected implements ListSelectionListener {
+
+		@Override
+		public void valueChanged(ListSelectionEvent e) {
+			// TODO Auto-generated method stub
+			if (!projectlist.isSelectionEmpty()) {
+				Project p = projectlist.getSelectedValue();
+				project.setText(p.getProjectName());
+				team.setText(p.getTeamName());
+				img.setImage(p.getImage().getImage());
+				six.repaint();
+			} 
+		}
+	}
+	class addNewProject implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			project.setText("");
+			team.setText("");
+			six.revalidate();
+		}
+	}
+	class addNewQuestion implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			criteriafield.setText("");
+		}
+		
+	}
 }
