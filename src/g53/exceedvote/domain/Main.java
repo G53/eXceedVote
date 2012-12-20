@@ -44,17 +44,17 @@ public class Main {
 				e.printStackTrace();
 			}
 		}
-		//set language
+		// set language
 		ResourceBundle language = languageUI.getLanguage();
 		Controller control = new Controller();
-		//counter for check timeout
+		// counter for check timeout
 		int i = 0;
 		InterfaceUI loadUI = new LoadingUI(language);
 		do {
 			try {
 				Thread.sleep(50);
 				i++;
-				//timeout after wait 5 sec
+				// timeout after wait 5 sec
 				if (i > 10) {
 					JOptionPane
 							.showMessageDialog(null, control.getCurMessage());
@@ -67,7 +67,7 @@ public class Main {
 			}
 		} while (!control.connect());
 		loadUI.close();
-		//run loginUI
+		// run loginUI
 		LoginUI loginUI = new LoginUI(control, language);
 		loginUI.run();
 		while (!loginUI.getSatus()) {
@@ -78,37 +78,54 @@ public class Main {
 				e.printStackTrace();
 			}
 		}
-		//login success
-		if(loginUI.getRole().equalsIgnoreCase("voter")){
-			//create voteUI for vote
-			
-			
+		// login success
+		if (loginUI.getRole().equalsIgnoreCase("voter")) {
+			// create voteUI for vote
+
 			MenuUI menuUI = new MenuUI(control, language);
 			menuUI.run();
-			while(menuUI.getMenuSelect()==null){
-				try {
-					Thread.sleep(1);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+			while (true) {
+				while (menuUI.getMenuSelect() == null) {
+					try {
+						Thread.sleep(1);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
+				if (menuUI.getMenuSelect().equalsIgnoreCase("vote")) {
+					VoteUI voteUI = new VoteUI(control, language);
+					menuUI.close();
+					voteUI.run();
+					while(!voteUI.isClose()){
+						try {
+							Thread.sleep(1);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					voteUI.close();
+				} else if (menuUI.getMenuSelect().equalsIgnoreCase("result")) {
+					ResultUI resultUI = new ResultUI(control, language);
+					menuUI.close();
+					resultUI.run();
+					while(!resultUI.isClose()){
+						try {
+							Thread.sleep(1);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					resultUI.close();
+				}
+				menuUI.run();
 			}
-			if (menuUI.getMenuSelect().equalsIgnoreCase("vote")) {
-				VoteUI voteUI = new VoteUI(control, language);
-				menuUI.close();
-				voteUI.run();
-			}else if (menuUI.getMenuSelect().equalsIgnoreCase("result")) {
-				 ResultUI resultUI = new ResultUI(control, language);
-				 menuUI.close();
-				 resultUI.run();
-			}
-		}
-		else if(loginUI.getRole().equalsIgnoreCase("election")){
+		} else if (loginUI.getRole().equalsIgnoreCase("election")) {
 			SetVotingUI setVotingUI = new SetVotingUI(control, language);
 			setVotingUI.run();
 		}
-		
-		
 
 	}
 
