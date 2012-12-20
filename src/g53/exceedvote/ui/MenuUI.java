@@ -135,4 +135,8 @@ public class MenuUI {
 			return null;
 		}
 	}
+	
+	public void clearSelectMenu(){
+		menuSelect = null;
+	}
 }

@@ -105,6 +105,7 @@ public class Main {
 							e.printStackTrace();
 						}
 					}
+					menuUI.clearSelectMenu();
 					voteUI.close();
 				} else if (menuUI.getMenuSelect().equalsIgnoreCase("result")) {
 					ResultUI resultUI = new ResultUI(control, language);
@@ -118,6 +119,7 @@ public class Main {
 							e.printStackTrace();
 						}
 					}
+					menuUI.clearSelectMenu();
 					resultUI.close();
 				}
 				menuUI.run();

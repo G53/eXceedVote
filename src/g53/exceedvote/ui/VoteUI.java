@@ -120,11 +120,11 @@ public class VoteUI extends RecordLog implements InterfaceUI{
 		patternList.setFont(font2);
 		summit = new JButton();
 		summit.setFont(font2);
-		summit.setText("Vote");
+		summit.setText(encode("Vote"));
 		summit.addActionListener(new VoteListener());
 		exit = new JButton();
 		exit.setFont(font2);
-		exit.setText("Exit");
+		exit.setText(encode("Back"));
 		exit.addActionListener(new ExitListener());
 		question = new JLabel();
 		question.setFont(font);
@@ -247,7 +247,7 @@ public class VoteUI extends RecordLog implements InterfaceUI{
 				}
 
 				clearRadioButton();
-				frame.dispose();
+				close();
 			}
 		}
 	}
@@ -256,7 +256,7 @@ public class VoteUI extends RecordLog implements InterfaceUI{
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			frame.dispose();
+			close();
 		}
 	}
 

@@ -5,6 +5,8 @@ import java.awt.BorderLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -51,7 +53,7 @@ public class ResultUI {
 		this.controller = control;
     	this.language = language;
 		frame = new JFrame(encode("Vote_Result"));
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLayout(new BorderLayout());
 	    initComponents();
 		frame.pack();
@@ -74,12 +76,22 @@ public class ResultUI {
 		panel.add(scrollPane);
 		frame.add(questionslist,BorderLayout.NORTH);
 		frame.add(panel,BorderLayout.CENTER);
+		
+		
+		
+		// confirm exit
+		frame.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				close();
+			}
+		});
 	}
 	public void run() {
 		frame.setVisible(true);
 	}
 	
 	public void close(){
+		isClose = true;
 		frame.dispose();
 	}
 	
