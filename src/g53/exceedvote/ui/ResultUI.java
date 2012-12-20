@@ -54,7 +54,6 @@ public class ResultUI {
 		frame.setLayout(new BorderLayout());
 	    initComponents();
 		frame.pack();
-		frame.setSize(800, 500);
 		frame.setLocation(280, 100);
 	}
 	public void initComponents() {
