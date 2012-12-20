@@ -172,4 +172,14 @@ public class Controller extends RecordLog {
 		// TODO Auto-generated method stub
 		vote.addTime(itemAt,itemAt2);
 	}
+
+	public void deleteQuestion(int id) {
+		// TODO Auto-generated method stub
+		vote.deleteQuestion(id);
+	}
+
+	public void deleteProject(int id) {
+		// TODO Auto-generated method stub
+		vote.deleteProject(id);
+	}
 }

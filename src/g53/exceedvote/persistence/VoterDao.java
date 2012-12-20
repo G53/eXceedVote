@@ -147,4 +147,8 @@ public interface VoterDao {
 	public abstract void modifyQuestion(int id, String changeQuestion);
 
 	public abstract void addTime(String itemAt, String itemAt2);
+
+	public abstract void deleteQuestion(int id);
+
+	public abstract void deleteProject(int id);
 }

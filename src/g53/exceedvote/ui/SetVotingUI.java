@@ -82,6 +82,10 @@ public class SetVotingUI {
 	private JButton browse;
 	private String dir = null;
 	private Image m = null;
+	private JButton delProject;
+	private JButton delQuestion;
+	private JPanel buttonProject;
+	private JPanel buttonQuestion;
 	private ImageIcon img = new ImageIcon();
 	private JLabel six;
 	private String[] houritem = { "00", "01", "02", "03", "04", "05", "06",
@@ -144,6 +148,8 @@ public class SetVotingUI {
 		four.setLayout(new BorderLayout());
 		five = new JPanel();
 		five.setLayout(new GridBagLayout());
+		buttonProject = new JPanel();
+		buttonQuestion = new JPanel();
 		GridBagConstraints c = new GridBagConstraints();
 		six = new JLabel(img);
 		six.setLayout(new FlowLayout());
@@ -170,7 +176,8 @@ public class SetVotingUI {
 		time = new JLabel(encode("Set_Timing"));
 		hour = new JComboBox<String>(houritem);
 		min = new JComboBox<String>(minitem);
-
+		delProject = new JButton("Delete Project");
+		delQuestion = new JButton("Delete Question");
 		colon = new JLabel(" : ");
 		setTime = new JButton(encode("Save"));
 		criteria = new JLabel(encode("Question"));
@@ -193,11 +200,15 @@ public class SetVotingUI {
 		c.anchor = GridBagConstraints.LAST_LINE_END;
 
 		three.add(criscrollPane, BorderLayout.CENTER);
-		three.add(addQuestion, BorderLayout.PAGE_END);
+		buttonQuestion.add(addQuestion);
+		buttonQuestion.add(delQuestion);
+		three.add(buttonQuestion, BorderLayout.PAGE_END);
 		three.setBorder(BorderFactory.createTitledBorder(encode("Question")));
 
 		four.add(scrollPane, BorderLayout.CENTER);
-		four.add(addProject, BorderLayout.PAGE_END);
+		buttonProject.add(addProject);
+		buttonProject.add(delProject);
+		four.add(buttonProject, BorderLayout.PAGE_END);
 		four.setBorder(BorderFactory.createTitledBorder(encode("Project")));
 
 		teamSave.addActionListener(new teamSaveListener());
@@ -207,6 +218,8 @@ public class SetVotingUI {
 		addProject.addActionListener(new addNewProject());
 		addQuestion.addActionListener(new addNewQuestion());
 		setTime.addActionListener(new addTime());
+		delProject.addActionListener(new DeleteProjectListener());
+		delQuestion.addActionListener(new DeleteQuestionListener());
 		two1.add(projectName);
 		two1.add(project);
 		two.add(two1);
@@ -340,7 +353,8 @@ public class SetVotingUI {
 					e.printStackTrace();
 				}
 				control.modifyProject((int) id, teamNameChange, changeName, in);
-				modelproject.set(projectlist.getSelectedIndex(),control.getProject().get(projectlist.getSelectedIndex()));
+				modelproject.set(projectlist.getSelectedIndex(), control
+						.getProject().get(projectlist.getSelectedIndex()));
 				projectlist.setModel(modelproject);
 				projectlist.repaint();
 			}
@@ -370,7 +384,8 @@ public class SetVotingUI {
 				long id = q.getQuestionID();
 				String changeQuestion = criteriafield.getText();
 				control.modifyQuestion((int) id, changeQuestion);
-				modelcriteria.set(criterialist.getSelectedIndex(), control.getQuestion().get(criterialist.getSelectedIndex()));
+				modelcriteria.set(criterialist.getSelectedIndex(), control
+						.getQuestion().get(criterialist.getSelectedIndex()));
 				criterialist.setModel(modelcriteria);
 				criterialist.repaint();
 				criteriafield.setText("");
@@ -400,6 +415,7 @@ public class SetVotingUI {
 				project.setText(p.getProjectName());
 				team.setText(p.getTeamName());
 				img.setImage(p.getImage().getImage());
+				six.setIcon(img);
 				six.repaint();
 			}
 		}
@@ -432,7 +448,45 @@ public class SetVotingUI {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			// TODO Auto-generated method stub
-			control.addTime(hour.getItemAt(hour.getSelectedIndex()),min.getItemAt(min.getSelectedIndex()));
+			control.addTime(hour.getItemAt(hour.getSelectedIndex()),
+					min.getItemAt(min.getSelectedIndex()));
+		}
+	}
+
+	class DeleteQuestionListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			if (!criterialist.isSelectionEmpty()) {
+				Question q = criterialist.getSelectedValue();
+				long id = q.getQuestionID();
+				control.deleteQuestion((int) id);
+				modelcriteria.remove(criterialist.getSelectedIndex());
+				criterialist.setModel(modelcriteria);
+				criterialist.repaint();
+				criteriafield.setText("");
+			}
+		}
+
+	}
+
+	class DeleteProjectListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			if (!projectlist.isSelectionEmpty()) {
+				Project p = projectlist.getSelectedValue();
+				long id = p.getID();
+				control.deleteProject((int) id);
+				modelproject.remove(projectlist.getSelectedIndex());
+				projectlist.setModel(modelproject);
+				projectlist.repaint();
+				project.setText("");
+				team.setText("");
+				six.setIcon(null);
+			}
 		}
 	}
 }
