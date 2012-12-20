@@ -57,7 +57,7 @@ public class ResultUI {
 		frame.setLayout(new BorderLayout());
 	    initComponents();
 		frame.pack();
-		frame.setLocation(280, 100);
+		frame.setLocation(280, 50);
 	}
 	public void initComponents() {
 		questions = new Question[controller.getQuestion().size()];

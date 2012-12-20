@@ -12,13 +12,13 @@ public class Question {
 	/** The criteria to vote the project */
 	private String question;
 	/** The id of question */
-	private long questionID;
+	private int questionID;
 
 	/**
 	 * Initialize a new Question
 	 * @param question - criteria to vote the project
 	 */
-	public Question(long questionID, String question) {
+	public Question(int questionID, String question) {
 		this.question = question;
 		this.questionID = questionID;
 	}
@@ -34,7 +34,7 @@ public class Question {
 	/**
 	 * To get the id of each question return if of question
 	 */
-	public long getQuestionID() {
+	public int getQuestionID() {
 		return questionID;
 	}
 

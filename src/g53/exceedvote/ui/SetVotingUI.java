@@ -313,6 +313,7 @@ public class SetVotingUI {
 		public void actionPerformed(ActionEvent e) {
 			loadImage();
 			img.setImage(m.getScaledInstance(341, 348, 1));
+			six.setIcon(img);
 			six.revalidate();
 			six.repaint();
 		}
@@ -460,8 +461,8 @@ public class SetVotingUI {
 			// TODO Auto-generated method stub
 			if (!criterialist.isSelectionEmpty()) {
 				Question q = criterialist.getSelectedValue();
-				long id = q.getQuestionID();
-				control.deleteQuestion((int) id);
+				int id = q.getQuestionID();
+				control.deleteQuestion(id);
 				modelcriteria.remove(criterialist.getSelectedIndex());
 				criterialist.setModel(modelcriteria);
 				criterialist.repaint();
@@ -478,8 +479,8 @@ public class SetVotingUI {
 			// TODO Auto-generated method stub
 			if (!projectlist.isSelectionEmpty()) {
 				Project p = projectlist.getSelectedValue();
-				long id = p.getID();
-				control.deleteProject((int) id);
+				int id = p.getID();
+				control.deleteProject(id);
 				modelproject.remove(projectlist.getSelectedIndex());
 				projectlist.setModel(modelproject);
 				projectlist.repaint();

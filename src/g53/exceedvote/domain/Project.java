@@ -20,7 +20,7 @@ public class Project {
 	/** Name of team who develops the project */
 	private String teamName;
 	/** Id of project */
-	private long projectID;
+	private int projectID;
 	/** number of vote score */
 	private int score;
 	// get BinaryStream of Image
@@ -35,7 +35,7 @@ public class Project {
 	 * @param teamName is name of team who develops the project 
 	 * @param projectID is id of project
 	 */
-		public Project(long projectID, String name, String teamName, InputStream birStream){
+		public Project(int projectID, String name, String teamName, InputStream birStream){
 		this.projectName = name;
 		this.teamName = teamName;
 		this.projectID = projectID;
@@ -64,7 +64,7 @@ public class Project {
 	 * To get id of project
 	 * @return id of project
 	 */
-	public long getID(){
+	public int getID(){
 		return projectID;
 	}
 	

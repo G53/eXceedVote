@@ -511,12 +511,13 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 	public void deleteQuestion(int id) {
 		// TODO Auto-generated method stub
 		try {
-			String queryin = "DELETE FROM question WHERE ID = (?)";
+			String queryin = "DELETE FROM question WHERE ID = ?";
 			pstmt = con.prepareStatement(queryin);
 			pstmt.setInt(1, id);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			record("Can't delete user record");
+			e.printStackTrace();
 		}
 	}
 
@@ -524,7 +525,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 	public void deleteProject(int id) {
 		// TODO Auto-generated method stub
 		try {
-			String queryin = "DELETE FROM `exceed_vote`.`project` WHERE `project`.`ID` = (?)";
+			String queryin = "DELETE FROM `exceed_vote`.`project` WHERE `project`.`ID` = ?";
 			pstmt = con.prepareStatement(queryin);
 			pstmt.setInt(1, id);
 			pstmt.executeUpdate();
