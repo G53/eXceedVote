@@ -18,6 +18,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
@@ -43,6 +46,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.AncestorListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
+import com.sun.xml.internal.messaging.saaj.util.ByteOutputStream;
 
 import sun.font.EAttribute;
 import sun.org.mozilla.javascript.internal.ast.ForLoop;
@@ -304,8 +309,6 @@ public class SetVotingUI {
 		// create image using filename
 		Toolkit tk = Toolkit.getDefaultToolkit();
 		m = tk.getImage(imgFile);
-		// call repaint to draw image
-		// m.flush();
 	}
 
 	// inner class to listen menu actions
@@ -326,34 +329,41 @@ public class SetVotingUI {
 			if (projectlist.isSelectionEmpty()) {
 				String tempTeam = team.getText();
 				String projName = project.getText();
-				InputStream in = null;
+				Image source = img.getImage();
+				int w = source.getWidth(null);
+				int h = source.getHeight(null);
+				BufferedImage image = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+				ByteArrayOutputStream os = new ByteArrayOutputStream();
 				try {
-					in = (InputStream) ImageIO.createImageInputStream(img
-							.getImage());
+					ImageIO.write(image,"jpg", os);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}
-
-				Project p = new Project(0, tempTeam, projName, in);
+				} 
+				InputStream in = new ByteArrayInputStream(os.toByteArray());
+				Project p = new Project(0, projName, tempTeam, in);
 				control.addProject(p);
 				modelproject.addElement(p);
 				projectlist.setModel(modelproject);
 				projectlist.repaint();
-			} else {
+		} else {
 				Project p = projectlist.getSelectedValue();
-				long id = p.getID();
+				int id = p.getID();
 				String changeName = project.getText();
 				String teamNameChange = team.getText();
-				InputStream in = null;
+				Image source = img.getImage();
+				int w = source.getWidth(null);
+				int h = source.getHeight(null);
+				BufferedImage image = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+				ByteArrayOutputStream os = new ByteArrayOutputStream();
 				try {
-					in = (InputStream) ImageIO.createImageInputStream(img
-							.getImage());
+					ImageIO.write(image,"jpg", os);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}
-				control.modifyProject((int) id, teamNameChange, changeName, in);
+				} 
+				InputStream in = new ByteArrayInputStream(os.toByteArray());
+				control.modifyProject(id, changeName, teamNameChange, in);
 				modelproject.set(projectlist.getSelectedIndex(), control
 						.getProject().get(projectlist.getSelectedIndex()));
 				projectlist.setModel(modelproject);
