@@ -69,6 +69,7 @@ public class VoteUI extends RecordLog implements InterfaceUI{
 	private Controller control;
 	private ResourceBundle language;
 	private ImageIcon images;
+	private boolean isClose = false; 
 	
 	public VoteUI(Controller control,ResourceBundle language) {
 		this.control = control;
@@ -87,6 +88,11 @@ public class VoteUI extends RecordLog implements InterfaceUI{
 
 	public void run() {
 		frame.setVisible(true);
+		isClose = false;
+	}
+	
+	public boolean isClose(){
+		return isClose;
 	}
 
 	public void initComponents() {
@@ -278,6 +284,7 @@ public class VoteUI extends RecordLog implements InterfaceUI{
 
 	@Override
 	public void close() {
+		isClose = true;
 		frame.dispose();
 		
 	}

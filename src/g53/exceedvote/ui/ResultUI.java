@@ -45,6 +45,7 @@ public class ResultUI {
 	private JPanel panel;
 	private String qname = "";
 	private int qid; 
+	private boolean isClose = false;
 	
 	public ResultUI(Controller control,ResourceBundle language) {
 		this.controller = control;
@@ -77,6 +78,14 @@ public class ResultUI {
 	public void run() {
 		frame.setVisible(true);
 	}
+	
+	public void close(){
+		frame.dispose();
+	}
+	
+	public boolean isClose(){
+		return isClose;
+	}
 	class QuestionListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -105,12 +114,12 @@ public class ResultUI {
 			return null;
 		}
 	}
-	public static void main(String[] args) {
-		Controller con = new Controller();
-		con.connect();
-		LanguageUI ui = new LanguageUI();
-		ResourceBundle language = ui.getLanguage();
-		ResultUI rui = new ResultUI(con, language);
-		rui.run();
-	}
+//	public static void main(String[] args) {
+//		Controller con = new Controller();
+//		con.connect();
+//		LanguageUI ui = new LanguageUI();
+//		ResourceBundle language = ui.getLanguage();
+//		ResultUI rui = new ResultUI(con, language);
+//		rui.run();
+//	}
 }
