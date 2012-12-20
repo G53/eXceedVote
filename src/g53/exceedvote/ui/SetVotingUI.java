@@ -312,7 +312,7 @@ public class SetVotingUI {
 				String projName = project.getText();
 				InputStream in = null;
 				try {
-					in = (InputStream) ImageIO.createImageInputStream(m);
+					in = (InputStream) ImageIO.createImageInputStream(img.getImage());
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -327,7 +327,7 @@ public class SetVotingUI {
 				String teamNameChange = team.getText();
 				InputStream in = null;
 				try {
-					in = (InputStream) ImageIO.createImageInputStream(m);
+					in = (InputStream) ImageIO.createImageInputStream(img.getImage());
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -350,7 +350,7 @@ public class SetVotingUI {
 			} else {
 				Question q = criterialist.getSelectedValue();
 				long id = q.getQuestionID();
-				String changeQuestion = criteria.getText();
+				String changeQuestion = criteriafield.getText();
 				control.modifyQuestion((int) id, changeQuestion);
 			}
 		}

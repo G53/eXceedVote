@@ -12,8 +12,10 @@ import java.util.ResourceBundle;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import sun.launcher.resources.launcher;
 import sun.org.mozilla.javascript.internal.annotations.JSConstructor;
@@ -39,6 +41,8 @@ public class ResultUI {
 	private JComboBox<Question> questionslist;
 	private Question[] questions;
 	private JScrollPane scrollPane;
+	private JTable resultTable;
+	private JPanel panel;
 	private String qname = "";
 	private int qid; 
 	
@@ -57,10 +61,19 @@ public class ResultUI {
 		questions = new Question[controller.getQuestion().size()];
 	    controller.getQuestion().toArray(questions);
 		questionslist = new JComboBox<Question>(questions);
+		panel = new JPanel();
+		try {
+			resultTable	= new JTable(controller.voteResult(null, 1));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		scrollPane = new JScrollPane();
 		questionslist.addActionListener( new QuestionListener());
+		panel.add(resultTable);
+		panel.add(scrollPane);
 		frame.add(questionslist,BorderLayout.NORTH);
-		frame.add(scrollPane,BorderLayout.CENTER);
+		frame.add(panel,BorderLayout.CENTER);
 	}
 	public void run() {
 		frame.setVisible(true);
@@ -70,7 +83,8 @@ public class ResultUI {
 		public void actionPerformed(ActionEvent e) {
 			qid = (int) (questionslist.getItemAt(questionslist.getSelectedIndex()).getQuestionID());
 			try {
-				scrollPane.add( new JTable(controller.voteResult(null, qid)));
+				resultTable.setModel(controller.voteResult(null, qid));
+				scrollPane.repaint();
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -91,5 +105,13 @@ public class ResultUI {
 			System.out.println(e.getMessage());
 			return null;
 		}
+	}
+	public static void main(String[] args) {
+		Controller con = new Controller();
+		con.connect();
+		LanguageUI ui = new LanguageUI();
+		ResourceBundle language = ui.getLanguage();
+		ResultUI rui = new ResultUI(con, language);
+		rui.run();
 	}
 }

@@ -31,7 +31,7 @@ public class MenuUI {
 	private JButton result_button;
 	private Controller controller;
 	private ResourceBundle language;
-	private String menuSelect = null;
+	private String menuSelect;
 
 	public MenuUI(Controller control,ResourceBundle language) {
 		this.controller = control;
@@ -113,9 +113,6 @@ public class MenuUI {
 		
 	}
 	
-	public void show(){
-		frame.show();
-	}
 	public void close(){
 		frame.dispose();
 	}
