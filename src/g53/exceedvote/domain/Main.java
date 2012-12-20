@@ -85,6 +85,14 @@ public class Main {
 			
 			MenuUI menuUI = new MenuUI(control, language);
 			menuUI.run();
+			while(menuUI.getMenuSelect()==null){
+				try {
+					Thread.sleep(1);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 			if (menuUI.getMenuSelect().equalsIgnoreCase("vote")) {
 				VoteUI voteUI = new VoteUI(control, language);
 				menuUI.close();
