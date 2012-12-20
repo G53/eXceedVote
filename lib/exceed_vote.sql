@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2012 at 10:13 AM
+-- Generation Time: Dec 20, 2012 at 06:03 AM
 -- Server version: 5.5.28
 -- PHP Version: 5.4.7
 
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `question` (
 
 INSERT INTO `question` (`ID`, `questions`) VALUES
 (1, 'Which project do you like most?'),
-(2, 'Which project''s design is the best?');
+(2, 'is the best?');
 
 -- --------------------------------------------------------
 
@@ -90,6 +90,18 @@ INSERT INTO `roles` (`ID`, `role`, `score`) VALUES
 (1, 'Student', 1),
 (2, 'Teacher', 3),
 (3, 'Election Committee', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `time`
+--
+
+CREATE TABLE IF NOT EXISTS `time` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
@@ -141,7 +153,7 @@ CREATE TABLE IF NOT EXISTS `vote` (
   KEY `vote_fk1_idx` (`user_id`),
   KEY `vote_fk2_idx` (`project_id`),
   KEY `vote_fk3_idx` (`question_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `vote`
@@ -157,7 +169,9 @@ INSERT INTO `vote` (`ID`, `user_id`, `project_id`, `question_id`, `score`, `date
 (7, 4, 2, 2, 1, '2012-10-23 20:21:51', NULL),
 (8, 1, 2, 1, 1, '2012-10-23 20:25:20', NULL),
 (9, 3, 3, 2, 1, '2012-11-16 08:17:24', NULL),
-(10, 5, 1, 1, 1, '2012-11-16 12:04:58', NULL);
+(10, 5, 1, 1, 1, '2012-11-16 12:04:58', NULL),
+(11, 5, 3, 2, 1, '2012-12-13 17:46:58', NULL),
+(12, 5, 2, 2, 1, '2012-12-13 17:49:59', NULL);
 
 --
 -- Constraints for dumped tables
