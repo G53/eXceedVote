@@ -54,7 +54,7 @@ public class MenuUI {
 		frame.setLayout(new BorderLayout());
 		defaultPanel = new JPanel(new FlowLayout()); 
 		pl = new JPanel(new FlowLayout());
-		label = new JLabel("What would you like to do next?");
+		label = new JLabel(encode("Main_menu_voter"));
 		vote_button = new JButton(encode("Vote"));
 		vote_button.setPreferredSize(new Dimension(100,40));
 		vote_button.addActionListener(new VoteListener());
