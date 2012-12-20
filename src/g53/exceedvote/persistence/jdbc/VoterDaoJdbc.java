@@ -70,7 +70,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 
 		try {
 			con = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/exceed_vote", "root", "password");
+					"jdbc:mysql://localhost:3306/exceed_vote", "User", "");
 			stmt = con.createStatement();
 			// turn on autocommit
 			con.setAutoCommit(true);

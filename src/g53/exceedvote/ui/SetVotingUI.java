@@ -45,6 +45,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import sun.font.EAttribute;
+import sun.org.mozilla.javascript.internal.ast.ForLoop;
 
 /**
  * @author Guysit Koonrungruang 5310547185
@@ -322,6 +323,9 @@ public class SetVotingUI {
 
 				Project p = new Project(0, tempTeam, projName, in);
 				control.addProject(p);
+				modelproject.addElement(p);
+				projectlist.setModel(modelproject);
+				projectlist.repaint();
 			} else {
 				Project p = projectlist.getSelectedValue();
 				long id = p.getID();
@@ -336,6 +340,9 @@ public class SetVotingUI {
 					e.printStackTrace();
 				}
 				control.modifyProject((int) id, teamNameChange, changeName, in);
+				modelproject.set(projectlist.getSelectedIndex(),control.getProject().get(projectlist.getSelectedIndex()));
+				projectlist.setModel(modelproject);
+				projectlist.repaint();
 			}
 		}
 	}
@@ -347,14 +354,26 @@ public class SetVotingUI {
 			// TODO Auto-generated method stub
 			if (criterialist.isSelectionEmpty()) {
 				String tempq = criteriafield.getText();
+				for (int i = 0; i < modelcriteria.size(); i++) {
+					if (modelcriteria.get(i).getQuestion().equals(tempq)) {
+						return;
+					}
+				}
 				Question q = new Question(0, tempq);
 				control.addQuestion(q);
 				modelcriteria.addElement(q);
+				criterialist.setModel(modelcriteria);
+				criterialist.repaint();
+				criteriafield.setText("");
 			} else {
 				Question q = criterialist.getSelectedValue();
 				long id = q.getQuestionID();
 				String changeQuestion = criteriafield.getText();
 				control.modifyQuestion((int) id, changeQuestion);
+				modelcriteria.set(criterialist.getSelectedIndex(), control.getQuestion().get(criterialist.getSelectedIndex()));
+				criterialist.setModel(modelcriteria);
+				criterialist.repaint();
+				criteriafield.setText("");
 			}
 		}
 	}
@@ -393,7 +412,8 @@ public class SetVotingUI {
 			// TODO Auto-generated method stub
 			project.setText("");
 			team.setText("");
-			six.revalidate();
+			projectlist.clearSelection();
+			six.setIcon(null);
 		}
 	}
 
@@ -403,6 +423,7 @@ public class SetVotingUI {
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			criteriafield.setText("");
+			criterialist.clearSelection();
 		}
 	}
 
