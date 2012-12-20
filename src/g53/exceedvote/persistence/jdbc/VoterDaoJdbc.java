@@ -488,5 +488,23 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 			record("Can't insert user record");
 		}
 	}
+
+	@Override
+	public void addTime(String itemAt, String itemAt2) {
+		// TODO Auto-generated method stub
+		java.util.Date date = new java.util.Date();
+		java.sql.Timestamp timestamp = new java.sql.Timestamp(
+				date.getTime());
+		timestamp.setHours(Integer.parseInt(itemAt));
+		timestamp.setMinutes(Integer.parseInt(itemAt2));
+		try {
+			String queryin = "INSERT INTO time (time) VALUES (?)";
+			pstmt = con.prepareStatement(queryin);
+			pstmt.setTimestamp(1, timestamp);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			record("Can't insert user record");
+		}
+	}
 	
 }

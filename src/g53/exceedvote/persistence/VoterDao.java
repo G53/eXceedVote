@@ -145,4 +145,6 @@ public interface VoterDao {
 	public abstract void addQuestion(Question q);
 
 	public abstract void modifyQuestion(int id, String changeQuestion);
+
+	public abstract void addTime(String itemAt, String itemAt2);
 }

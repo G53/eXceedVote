@@ -55,8 +55,8 @@ public class SetVotingUI {
 	private DefaultListModel<Project> modelproject;
 	private DefaultListModel<Question> modelcriteria;
 	private JFrame frame;
-	private JComboBox hour;
-	private JComboBox min;
+	private JComboBox<String> hour;
+	private JComboBox<String> min;
 	private JLabel colon;
 	private JButton setTime;
 	private JLabel time, criteria;
@@ -205,6 +205,7 @@ public class SetVotingUI {
 		criterialist.addListSelectionListener(new criteriaListSelected());
 		addProject.addActionListener(new addNewProject());
 		addQuestion.addActionListener(new addNewQuestion());
+		setTime.addActionListener(new addTime());
 		two1.add(projectName);
 		two1.add(project);
 		two.add(two1);
@@ -312,7 +313,8 @@ public class SetVotingUI {
 				String projName = project.getText();
 				InputStream in = null;
 				try {
-					in = (InputStream) ImageIO.createImageInputStream(img.getImage());
+					in = (InputStream) ImageIO.createImageInputStream(img
+							.getImage());
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -327,7 +329,8 @@ public class SetVotingUI {
 				String teamNameChange = team.getText();
 				InputStream in = null;
 				try {
-					in = (InputStream) ImageIO.createImageInputStream(img.getImage());
+					in = (InputStream) ImageIO.createImageInputStream(img
+							.getImage());
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -367,6 +370,7 @@ public class SetVotingUI {
 			}
 		}
 	}
+
 	class projectListSelected implements ListSelectionListener {
 
 		@Override
@@ -378,9 +382,10 @@ public class SetVotingUI {
 				team.setText(p.getTeamName());
 				img.setImage(p.getImage().getImage());
 				six.repaint();
-			} 
+			}
 		}
 	}
+
 	class addNewProject implements ActionListener {
 
 		@Override
@@ -391,6 +396,7 @@ public class SetVotingUI {
 			six.revalidate();
 		}
 	}
+
 	class addNewQuestion implements ActionListener {
 
 		@Override
@@ -398,6 +404,14 @@ public class SetVotingUI {
 			// TODO Auto-generated method stub
 			criteriafield.setText("");
 		}
-		
+	}
+
+	class addTime implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			// TODO Auto-generated method stub
+			control.addTime(hour.getItemAt(hour.getSelectedIndex()),min.getItemAt(min.getSelectedIndex()));
+		}
 	}
 }

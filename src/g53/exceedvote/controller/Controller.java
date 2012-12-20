@@ -167,4 +167,9 @@ public class Controller extends RecordLog {
 		// TODO Auto-generated method stub
 		vote.modifyQuestion(id, changeQuestion);
 	}
+
+	public void addTime(String itemAt, String itemAt2) {
+		// TODO Auto-generated method stub
+		vote.addTime(itemAt,itemAt2);
+	}
 }
