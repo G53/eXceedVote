@@ -2,6 +2,7 @@ package g53.exceedvote.persistence.jdbc;
 
 
 import java.awt.Image;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -438,7 +439,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 			pstmt = con.prepareStatement(queryin);
 			pstmt.setString(1, tname);
 			pstmt.setString(2, pname);
-			pstmt.setBinaryStream(3, in);
+			pstmt.setBinaryStream(3, (FileInputStream)in,in.available());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			record("Can't insert user record");
