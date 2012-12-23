@@ -21,6 +21,9 @@ import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
@@ -73,9 +76,9 @@ public class SetVotingUI {
 	private JLabel teamName;
 	private JTextField team;
 	private JButton teamSave;
-	private JLabel criteria2;
+//	private JLabel criteria2;
 	private JList<Question> criterialist;
-	private JLabel projectt;
+//	private JLabel projectt;
 	private JList<Project> projectlist;
 	private JButton addQuestion;
 	private JButton addProject;
@@ -113,6 +116,7 @@ public class SetVotingUI {
 	private JPanel one1;
 	private JPanel one;
 	private JPanel five;
+	private String imgFile;
 
 	public SetVotingUI(Controller control, ResourceBundle language) {
 		this.control = control;
@@ -198,7 +202,7 @@ public class SetVotingUI {
 		criscrollPane = new JScrollPane(criterialist);
 		scrollPane = new JScrollPane(projectlist);
 		browse = new JButton(encode("UploadPic"));
-		browse.addActionListener(new axnListener());
+		browse.addActionListener(new setImageIconListener());
 		five.add(browse);
 		c.anchor = GridBagConstraints.LAST_LINE_START;
 		five.add(teamSave);
@@ -304,7 +308,7 @@ public class SetVotingUI {
 		}
 		dlg.setVisible(true);
 		// get image name and path
-		String imgFile = dlg.getDirectory() + dlg.getFile();
+		imgFile = dlg.getDirectory() + dlg.getFile();
 		dir = dlg.getDirectory();
 		// create image using filename
 		Toolkit tk = Toolkit.getDefaultToolkit();
@@ -312,10 +316,10 @@ public class SetVotingUI {
 	}
 
 	// inner class to listen menu actions
-	class axnListener implements ActionListener {
+	class setImageIconListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			loadImage();
-			img.setImage(m.getScaledInstance(341, 348, 1));
+			img.setImage(m.getScaledInstance(340, 348, 1));
 			six.setIcon(img);
 			six.revalidate();
 			six.repaint();
@@ -329,41 +333,35 @@ public class SetVotingUI {
 			if (projectlist.isSelectionEmpty()) {
 				String tempTeam = team.getText();
 				String projName = project.getText();
-				Image source = img.getImage();
-				int w = source.getWidth(null);
-				int h = source.getHeight(null);
-				BufferedImage image = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
-				ByteArrayOutputStream os = new ByteArrayOutputStream();
+				FileInputStream newFile = null;
 				try {
-					ImageIO.write(image,"jpg", os);
-				} catch (IOException e) {
+					newFile = new FileInputStream(new File(imgFile));
+				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				} 
-				InputStream in = new ByteArrayInputStream(os.toByteArray());
-				Project p = new Project(0, projName, tempTeam, in);
+				}
+				Project p = new Project(0, projName, tempTeam, newFile);
 				control.addProject(p);
 				modelproject.addElement(p);
 				projectlist.setModel(modelproject);
 				projectlist.repaint();
+				projectlist.clearSelection();
+				team.setText("");
+				project.setText("");
+				six.setIcon(null);
 		} else {
 				Project p = projectlist.getSelectedValue();
 				int id = p.getID();
 				String changeName = project.getText();
 				String teamNameChange = team.getText();
-				Image source = img.getImage();
-				int w = source.getWidth(null);
-				int h = source.getHeight(null);
-				BufferedImage image = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
-				ByteArrayOutputStream os = new ByteArrayOutputStream();
+				FileInputStream changePic = null;
 				try {
-					ImageIO.write(image,"jpg", os);
-				} catch (IOException e) {
+					changePic = new FileInputStream(new File(imgFile));
+				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				} 
-				InputStream in = new ByteArrayInputStream(os.toByteArray());
-				control.modifyProject(id, changeName, teamNameChange, in);
+				}
+				control.modifyProject(id, changeName, teamNameChange, changePic);
 				modelproject.set(projectlist.getSelectedIndex(), control
 						.getProject().get(projectlist.getSelectedIndex()));
 				projectlist.setModel(modelproject);
