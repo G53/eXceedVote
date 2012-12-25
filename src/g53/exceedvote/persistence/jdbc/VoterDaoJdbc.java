@@ -411,7 +411,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 						+ this.electionCommittee.getName() + " - " + messageLog + " |IP: "+InetAddress.getLocalHost().getHostAddress().toString());
 			} catch (UnknownHostException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+//				e.printStackTrace();
 			}
 			return true;
 		}
@@ -510,7 +510,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 			pstmt.setTimestamp(1, timestamp);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 			record("Can't insert user record");
 		}
 	}
@@ -525,7 +525,6 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			record("Can't delete user record");
-			e.printStackTrace();
 		}
 	}
 
@@ -538,7 +537,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 			pstmt.setInt(1, id);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 			record("Can't delete user record");
 		}
 	}
