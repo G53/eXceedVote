@@ -1,6 +1,7 @@
 package g53.exceedvote.persistence;
 
 
+import java.io.File;
 import java.io.InputStream;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -138,9 +139,7 @@ public interface VoterDao {
 
 	public abstract boolean logIn(ElectionCommittee electionCommittee);
 	
-	public abstract void addProject(Project p);
-	
-	public abstract void modifyProject(int id, String name,String teamname,InputStream in);
+	public abstract void modifyProject(int id,String name,String teamname,byte[] in);
 	
 	public abstract void addQuestion(Question q);
 
@@ -151,4 +150,8 @@ public interface VoterDao {
 	public abstract void deleteQuestion(int id);
 
 	public abstract void deleteProject(int id);
+
+	public abstract void addProject(Project p);
+
+	public abstract byte[] readImageByte(File f);
 }

@@ -2,7 +2,10 @@ package g53.exceedvote.persistence.jdbc;
 
 
 import java.awt.Image;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -18,6 +21,8 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
+
+import com.mysql.jdbc.Blob;
 
 
 import g53.exceedvote.domain.ElectionCommittee;
@@ -46,6 +51,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 	private Voter voter;
 	private ElectionCommittee electionCommittee;
 //	private FileInputStream fis;
+	private Blob image;
 
 	/**
 	 * Load the driver that is SQL or not
@@ -124,7 +130,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 		try {
 			rs = stmt.executeQuery(query);
 			while (rs.next()) {
-				arrProject.add(new Project(rs.getInt("ID"), rs.getNString("name"), rs.getNString("teamname"),rs.getBinaryStream("Pictures")));
+				arrProject.add(new Project(rs.getInt("ID"), rs.getNString("name"), rs.getNString("teamname"),rs.getBytes("Pictures")));
 			}
 			record("Access Project Database");
 			return arrProject;
@@ -433,13 +439,13 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 		// TODO Auto-generated method stub
 		String tname = p.getTeamName();
 		String pname = p.getProjectName();
-		InputStream in = p.getBirStream();
+		byte[] pb = p.getImagebytes();
 		try {
 			String queryin = "INSERT INTO project (name, teamname,Pictures) VALUES (?,?,?)";
 			pstmt = con.prepareStatement(queryin);
 			pstmt.setString(1, tname);
 			pstmt.setString(2, pname);
-			pstmt.setBinaryStream(3, (FileInputStream)in,in.available());
+			pstmt.setBytes(3, p.getImagebytes());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			record("Can't insert user record");
@@ -447,14 +453,14 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 	}
 
 	@Override
-	public void modifyProject(int id,String name,String teamname,InputStream in) {
+	public void modifyProject(int id,String name,String teamname,byte[] in) {
 		// TODO Auto-generated method stub
 		try {
-			String queryin = "UPDATE project SET name = ?, teamname = ?, Picture = ? WHERE ID = ?";
+			String queryin = "UPDATE project SET name = ?, teamname = ?, Pictures = ? WHERE ID = ?";
 			pstmt = con.prepareStatement(queryin);
 			pstmt.setString(1, name);
 			pstmt.setString(2, teamname);
-			pstmt.setBinaryStream(3, in);
+			pstmt.setBytes(3, in);
 			pstmt.setInt(4, id);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -504,6 +510,7 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 			pstmt.setTimestamp(1, timestamp);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
+			e.printStackTrace();
 			record("Can't insert user record");
 		}
 	}
@@ -531,8 +538,25 @@ public class VoterDaoJdbc extends RecordLog implements VoterDao {
 			pstmt.setInt(1, id);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
+			e.printStackTrace();
 			record("Can't delete user record");
 		}
 	}
-	
+	@Override
+	public byte[] readImageByte(File f) {
+		InputStream pic = null;
+		byte[] returnBytes = new byte[(int)f.length()];
+		ByteArrayOutputStream ous = new ByteArrayOutputStream();
+		try {
+			pic = new FileInputStream(f);
+			int read = 0;
+	        while ( (read = pic.read(returnBytes)) != -1 ) {
+			    ous.write(returnBytes, 0, read);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ous.toByteArray();
+	}
 }
