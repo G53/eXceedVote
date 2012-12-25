@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 import sun.launcher.resources.launcher;
 import sun.org.mozilla.javascript.internal.annotations.JSConstructor;
@@ -53,16 +54,18 @@ public class ResultUI {
 		this.controller = control;
     	this.language = language;
 		frame = new JFrame(encode("Vote_Result"));
-		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLayout(new BorderLayout());
 	    initComponents();
 		frame.pack();
+		frame.setSize(800, 500);
 		frame.setLocation(280, 50);
+		frame.setResizable(false);
 	}
 	public void initComponents() {
 		questions = new Question[controller.getQuestion().size()];
 	    controller.getQuestion().toArray(questions);
 		questionslist = new JComboBox<Question>(questions);
+		scrollPane = new JScrollPane();
 		panel = new JPanel();
 		try {
 			resultTable	= new JTable(controller.voteResult(null, 1));
@@ -70,12 +73,14 @@ public class ResultUI {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		scrollPane = new JScrollPane();
 		questionslist.addActionListener( new QuestionListener());
-		panel.add(resultTable);
-		panel.add(scrollPane);
+		TableColumn column = null;
+		for (int i = 0; i < resultTable.getColumnCount(); i++) {
+		    column = resultTable.getColumnModel().getColumn(i);
+		    column.setPreferredWidth(20); //third column is bigger
+		}
 		frame.add(questionslist,BorderLayout.NORTH);
-		frame.add(panel,BorderLayout.CENTER);
+		frame.add(resultTable,BorderLayout.CENTER);
 		
 		
 		
@@ -95,16 +100,26 @@ public class ResultUI {
 		frame.dispose();
 	}
 	
+	/**
+	 * @return
+	 */
 	public boolean isClose(){
 		return isClose;
 	}
+	/**
+	 * @author Peepo
+	 *
+	 */
 	class QuestionListener implements ActionListener {
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			qid = (int) (questionslist.getItemAt(questionslist.getSelectedIndex()).getQuestionID());
 			try {
 				resultTable.setModel(controller.voteResult(null, qid));
-				scrollPane.repaint();
+				resultTable.repaint();
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
