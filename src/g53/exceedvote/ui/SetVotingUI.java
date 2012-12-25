@@ -27,6 +27,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -53,10 +55,12 @@ import javax.swing.event.ListSelectionListener;
 import com.sun.xml.internal.messaging.saaj.util.ByteOutputStream;
 
 import sun.font.EAttribute;
+import sun.misc.IOUtils;
 import sun.org.mozilla.javascript.internal.ast.ForLoop;
 
 /**
  * For setting the vote rule of committee
+ * 
  * @author Guysit Koonrungruang 5310547185
  * @Version 2012.November.18
  */
@@ -77,9 +81,9 @@ public class SetVotingUI {
 	private JLabel teamName;
 	private JTextField team;
 	private JButton teamSave;
-//	private JLabel criteria2;
+	// private JLabel criteria2;
 	private JList<Question> criterialist;
-//	private JLabel projectt;
+	// private JLabel projectt;
 	private JList<Project> projectlist;
 	private JButton addQuestion;
 	private JButton addProject;
@@ -128,7 +132,7 @@ public class SetVotingUI {
 		initComponents();
 		frame.pack();
 		frame.setSize(1024, 768);
-		frame.setLocation(280, 100);
+//		frame.setLocation(280, 100);
 		frame.setResizable(false);
 	}
 
@@ -334,14 +338,8 @@ public class SetVotingUI {
 			if (projectlist.isSelectionEmpty()) {
 				String tempTeam = team.getText();
 				String projName = project.getText();
-				FileInputStream newFile = null;
-				try {
-					newFile = new FileInputStream(new File(imgFile));
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				Project p = new Project(0, projName, tempTeam, newFile);
+				File f = new File(imgFile);
+				Project p = new Project(0, projName, tempTeam, control.readImageByte(f));
 				control.addProject(p);
 				modelproject.addElement(p);
 				projectlist.setModel(modelproject);
@@ -350,19 +348,13 @@ public class SetVotingUI {
 				team.setText("");
 				project.setText("");
 				six.setIcon(null);
-		} else {
+			} else {
 				Project p = projectlist.getSelectedValue();
 				int id = p.getID();
 				String changeName = project.getText();
 				String teamNameChange = team.getText();
-				FileInputStream changePic = null;
-				try {
-					changePic = new FileInputStream(new File(imgFile));
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				control.modifyProject(id, changeName, teamNameChange, changePic);
+				File f = new File(imgFile);
+				control.modifyProject(id, changeName, teamNameChange,control.readImageByte(f));
 				modelproject.set(projectlist.getSelectedIndex(), control
 						.getProject().get(projectlist.getSelectedIndex()));
 				projectlist.setModel(modelproject);
@@ -460,6 +452,7 @@ public class SetVotingUI {
 			// TODO Auto-generated method stub
 			control.addTime(hour.getItemAt(hour.getSelectedIndex()),
 					min.getItemAt(min.getSelectedIndex()));
+			JOptionPane.showMessageDialog(frame, "Time has been set");
 		}
 	}
 
