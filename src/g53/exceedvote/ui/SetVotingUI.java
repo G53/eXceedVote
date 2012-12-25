@@ -132,7 +132,6 @@ public class SetVotingUI {
 		initComponents();
 		frame.pack();
 		frame.setSize(1024, 768);
-//		frame.setLocation(280, 100);
 		frame.setResizable(false);
 	}
 
@@ -416,7 +415,7 @@ public class SetVotingUI {
 				Project p = projectlist.getSelectedValue();
 				project.setText(p.getProjectName());
 				team.setText(p.getTeamName());
-				img.setImage(p.getImage().getImage());
+				img = p.getImage();
 				six.setIcon(img);
 				six.repaint();
 			}

@@ -62,7 +62,4 @@ public class Voter {
 	public void setPassword(String newPass){
 		password = newPass;
 	}
-	
-	
-
 }

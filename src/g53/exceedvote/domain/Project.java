@@ -47,10 +47,10 @@ public class Project {
 		this.teamName = teamName;
 		this.projectID = projectID;
 		this.imageBytes = birStream;
-		pictureImage = new ImageIcon(birStream);
 	}
 
 	public ImageIcon getImage() {
+		pictureImage = new ImageIcon(imageBytes);
 		return pictureImage;
 	}
 
