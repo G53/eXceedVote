@@ -6,6 +6,7 @@ import g53.exceedvote.domain.*;
 import g53.exceedvote.persistence.*;
 
 /**
+ * Testing DaoFactory
  * @author 	Wasupol Tungsakulthong 5310547304 
  * @Version 2012.November.15
  */
@@ -16,6 +17,10 @@ public class TestDaoFactory {
 	private ArrayList<Project> project;
 	private ArrayList<Question> questions;
 	private VoterDao dao;
+	
+	/**
+	 *  Test object have to be created
+	 */
 	public void testDaoFactory() {
 		dao = DaoFactory.getInstance().getVoterDao();
 		dao.LoadDriver();
@@ -25,6 +30,9 @@ public class TestDaoFactory {
 		questions = dao.getQuestion();
 	}
 
+	/**
+	 * Test the Voter object.
+	 */
 	public void testVoter() {
 		Voter harry = new Voter(0, "harry", "potter",1);
 		if (dao.canInsertVoter(harry.getId(), harry.getName())) {
@@ -37,6 +45,9 @@ public class TestDaoFactory {
 		}
 	}
 
+	/**
+	 * Test the Project object
+	 */
 	public void testProject() {
 		System.out.print(" -- All Projects in application -- \n");
 		for (Project p : project) {
@@ -45,6 +56,9 @@ public class TestDaoFactory {
 		
 	}
 
+	/**
+	 * Test the Question object
+	 */
 	public void testQuestion() {
 		System.out.print(" -- All Voting Topics in application -- \n");
 		for (Question q : questions) {

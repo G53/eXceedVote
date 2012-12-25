@@ -29,7 +29,7 @@ import g53.exceedvote.persistence.VoterDao;
 
 
 /**
- * Class
+ * Class ResultUI show the result of voting
  */
 
 /**

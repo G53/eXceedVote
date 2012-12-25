@@ -20,12 +20,14 @@ public class DaoFactory {
 	private DaoFactory() {
 	}
 
+	/** Creates the DaoFactory */
 	public static DaoFactory getInstance() {
 		if (factory == null)
 			factory = new DaoFactory();
 		return factory;
 	}
-
+	
+	/** Accessor method creates the VoterDao */
 	public VoterDao getVoterDao() {
 		if (dao == null)
 			dao = new VoterDaoJdbc();

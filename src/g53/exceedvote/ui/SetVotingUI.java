@@ -56,6 +56,7 @@ import sun.font.EAttribute;
 import sun.org.mozilla.javascript.internal.ast.ForLoop;
 
 /**
+ * For setting the vote rule of committee
  * @author Guysit Koonrungruang 5310547185
  * @Version 2012.November.18
  */

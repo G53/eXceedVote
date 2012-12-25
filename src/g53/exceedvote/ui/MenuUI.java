@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
+ * MenuUI show the choice what the user want to do
  * @author Kamolporn Sanamlao ID5310545557
  * @Version 2012.12.14
  */
