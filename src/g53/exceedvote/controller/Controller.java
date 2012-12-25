@@ -1,5 +1,6 @@
 package g53.exceedvote.controller;
 
+import java.io.File;
 import java.io.InputStream;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -154,7 +155,7 @@ public class Controller extends RecordLog {
 	public void addProject(Project p) {
 		vote.addProject(p);
 	}
-	public void modifyProject(int id, String name,String teamname,InputStream in) {
+	public void modifyProject(int id,String name,String teamname,byte[] in) {
 		vote.modifyProject(id, name, teamname, in);
 	}
 
@@ -181,5 +182,10 @@ public class Controller extends RecordLog {
 	public void deleteProject(int id) {
 		// TODO Auto-generated method stub
 		vote.deleteProject(id);
+	}
+
+	public byte[] readImageByte(File f) {
+		// TODO Auto-generated method stub
+		return vote.readImageByte(f);
 	}
 }
