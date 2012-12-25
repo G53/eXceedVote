@@ -27,10 +27,12 @@ import javax.swing.JPanel;
  */
 
 public class LanguageUI {
+	private static final String PIC_EN_JPG = "/pic/en.jpg";
+	private static final String PIC_THAI_JPG = "/pic/thai.jpg";
 	private JFrame frame;
 	private JPanel pl;
-	ImageIcon th = new ImageIcon("pic/thai.jpg");
-	ImageIcon en = new ImageIcon("pic/en.jpg");
+	ImageIcon th = new ImageIcon(this.getClass().getResource(PIC_THAI_JPG));
+	ImageIcon en = new ImageIcon(this.getClass().getResource(PIC_EN_JPG));
 	private JLabel thai;
 	private JLabel eng;
 	private ResourceBundle language;
